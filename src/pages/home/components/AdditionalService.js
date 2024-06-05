@@ -89,7 +89,7 @@ export default function AdditionalService() {
     <div className='container'>
         <div className="row">
             <div className="col-lg-4 p-3 center">
-                <img className='img-fluid' src={additionalService} alt={additionalService} />
+            <img className='img-fluid' src={additionalService} alt={additionalService} />
             </div>
             <div className="col-lg-8 pt-5 px-2">
                 <h1 className='poppins fw-500'>Additional Service</h1>
