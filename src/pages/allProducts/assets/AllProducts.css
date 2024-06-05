@@ -1,0 +1,19 @@
+.howWorks{
+    background-image: url('./images/rectangle.png');
+    background-size: 100% 100%;
+}
+.howWorks p{
+    font-size: 15px !important; 
+}
+.refinedBy input{
+    border:2px solid;
+    border-color:rgb(235, 235, 235) !important;
+    font-size: 14px;
+}
+
+.productsListing .card p{
+font-size: 13px !important;
+}
+.productsListing button{
+    font-size: 25px;
+}

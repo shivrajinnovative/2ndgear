@@ -1,0 +1,36 @@
+nav{
+    font-family: "Poppins", sans-serif ;
+    font-style: normal ;
+    font-weight: 500;
+    box-shadow: 0 5px 5px rgba(146, 144, 144, 0.719);
+}
+nav li{
+    padding: 0 5px;
+}
+.dropdown-submenu {
+    position: relative;
+    padding-right: 20px;
+    
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+  }
+  .dropdown-submenu .dropdown-toggle{
+    position: relative;
+  }
+.dropdown-submenu .dropdown-toggle::after{
+    position: absolute;
+    right: -5px;
+    top: 10px;
+}
+  .dropdown-toggle::after {
+    border:none;
+    padding: 3px;
+    border-right:2px solid;
+    border-bottom:2px solid ;
+    transform: rotate(45deg);
+    margin-left: 5px;
+}
