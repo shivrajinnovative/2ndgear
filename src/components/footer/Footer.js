@@ -1,5 +1,6 @@
 import React from "react";
 import "./footer.css";
+import logo from './../../assets/logo.png'
 import facebook from "./icons/facebook.svg";
 import instagram from "./icons/instagram.svg";
 import linkedin from "./icons/linkedin.svg";
@@ -14,7 +15,7 @@ export default function Footer() {
       <div className="container ">
         <div className="row">
           <div className="col-md-6 col-lg-3 mt-5 px-5">
-            <img src="./logo.png" />
+            <img src={logo} alt={logo} />
             <h5 className="poppins fw-600">Keep in Touch</h5>
             <div className="col-6 d-flex justify-content-between">
               <img src={facebook} alt={facebook} />

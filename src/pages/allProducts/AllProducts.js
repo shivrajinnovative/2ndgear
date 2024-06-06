@@ -3,14 +3,15 @@ import "./assets/AllProducts.css";
 import dummy from "./assets/images/dummy.png";
 import location from "./assets/icons/location.svg";
 import refresh from "./assets/icons/refresh.svg";
+import downArrow from './assets/icons/downArrow.svg'
 export default function AllProducts() {
   let products = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
   return (
     <section className="bg-secondary pt-5 mt-5">
-      <div className="container pt-5 ">
-        <h1 className="poppins fw-300">
-          New Plants <span className="text-primary fw-700">(200)</span>{" "}
+      <div className="container pt-3 ">
+        <h1 className="poppins py-3 fw-300">
+          New Plants <span className="text-primary fw-700">(200)</span>
         </h1>
         <div className="row">
           <div className="col-lg-3">
@@ -24,6 +25,17 @@ export default function AllProducts() {
                 placeholder="Search"
                 className="px-3 py-1 poppins fw-400"
               />
+              <ul className="p-0 pt-2 poppins poppins-400" >
+                <li className="nav-link d-flex justify-content-between border-bottom py-2">
+                  Equipment Current State <img src={downArrow} alt={downArrow} />
+                </li>
+                <li className="nav-link d-flex justify-content-between border-bottom py-2">
+                Equipment YOM <img src={downArrow} alt={downArrow} />
+                </li>
+                <li className="nav-link d-flex justify-content-between pt-2">
+                Equipment Price <img src={downArrow} alt={downArrow} />
+                </li>
+              </ul>
             </div>
           </div>
           <div className="col-lg-9">

@@ -5,16 +5,18 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Footer from './components/footer/Footer'
 import Copyright from './components/copyright/Copyright'
 import AllProducts from './pages/allProducts/AllProducts'
+import ProductDetail from './pages/produtDetail/ProductDetail'
 
 export default function App() {
   
   return (
     <div>
-      <BrowserRouter basename='/'>
+      <BrowserRouter basename='/react'>
       <Navbar/>
         <Routes>
-          <Route path="/ji"  element={<Home/>}/>
-          <Route path="/"  element={<AllProducts/>}/>
+          <Route path="/s"  element={<Home/>}/>
+          <Route path="/s"  element={<AllProducts/>}/>
+          <Route path="/" element={<ProductDetail/>} />
         </Routes>
         <Footer/> 
         <Copyright/>

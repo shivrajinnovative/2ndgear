@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "./Navbar.css";
 import person from './person.svg'
+import logo from './../../assets/logo.png'
 const Navbar = () => {
   useEffect(() => {
     const dropdowns = document.querySelectorAll(
@@ -27,7 +28,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-white fixed-top bg-white">
       <div className="container">
         <a className="navbar-brand" href="#home">
-          <img src="./logo.png" alt="./logo.png" />
+          <img src={logo} alt={logo} />
         </a>
         <button
           className="navbar-toggler"

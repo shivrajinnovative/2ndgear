@@ -112,7 +112,6 @@ export default function AdditionalService() {
                              />
                             <p className='poppins text-center fw-400  my-3'>{item.title}</p>
                         </div>
-                  
                     )
                 })
                }

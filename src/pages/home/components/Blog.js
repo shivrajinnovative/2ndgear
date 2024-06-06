@@ -66,8 +66,8 @@ export default function Blog() {
               },
             },
           ],
-          prevArrow: <CustomPrevArrow />,
-          nextArrow: <CustomNextArrow />,
+            prevArrow: <CustomPrevArrow />,
+            nextArrow: <CustomNextArrow />,
         };
 
 

@@ -1,0 +1,22 @@
+.produtDetail p{
+   font-size: 13px !important; 
+}
+.produtDetail .custom-arrow {
+    height: 10px;
+}
+.produtDetail .slick-next, .slick-prev{
+    height: 20px !important;
+    width: 20px !important;
+    font-size: 15px !important;
+    background-color: white!important;
+    border:none !important;
+    box-shadow: 0 0 5px black;
+}
+.produtDetail .slick-prev{
+    left: -6px !important;
+    z-index: 22;
+}
+.produtDetail .slick-next{
+    right: -6px !important;
+    z-index: 22;
+}
