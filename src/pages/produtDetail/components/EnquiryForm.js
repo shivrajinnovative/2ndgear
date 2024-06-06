@@ -4,11 +4,12 @@ import axios from "axios";
 export default function EnquiryForm() {
   const [formData, setFormData] = useState({
     name: "",
-    mobileNumber: "",
+    mobile_no: "",
     email: "",
     state: "",
-    buyRent: "buy",
+    buy_or_rent: "buy",
     message: "",
+    for:'admin'
   });
 
   const handleChange = (e) => {
@@ -46,7 +47,7 @@ export default function EnquiryForm() {
         />
         <input
           type="number"
-          name="mobileNumber"
+          name="mobile_no"
           className="w-100 my-2 p-2"
           placeholder="Mobile Number"
           value={formData.mobileNumber}
@@ -69,7 +70,7 @@ export default function EnquiryForm() {
           onChange={handleChange}
         />
         <select
-          name="buyRent"
+          name="buy_or_rent"
           className="w-100 my-2 p-2"
           value={formData.buyRent}
           onChange={handleChange}
