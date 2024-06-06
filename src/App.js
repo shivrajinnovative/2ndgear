@@ -14,9 +14,9 @@ export default function App() {
       <BrowserRouter basename='/react'>
       <Navbar/>
         <Routes>
-          <Route path="/s"  element={<Home/>}/>
-          <Route path="/s"  element={<AllProducts/>}/>
-          <Route path="/" element={<ProductDetail/>} />
+          <Route path="/"  element={<Home/>}/>
+          <Route path="/allproduct"  element={<AllProducts/>}/>
+          <Route path="/details" element={<ProductDetail/>} />
         </Routes>
         <Footer/> 
         <Copyright/>

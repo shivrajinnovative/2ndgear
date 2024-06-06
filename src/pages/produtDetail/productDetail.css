@@ -1,10 +1,7 @@
 .produtDetail p{
    font-size: 13px !important; 
 }
-.produtDetail .custom-arrow {
-    height: 10px;
-}
-.produtDetail .slick-next, .slick-prev{
+.produtDetail .slick-next,.produtDetail .slick-prev{
     height: 20px !important;
     width: 20px !important;
     font-size: 15px !important;
@@ -17,6 +14,48 @@
     z-index: 22;
 }
 .produtDetail .slick-next{
-    right: -6px !important;
+    right: -10px !important;
     z-index: 22;
+}
+.enquiryForm input{
+    border:2px solid rgb(219, 218, 218)
+}
+.enquiryForm input[type="checkbox"] {
+    width: 20px;        
+    height: 20px;       
+    background-color: #f3f3f3; 
+}
+.enquiryForm label{
+    opacity: 0.5;
+    font-size: 15px !important;
+    line-height: 15px !important;
+}
+.plantDetail p{
+    font-size: 16px !important;
+    margin: 0 !important;
+    padding: 0;
+}
+.plantDetail table tr td{
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+.plantDetail table tr td:nth-child(1){
+    padding-left: 30px;
+ 
+}
+.relatedEquipment .slick-next,.relatedEquipment .slick-prev{
+    height: 30px !important;
+    width: 30px !important;
+   
+}
+.produtDetail .active::after{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    width: 100px;
+    height: 8px;
+    border-radius: 10px 10px 0 0;
+    background-color: #2E296C 
 }

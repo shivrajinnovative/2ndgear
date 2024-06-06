@@ -46,7 +46,7 @@ export default function Product() {
 
     
   return (
-    <div className='card m-2 p-3 produtDetail'>
+    <div className='card m-2 p-3 '>
         <img src={dummy2} alt={dummy2} className='img-fluid' />
         <div className='d-flex justify-content-between poppins pt-3 ' >
             <h5 className='fw-400 text-primary m-0'>Cp 30 Batching Plant</h5>

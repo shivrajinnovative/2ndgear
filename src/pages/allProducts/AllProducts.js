@@ -1,7 +1,7 @@
 import React from "react";
 import "./assets/AllProducts.css";
 import dummy from "./assets/images/dummy.png";
-import location from "./assets/icons/location.svg";
+import location from "../../assets/icons/location.svg";
 import refresh from "./assets/icons/refresh.svg";
 import downArrow from './assets/icons/downArrow.svg'
 export default function AllProducts() {
@@ -39,7 +39,7 @@ export default function AllProducts() {
             </div>
           </div>
           <div className="col-lg-9">
-            <div className="howWorks col-md-5 text-center py-4 text-white">
+            <div className="howWorks col-md-5 mx-auto my-5 m-lg-0 text-center py-4 text-white">
               <h4 className="poppins fw-600">How Secondgear® Works?</h4>
               <hr className="mx-5" />
               <p>

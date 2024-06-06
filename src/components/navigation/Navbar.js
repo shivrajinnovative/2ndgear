@@ -25,7 +25,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-white fixed-top bg-white">
+    <nav className="navbar navbar-expand-xl navbar-white fixed-top bg-white">
       <div className="container">
         <a className="navbar-brand" href="#home">
           <img src={logo} alt={logo} />
