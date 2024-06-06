@@ -17,9 +17,10 @@
     right: -10px !important;
     z-index: 22;
 }
-.enquiryForm input{
+.enquiryForm form *{
     border:2px solid rgb(219, 218, 218)
 }
+
 .enquiryForm input[type="checkbox"] {
     width: 20px;        
     height: 20px;       
@@ -38,10 +39,10 @@
 .plantDetail table tr td{
     padding-top: 30px;
     padding-bottom: 50px;
+    padding-right: 20px;
 }
 .plantDetail table tr td:nth-child(1){
     padding-left: 30px;
- 
 }
 .relatedEquipment .slick-next,.relatedEquipment .slick-prev{
     height: 30px !important;
@@ -53,7 +54,8 @@
     display: block;
     position: absolute;
     bottom: 0;
-    left: 20px;
+    left: 50%;
+    transform: translate(-50%);
     width: 100px;
     height: 8px;
     border-radius: 10px 10px 0 0;

@@ -7,12 +7,14 @@ import downArrow from './assets/icons/downArrow.svg'
 export default function AllProducts() {
   let products = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
+
   return (
     <section className="bg-secondary pt-5 mt-5">
       <div className="container pt-3 ">
         <h1 className="poppins py-3 fw-300">
           New Plants <span className="text-primary fw-700">(200)</span>
         </h1>
+
         <div className="row">
           <div className="col-lg-3">
             <div className="refinedBy card p-3">
@@ -59,7 +61,7 @@ export default function AllProducts() {
               <div className="row">
                 {products.map((product, index) => {
                   return (
-                    <div className="col-md-6 col-lg-4 mb-3">
+                    <div className="col-md-6 col-lg-4 mb-3" key={index}>
                       <div className="card p-3 rounded-4">
                         <img src={dummy} alt={dummy} />
                         <h5 className="poppins fw-500 mt-3">
@@ -67,7 +69,7 @@ export default function AllProducts() {
                         </h5>
                         <div
                           className="d-flex justify-content-between py-1"
-                          style={{ "font-size": "17px" }}
+                          style={{ "fontSize": "17px" }}
                         >
                           <span>Cp 30</span>
                           <span>2012</span>

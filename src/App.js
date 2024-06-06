@@ -6,6 +6,7 @@ import Footer from './components/footer/Footer'
 import Copyright from './components/copyright/Copyright'
 import AllProducts from './pages/allProducts/AllProducts'
 import ProductDetail from './pages/produtDetail/ProductDetail'
+import PrivacyPolicy from './pages/privacyPolicy/PrivacyPolicy'
 
 export default function App() {
   
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/"  element={<Home/>}/>
           <Route path="/allproduct"  element={<AllProducts/>}/>
           <Route path="/details" element={<ProductDetail/>} />
+          <Route path="/privacy" element={<PrivacyPolicy/>} />
         </Routes>
         <Footer/> 
         <Copyright/>
