@@ -9,6 +9,7 @@ import right from "./icons/right.svg";
 import location from './icons/location.svg'
 import mail from './icons/mail.svg'
 import phone from './icons/phone.svg'
+import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <footer className="bg-primary text-white py-5">
@@ -24,15 +25,15 @@ export default function Footer() {
               <img src={instagram} alt={instagram} />
             </div>
           </div>
-          <div className="col-md-6 col-lg-3 px-5 mt-5">
+          <div className="col-md-6 col-lg-3 px-lg-5 mt-5">
             <h5 className="poppins fw-700">
               Quick Link
             </h5>
             <div>
-              <a href="#" className="nav-link">
+              <Link to="aboutus" className="nav-link">
                 <img src={right} alt={right} className="mx-2" />
                 About us
-              </a>
+              </Link>
             </div>
             <div>
               <a href="#" className="nav-link">
@@ -41,10 +42,10 @@ export default function Footer() {
               </a>
             </div>
             <div>
-              <a href="#" className="nav-link">
+              <Link to="privacy" className="nav-link">
                 <img src={right} alt={right} className="mx-2" />
                 Privacy Policy
-              </a>
+              </Link>
             </div>
             <div>
               <a href="#" className="nav-link">
@@ -59,7 +60,7 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          <div className="col-md-6 col-lg-3 px-5 px-md-4 mt-5">
+          <div className="col-md-6 col-lg-3 px-lg-4 mt-5">
             <h5 className="poppins fw-700">
             Industrial Plants
 
@@ -90,7 +91,7 @@ export default function Footer() {
             </div>
            
           </div>
-          <div className="col-md-6 col-lg-3 px-5 px-md-0 mt-5">
+          <div className="col-md-6 col-lg-3 px-lg-5 px-md-0 mt-5">
           <h5 className="poppins fw-700">
           Reach Us
             </h5>

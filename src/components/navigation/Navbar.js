@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./Navbar.css";
 import person from './person.svg'
 import logo from './../../assets/logo.png'
+import { Link } from "react-router-dom";
 const Navbar = () => {
   useEffect(() => {
     const dropdowns = document.querySelectorAll(
@@ -44,9 +45,9 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav mx-auto">
             <li className="nav-item ">
-              <a className="nav-link" href="#about">
+              <Link className="nav-link" to="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item dropdown">
               <a
@@ -658,8 +659,8 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="d-flex">
-          <div className="d-flex px-4 center">
-          <img src={person} height="26px" className="mx-2" alt={person} />
+          <div className="d-flex px-3 center">
+          <img src={person} height="23px" className="mx-2" alt={person} />
 
           <a className="nav-link dropdown">
               <a className="nav-link dropdown-toggle" href="#service" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -671,7 +672,7 @@ const Navbar = () => {
               </ul>
             </a>
           </div>
-          <div>
+          <div className="contact">
             <p className="m-0 fw-400">Call Us at</p>
             <span>99-6989-4448</span>
           </div>

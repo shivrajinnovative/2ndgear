@@ -46,15 +46,15 @@ export default function IndustryPlants() {
   ];
 
   return (
-    <div className="bg-secondary">
+    <div className="bg-secondary py-4">
       <div className="container py-3">
-        <h2 className="poppins py-4 fw-600 center">Industry Plants</h2>
+        <h2 className="poppins pb-4 fw-600 center">Industry Plants</h2>
         <div className="row">
           {content.map((item, index) => {
             return (
               <div className="col-md-6 col-lg-4 col-xl-3" key={index}>
                 <div
-                  className={`plantCard p-2 px-3 center d-flex ${
+                  className={`plantCard p-2 px-3 d-flex align-items-center ${
                     hoverIndex === index
                       ? "bg-primary text-white"
                       : "bg-white text-primary"
@@ -68,7 +68,7 @@ export default function IndustryPlants() {
                       alt={hoverIndex === index ? item.image : item.imageDark}
                     />
                   </div>
-                  <p className="poppins fw-500">{item.title}</p>
+                  <p className="poppins m-0 fw-500">{item.title}</p>
                 </div>
               </div>
             );

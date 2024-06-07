@@ -1,0 +1,36 @@
+hr{
+    width: 80%;
+    opacity: 1;
+    color: #635EA4;
+    border-top-width: 3px;
+    margin-left:10px;
+}
+.aboutcontent p{
+    font-size: 16px !important;
+    margin: 0 ;
+}
+.benifiteHeading{
+    max-width: 450px;
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+}
+.benifiteHeading::after,.benifiteHeading::before{
+    content: "";
+    display: block;
+    height: 0px;
+    width: 0px;
+    border:25px solid #100B54;
+    position: absolute;
+    bottom:0
+}
+.benifiteHeading::before{
+    left: -50px;
+    border-left-color: transparent;
+    border-top-color: transparent;
+}
+.benifiteHeading::after{
+    right: -50px;
+    border-top-color: transparent;
+    border-right-color: transparent;
+}

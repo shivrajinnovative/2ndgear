@@ -110,7 +110,7 @@ export default function AdditionalService() {
                              src={hoverIndex === index ? item.image : item.imageDark}
                              alt={hoverIndex === index ? item.image : item.imageDark}
                              />
-                            <p className='poppins text-center fw-400  my-3'>{item.title}</p>
+                            <p className='poppins text-center fw-400 mb-0 mt-3'>{item.title}</p>
                         </div>
                     )
                 })

@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Slider from "react-slick";
 import image1 from './../assets/images/blog/image1.png'
 import image2 from './../assets/images/blog/image2.png'
 import image3 from './../assets/images/blog/image3.png'
+import axios from 'axios';
 
 const CustomPrevArrow = (props) => {
   const { className, onClick } = props;
+  
   return (
     <div
       className={`custom-arrow custom-prev-arrow ${className}`}
@@ -29,6 +31,11 @@ const CustomNextArrow = (props) => {
 };
 
 export default function Blog() {
+
+  
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
         var settings = {
           dots: true,
@@ -71,61 +78,48 @@ export default function Blog() {
         };
 
 
+        useEffect(()=>{
+          const fetchData = async () => {
+              try {
+                const response = await axios.get('http://2gear.in/staging/api/get-blogs-list');
+                setData(response.data);
+                console.log(response.data);
+              } catch (error) {
+                setError(error.message);
+              } finally {
+                setLoading(false);
+              }
+            };
+            fetchData();
+  
+      },[])
+
+      let dummyarray=[{},{},{},{},{},{},{}]
   return (
     <div className='bg-secondary blog'>
     <div className='container py-5'>
         <h1 className='text-center poppins fw-500 py-5'>Blog</h1>
-        {/* <div className="row">
-            <div className="col-md-6 col-lg-4 p-3">
-                <div className="blogCard bg-white border p-3">
-                    <div className="blogHeader">
-                        <img src={dummyimg} alt={dummyimg}  />
-                    </div>
-                    <div className="blogBody">
-                        <h5>Top Construction Equipment Rental Compan</h5>
-                        <p className='m-0'>by Aparna K S</p>
-                        <p>June 23, 2023  .10 mins read</p>
-                    </div>
-                </div>
-            </div>
-        </div> */}
        <div className="container">
        <div className="slider-container">
         <Slider {...settings}>
-        <div className="col-md-6 col-lg-4 p-3">
-                <div className="blogCard bg-white border p-3">
-                    <div className="blogHeader">
-                        <img src={image1} alt={image1}  />
+          {
+            dummyarray.map((items,index)=>{
+                  return (
+                    <div className="col-md-6 col-lg-4 p-3" key={index}>
+                    <div className="blogCard bg-white border p-3">
+                        <div className="blogHeader">
+                            <img src={data.blogsData?data.blogsData[0].blog_image:""} alt={data.blogsData?data.blogsData[0].blog_image:""}  />
+                        </div>
+                        <div className="blogBody">
+                            <h5>{data.blogsData?data.blogsData[0].blog_title:""}</h5>
+                            <p className='m-0'>by Aparna K S</p>
+                            <p>{data.blogsData?data.blogsData[0].blog_date:""}</p>
+                        </div>
                     </div>
-                    <div className="blogBody">
-                        <h5>Top Construction Equipment Rental Compan</h5>
-                        <p className='m-0'>by Aparna K S</p>
-                        <p>June 23, 2023  .10 mins read</p>
-                    </div>
-                </div>
-            </div> <div className="col-md-6 col-lg-4 p-3">
-                <div className="blogCard bg-white border p-3">
-                    <div className="blogHeader">
-                        <img src={image2} alt={image2}  />
-                    </div>
-                    <div className="blogBody">
-                        <h5>Best Self Loading Concrete Mixer in India</h5>
-                        <p className='m-0'>by Aparna K S</p>
-                        <p>June 23, 2023  .10 mins read</p>
-                    </div>
-                </div>
-            </div> <div className="col-md-6 col-lg-4 p-3">
-                <div className="blogCard bg-white border p-3">
-                    <div className="blogHeader">
-                        <img src={image3} alt={image3}  />
-                    </div>
-                    <div className="blogBody">
-                        <h5>List of Road Construction Companies in India</h5>
-                        <p className='m-0'>by Aparna K S</p>
-                        <p>June 23, 2023  .10 mins read</p>
-                    </div>
-                </div>
-            </div>
+                </div> 
+                  )
+            })
+          }
         </Slider>
       </div>
        </div>

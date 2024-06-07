@@ -1,0 +1,17 @@
+.privacyContent{
+    
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+}
+.privacyContent h5{
+    margin: 10px 0 15px 0;
+    font-weight: 600;
+}
+.privacyContent p{
+    margin-bottom: 30px !important;
+    font-size: 16px !important;
+}
+.privacyContent div>p{
+    margin-bottom: 5px !important;
+    font-size: 16px !important;
+}

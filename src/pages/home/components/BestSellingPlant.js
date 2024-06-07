@@ -4,7 +4,6 @@ import batchvenusforsale from "./../assets/images/bestSelling/batching-plant-ven
 import rmcp from "./../assets/images/bestSelling/batching-plant-for-sale-img.jpg";
 import rmcp2 from "./../assets/images/bestSelling/rmc-ready-mix-concrete-plant-image.jpg";
 import rmcpplant from "./../assets/images/bestSelling/used-aquarius-rmc-plant-image.jpg";
-
 const CustomPrevArrow = (props) => {
   const { className, onClick } = props;
   return (
@@ -70,26 +69,6 @@ export default function BestSellingPlant() {
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
   };
-
-  const Cards=({item})=>{
-    return (
-      <div className="p-2">
-      <div className="card mx-auto bestSelling">
-            <div className="bestSellingHeader">
-                <img className="img-fluid" src={item.image} alt={item.image} />
-            </div>
-            <div className="bestSellingBody p-3 poppins fw-500">
-                <h4 className="">
-                    {item.title}
-                </h4>
-                <p>{item.subtitle}</p>
-                <div className="fw-400">{item.date}</div>
-                <a href="sadf"> View Details </a>
-            </div>
-        </div>
-      </div>)
-  }
-
   let data=[
     
     {
@@ -117,11 +96,30 @@ export default function BestSellingPlant() {
       image:batchvenusforsale
     },
   ]
+  
+  const Cards=({item})=>{
+    return (
+      <div className="p-2">
+      <div className="card mx-auto bestSelling">
+            <div className="bestSellingHeader">
+                <img className="img-fluid" src={item.image} alt={item.image} />
+            </div>
+            <div className="bestSellingBody  bg-secondary p-3 poppins fw-500">
+                <h4>{item.title}</h4>
+                <p className="bestSellingSubHeading">{item.subtitle}</p>
+                <div className="fw-400">{item.date}</div>
+               <a href="sadf" className="text-primary nav-link mt-2"> View Details  <i className="bi bi-arrow-right mx-1"></i> </a>
+            </div>
+        </div>
+      </div>)
+  }
+
+
 
   return (
     <div className="container p-5">
         <h1 className="text-center poppins fw-600 ">Best Selling Plants</h1>
-      <div className="slider-container">
+      <div className="slider-container pb-4">
         <Slider {...settings}>
         {
           data.map((item,index)=>{

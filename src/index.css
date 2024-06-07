@@ -9,6 +9,9 @@ p{
 .bg-secondary{
     background-color: #F9F9FA !important;
 }
+.box-shadow{
+    box-shadow: 0px 0px 10px rgb(136, 136, 136)
+}
 .text-primary{
     color: #2E296C !important;
 }
@@ -17,6 +20,9 @@ p{
 }
 .text-yellow{
     color:#FBCB03 !important
+}
+.bg-yellow{
+    background-color:#FBCB03 !important
 }
 .text-italic{
     font-style: italic !important;

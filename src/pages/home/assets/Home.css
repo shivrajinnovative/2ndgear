@@ -20,9 +20,10 @@ header h1 span{
     width: 100%;
     margin: 50px 0 30px 0;
     border-radius:6px;
-    height:55px;
-    line-height: 55px;
+    height:50px;
+    line-height: 50px;
     padding-right: 15px;
+    font-size: 15px;
 }
 .inputBox *{
     background: transparent;
@@ -33,12 +34,15 @@ header h1 span{
     padding:0 10px;
     border-radius:6px;
 }
+.selectOptions select{
+    width: 100px;
+}
 .inputBox input{
     width: 100%;
 }
 .selectOptions img{
-    height: 24px;
-    width: 24px;
+    height: 18px;
+    width: 18px;
 }
 .inputBox input:focus {
     outline: none; 
@@ -58,8 +62,8 @@ mark{
     background-color: #FFF500;
 }
 .sellAndBuy h1{
-    font-size: 48px;
-    line-height: 72px;
+    font-size: 45px;
+    line-height: 64px;
 }
 .sellAndBuy p{
     font-size: 14px;
@@ -71,7 +75,8 @@ mark{
 .plantCard{
     border-radius: 10px;
     margin:10px;
-    border:1px solid #2E296C
+    border:1px solid #635EA4;
+    transition: all .3s;
 }
 .plantCard:hover .plantCardInner{
     background-color: #100C5A;
@@ -86,16 +91,16 @@ mark{
 .plantCardInner img{
     position: absolute;
     left: -10px;
-    top: -10px;
+    top: -5px;
     height: 50px;
     width:50px;
 }
 .plantCard p{
-    font-size: 14px;
+    font-size: 17px !important;
 }
 .buySellContainer{
     padding: 100px;
-    padding-bottom: 150px;
+    padding-bottom: 120px;
 }
 .dottedLine{
     height: 104px;
@@ -111,6 +116,7 @@ mark{
     position: absolute;
     top:-30px;
     box-shadow: -2px -2px  20px rgb(181, 181, 181);
+    transition: all .3s;
 }
 
 
@@ -137,7 +143,7 @@ mark{
 }
 .dottedLine .circle .circleText{
     position: absolute;
-    bottom: -70px;
+    top: 150px;
     text-align: center;
 }
 .dottedLine .circle:nth-child(2){
@@ -155,15 +161,20 @@ mark{
 
 
 .serviceCard{
-    height: 144px;
+    height: 154px;
     width: 144px;
     border-radius: 6px;
-    margin:5px;
+    margin:7px;
     background-color: white;
+    transition: all .3s;
+}
+.serviceCard:hover{
+    box-shadow: 0 3px 22px -5px rgba(22, 22, 22, 0.481);
+
 }
 .serviceCard p{
     font-size: 15px !important;
-    line-height: 15px;
+    line-height: 18px;
 }
 .customerLove .d-flex>div{
     position: relative;
@@ -197,27 +208,34 @@ mark{
 /* Add this CSS to your stylesheet */
 .slick-next, .slick-prev {
     color: #100C5A !important;
-    font-size: 25px !important;
-    border: 1px solid #100C5A !important;
-    height: 30px !important;
-    width:30px !important; 
+    font-size: 16px !important;
+    height: 25px !important;
+    width:25px !important; 
     display: flex !important;
     justify-content: center;
     align-items: center !important;
+    border: 1px solid #DCDCDC !important;
 }
-.custom-arrow {
+.slick-next:hover, .slick-prev:hover {
+    
+    border: 1px solid #100C5A !important;
+}
+.custom-arrow:hover  {
+    color: #100C5A !important; 
+}
+    .custom-arrow {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
    
-    color: #100C5A !important; 
+    color: #DCDCDC !important; 
     border-radius: 50%;
   }
   
-  .bestSelling .custom-prev-arrow {
-    left: -35px !important; 
-  }
+   .slick-prev {
+    left: -39px !important;
+}
   
   .custom-next-arrow {
     right: -35px !important;
@@ -226,12 +244,11 @@ mark{
   .slick-prev:before,
   .slick-next:before {
     display: none;
-  }
-  
-
-.slick-next:before, .slick-prev:before{ 
     background-color:#100C5A !important;
 }
+
+
+
 
 .blog .custom-prev-arrow {
     left: 90% !important;
@@ -246,9 +263,10 @@ mark{
     width: 100%;
     overflow: hidden;
     margin: 10px;
+    height: 300px;
 }
 .bestSellingHeader{
-    height: 200px;
+    height: 300px;
     position: relative;
     overflow: hidden;
 }
@@ -266,7 +284,6 @@ mark{
     transition: all .2s linear;
 }
 .bestSelling img{
-    height: 200px;
     transition: all 1s linear;
 }
 .bestSelling:hover img{
@@ -274,11 +291,14 @@ mark{
 }
 .bestSellingBody{
     font-size: 12px;
+    height: 100%;
 }
 .bestSellingBody h4{
-    font-size: 16px;
+    font-size: 18px;
 }
-
+.bestSellingSubHeading{
+    font-size: 14px !important;
+}
 
 .faq .accordion .card h2{
 font-size: 20px ;
@@ -351,15 +371,16 @@ footer p{
 }
 
 @media (max-width: 976px) {
-    .buySellContainer{
-        margin-top: 10%;
-        padding: 0;
-        width: 100%;
-        height: 600px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+ 
+.buySellContainer{
+    margin-top: 10%;
+    width: 100%;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:10px 0 50px 0;
+}
     .dottedLine{
         height: 254px;
         width: 500px;

@@ -35,7 +35,7 @@ export default function HowToBuy() {
   ];
 
   return (
-    <div className="container py-5">
+    <div className="container pt-5">
       <h2 className="text-center py-2 poppins fw-600">
         How To Buy/Rent a Plants ?
       </h2>
