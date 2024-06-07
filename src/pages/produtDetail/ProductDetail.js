@@ -36,7 +36,7 @@ return (
                     </div>
                 </div>
                 <div>
-                    {/* <RelatedEquipments/> */}
+                    <RelatedEquipments/>
                 </div>
             </div>
         </div>

@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Slider from "react-slick";
-import image1 from './../assets/images/blog/image1.png'
-import image2 from './../assets/images/blog/image2.png'
-import image3 from './../assets/images/blog/image3.png'
 import axios from 'axios';
 
 const CustomPrevArrow = (props) => {
@@ -108,7 +105,7 @@ export default function Blog() {
                     <div className="col-md-6 col-lg-4 p-3" key={index}>
                     <div className="blogCard bg-white border p-3">
                         <div className="blogHeader">
-                            <img src={data.blogsData?data.blogsData[0].blog_image:""} alt={data.blogsData?data.blogsData[0].blog_image:""}  />
+                            <img src={data.blogsData?data.blogsData[0].blog_image:""} alt={data.blogsData?data.blogsData[0].blog_image:"loading..."}  />
                         </div>
                         <div className="blogBody">
                             <h5>{data.blogsData?data.blogsData[0].blog_title:""}</h5>
