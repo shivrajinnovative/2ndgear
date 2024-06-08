@@ -1,419 +1,416 @@
-header{
-    background:linear-gradient(#2e296cbf,#2e296cbf), url("./images/background/homeHeader.png") no-repeat;
-    background-size: 100% 100%;
-    height: 670px;   
-    color: white;
+header {
+  background: url("./images/background/homeHeader.png") no-repeat;
+  background-size: 100% 100%;
+  height: 670px;
+  color: white;
+  margin-top: 100px;
+}
+.header {
+  height: 670px;
+  background: url("./images/background/sidebar.png") no-repeat;
+background-size: 60% 125%;
+background-position:right -20px;
 }
 .heading{
-    padding-top: 250px;
-    max-width: 470px;
+
 }
-header h1{
-    font-size: 40px;
-    line-height: 50px;
+header h1 {
+  font-size: 40px;
+  line-height: 50px;
+  }
+  header h5 {
+    font-size: 30px;
+  color: #fff500;
 }
-header h1 span{
-    color: #FFF500;
+header .list p{
+    font-size: 16px !important;
+    line-height: 17px;
+
 }
-.inputBox{
-    background-color: white;
-    width: 100%;
-    margin: 50px 0 30px 0;
-    border-radius:6px;
-    height:50px;
-    line-height: 50px;
-    padding-right: 15px;
-    font-size: 15px;
+.inputBox {
+  background-color: white;
+  width: 250px;
+  margin: 20px 0;
+  border-radius: 6px;
+  height: 50px;
+  line-height: 50px;
+  padding-right: 15px;
+  font-size: 15px;
 }
-.inputBox *{
-    background: transparent;
-    border: none;
+.inputBox * {
+  background: transparent;
+  border: none;
 }
-.selectOptions{
-    background-color: #F5F5F5;
-    padding:0 10px;
-    border-radius:6px;
+.selectOptions {
+  background-color: #f5f5f5;
+  padding: 0 10px;
+  border-radius: 6px;
 }
-.selectOptions select{
-    width: 100px;
+.inputBox select {
+    padding-left: 10px;
+  width: 120px;
 }
-.inputBox input{
-    width: 100%;
+.inputBox input {
+  width: 100%;
 }
-.selectOptions img{
-    height: 18px;
-    width: 18px;
+.selectOptions img {
+  height: 18px;
+  width: 18px;
 }
-.inputBox input:focus {
-    outline: none; 
-    border-color: transparent; 
-}
-.headingFooter span{
-    border: 0.3px white solid;
-    border-radius: 50px;
-    padding:5px 10px;
-    font-size: 10px;
-    margin: 0 5px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-mark{
-    background-color: #FFF500;
-}
-.sellAndBuy h1{
-    font-size: 45px;
-    line-height: 64px;
-}
-.sellAndBuy p{
-    font-size: 14px;
-}
-.sellAndBuy button{
-    border-radius: 50px;
-    font-size: 16px;
-}
-.plantCard{
-    border-radius: 10px;
-    margin:10px;
-    border:1px solid #635EA4;
-    transition: all .3s;
-}
-.plantCard:hover .plantCardInner{
-    background-color: #100C5A;
-}
-.plantCardInner{
-    background-color: #2E296C1A    ;
-    border-radius: 50%;
-    position: relative;
-    margin: 15px 7px;
-    padding: 25px;
-}
-.plantCardInner img{
-    position: absolute;
-    left: -10px;
-    top: -5px;
-    height: 50px;
-    width:50px;
-}
-.plantCard p{
-    font-size: 17px !important;
-}
-.buySellContainer{
-    padding: 100px;
-    padding-bottom: 120px;
-}
-.dottedLine{
-    height: 104px;
-    background-color: red;
-    background: url("./images/background/dottedLine.png");
-    background-size: 100% 100%;
-    position: relative;
-}
-.dottedLine .circle{
-    height: 134px;
-    width: 134px;
-    border-radius: 50%;
-    position: absolute;
-    top:-30px;
-    box-shadow: -2px -2px  20px rgb(181, 181, 181);
-    transition: all .3s;
+.inputBox *:focus {
+  outline: none;
+  border-color: transparent;
 }
 
 
-.dottedLine .circle::before{
-    content: " ";
-    height: 134px;
-    width:134px;
-    display: block;
-    position: absolute;
-    border:2px solid;
-    top: -10px;
-    right: -5px;
-    border-radius: 50%;
-    z-index: -1
-}
-.circle span{
-    background-color: #FFF500;
-    border-radius: 50%;
-    height: 30px;
-    width: 30px;
-    display: block; 
-    text-align: center;
-    line-height: 30px;
-}
-.dottedLine .circle .circleText{
-    position: absolute;
-    top: 150px;
-    text-align: center;
-}
-.dottedLine .circle:nth-child(2){
-    left: 30%;
-    top: -5px;
-}
-.dottedLine .circle:nth-child(3){
-    left: 60%;
-    top: -45px;
-}
-.dottedLine .circle:nth-child(4){
-    left: 90%;
-    top: 30px;
-}
 
 
-.serviceCard{
-    height: 154px;
-    width: 144px;
-    border-radius: 6px;
-    margin:7px;
-    background-color: white;
-    transition: all .3s;
-}
-.serviceCard:hover{
-    box-shadow: 0 3px 22px -5px rgba(22, 22, 22, 0.481);
 
+mark {
+  background-color: #fff500;
 }
-.serviceCard p{
-    font-size: 15px !important;
-    line-height: 18px;
+.sellAndBuy h1 {
+  font-size: 45px;
+  line-height: 64px;
 }
-.customerLove .d-flex>div{
-    position: relative;
+.sellAndBuy p {
+  font-size: 14px;
 }
-.customerLove .d-flex>div::after{
-    content: "";
-    display: block;
-    height: 3px;
-    width: 40%;
-    background-color: #FBCB03;
-    position: absolute;
-    bottom: 0;
+.sellAndBuy button {
+  border-radius: 50px;
+  font-size: 16px;
 }
-.customerLove .d-flex>div:nth-of-type(even)::after{
-    background-color: #100C5A;
+.plantCard {
+  border-radius: 10px;
+  margin: 10px;
+  border: 1px solid #635ea4;
+  transition: all 0.3s;
 }
-.customerLove .d-flex h1{
-    font-size: 90px;
+.plantCard:hover .plantCardInner {
+  background-color: #100c5a;
 }
-.customerLove img{
-    height: 70px;
-    width: 70px;
+.plantCardInner {
+  background-color: #2e296c1a;
+  border-radius: 50%;
+  position: relative;
+  margin: 15px 7px;
+  padding: 25px;
+}
+.plantCardInner img {
+  position: absolute;
+  left: -10px;
+  top: -5px;
+  height: 50px;
+  width: 50px;
+}
+.plantCard p {
+  font-size: 17px !important;
+}
+.buySellContainer {
+  padding: 100px;
+  padding-bottom: 120px;
+}
+.dottedLine {
+  height: 104px;
+  background-color: red;
+  background: url("./images/background/dottedLine.png");
+  background-size: 100% 100%;
+  position: relative;
+}
+.dottedLine .circle {
+  height: 134px;
+  width: 134px;
+  border-radius: 50%;
+  position: absolute;
+  top: -30px;
+  box-shadow: -2px -2px 20px rgb(181, 181, 181);
+  transition: all 0.3s;
+}
+
+.dottedLine .circle::before {
+  content: " ";
+  height: 134px;
+  width: 134px;
+  display: block;
+  position: absolute;
+  border: 2px solid;
+  top: -10px;
+  right: -5px;
+  border-radius: 50%;
+  z-index: -1;
+}
+.circle span {
+  background-color: #fff500;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: block;
+  text-align: center;
+  line-height: 30px;
+}
+.dottedLine .circle .circleText {
+  position: absolute;
+  top: 150px;
+  text-align: center;
+}
+.dottedLine .circle:nth-child(2) {
+  left: 30%;
+  top: -5px;
+}
+.dottedLine .circle:nth-child(3) {
+  left: 60%;
+  top: -45px;
+}
+.dottedLine .circle:nth-child(4) {
+  left: 90%;
+  top: 30px;
+}
+
+.serviceCard {
+  height: 154px;
+  width: 144px;
+  border-radius: 6px;
+  margin: 7px;
+  background-color: white;
+  transition: all 0.3s;
+}
+.serviceCard:hover {
+  box-shadow: 0 3px 22px -5px rgba(22, 22, 22, 0.481);
+}
+.serviceCard p {
+  font-size: 15px !important;
+  line-height: 18px;
+}
+.customerLove .d-flex > div {
+  position: relative;
+}
+.customerLove .d-flex > div::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 40%;
+  background-color: #fbcb03;
+  position: absolute;
+  bottom: 0;
+}
+.customerLove .d-flex > div:nth-of-type(even)::after {
+  background-color: #100c5a;
+}
+.customerLove .d-flex h1 {
+  font-size: 90px;
+}
+.customerLove img {
+  height: 70px;
+  width: 70px;
 }
 
 @media (min-width: 576px) {
-    .customerLove .d-flex h1{
-        font-size: 50px;
-    }
-    
+  .customerLove .d-flex h1 {
+    font-size: 50px;
+  }
 }
 /* Add this CSS to your stylesheet */
-.slick-next, .slick-prev {
-    color: #100C5A !important;
-    font-size: 16px !important;
-    height: 25px !important;
-    width:25px !important; 
-    display: flex !important;
-    justify-content: center;
-    align-items: center !important;
-    border: 1px solid #DCDCDC !important;
+.slick-next,
+.slick-prev {
+  color: #100c5a !important;
+  font-size: 16px !important;
+  height: 25px !important;
+  width: 25px !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center !important;
+  border: 1px solid #dcdcdc !important;
 }
-.slick-next:hover, .slick-prev:hover {
-    
-    border: 1px solid #100C5A !important;
+.slick-next:hover,
+.slick-prev:hover {
+  border: 1px solid #100c5a !important;
 }
-.custom-arrow:hover  {
-    color: #100C5A !important; 
+.custom-arrow:hover {
+  color: #100c5a !important;
 }
-    .custom-arrow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-   
-    color: #DCDCDC !important; 
-    border-radius: 50%;
-  }
-  
-   .slick-prev {
-    left: -39px !important;
-}
-  
-  .custom-next-arrow {
-    right: -35px !important;
-  }
-  
-  .slick-prev:before,
-  .slick-next:before {
-    display: none;
-    background-color:#100C5A !important;
+.custom-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+
+  color: #dcdcdc !important;
+  border-radius: 50%;
 }
 
+.slick-prev {
+  left: -39px !important;
+}
 
+.custom-next-arrow {
+  right: -35px !important;
+}
 
+.slick-prev:before,
+.slick-next:before {
+  display: none;
+  background-color: #100c5a !important;
+}
 
 .blog .custom-prev-arrow {
-    left: 90% !important;
-    top:-20px 
+  left: 90% !important;
+  top: -20px;
 }
 .blog .custom-next-arrow {
-    left: 95% !important;
-    top:-20px 
+  left: 95% !important;
+  top: -20px;
 }
 
-.bestSelling{
-    width: 100%;
-    overflow: hidden;
-    margin: 10px;
-    height: 300px;
+.bestSelling {
+  width: 100%;
+  overflow: hidden;
+  margin: 10px;
+  height: 300px;
 }
-.bestSellingHeader{
-    height: 300px;
-    position: relative;
-    overflow: hidden;
+.bestSellingHeader {
+  height: 300px;
+  position: relative;
+  overflow: hidden;
 }
-.bestSellingHeader:hover::after{
-    top: 0;
+.bestSellingHeader:hover::after {
+  top: 0;
 }
-.bestSellingHeader::after{
-    content: "";
-    position: absolute;
-    display: block;
-    height: 200px;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.434);
-    top:100%;
-    transition: all .2s linear;
+.bestSellingHeader::after {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 200px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.434);
+  top: 100%;
+  transition: all 0.2s linear;
 }
-.bestSelling img{
-    transition: all 1s linear;
+.bestSelling img {
+  transition: all 1s linear;
 }
-.bestSelling:hover img{
-    transform: scale(1.1);
+.bestSelling:hover img {
+  transform: scale(1.1);
 }
-.bestSellingBody{
-    font-size: 12px;
-    height: 100%;
+.bestSellingBody {
+  font-size: 12px;
+  height: 100%;
 }
-.bestSellingBody h4{
-    font-size: 18px;
+.bestSellingBody h4 {
+  font-size: 18px;
 }
-.bestSellingSubHeading{
-    font-size: 14px !important;
+.bestSellingSubHeading {
+  font-size: 14px !important;
 }
 
-.faq .accordion .card h2{
-font-size: 20px ;
+.faq .accordion .card h2 {
+  font-size: 20px;
 }
 .faq .custom-button {
-    text-decoration: none;
-  }
-  
-  .faq .custom-button:focus, 
-  .faq .custom-button:active {
-    outline: none;
-    box-shadow: none;
-  }
-  
-  .faq .collapse {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease-out;
-  }
-  
-  .faq .collapse.show {
-    max-height: 500px; /* Adjust this value based on your content's maximum height */
-  }
+  text-decoration: none;
+}
 
+.faq .custom-button:focus,
+.faq .custom-button:active {
+  outline: none;
+  box-shadow: none;
+}
 
+.faq .collapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+}
 
-.blogHeader{
-    height: 270px;
-    overflow: hidden
+.faq .collapse.show {
+  max-height: 500px; /* Adjust this value based on your content's maximum height */
 }
-.blogCard{
-    font-family: "Poppins", sans-serif;
-    font-style: normal;
+
+.blogHeader {
+  height: 270px;
+  overflow: hidden;
 }
-.blogCard h5{
-    font-size: 18px;
-    padding-top: 20px;
+.blogCard {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
 }
-.blogHeader img{
-    height: 270px;
-    width: 100%;
-    transition: all .2s linear;
+.blogCard h5 {
+  font-size: 18px;
+  padding-top: 20px;
 }
-.blogHeader:hover img{
-    transform: scale(1.1);
+.blogHeader img {
+  height: 270px;
+  width: 100%;
+  transition: all 0.2s linear;
 }
-.affilate>div{
-    border:2px dashed gray;
-    border-spacing: 50px;
+.blogHeader:hover img {
+  transform: scale(1.1);
 }
-footer h5{
-    font-size: 23px;
+.affilate > div {
+  border: 2px dashed gray;
+  border-spacing: 50px;
 }
-footer .nav-link{
-    font-family: "Poppins", sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 39px;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.577);
+footer h5 {
+  font-size: 23px;
 }
-footer div:last-child(){
-    border-bottom: none !important;
+footer .nav-link {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 39px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.577);
 }
-footer p{
-    font-size: 18px;
-    font-family: "Poppins", sans-serif;
-    font-style: normal;
-    font-weight: 400;
+footer div:last-child() {
+  border-bottom: none !important;
+}
+footer p {
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
 
 @media (max-width: 976px) {
- 
-.buySellContainer{
+  .buySellContainer {
     margin-top: 10%;
     width: 100%;
     height: 700px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding:10px 0 50px 0;
-}
-    .dottedLine{
-        height: 254px;
-        width: 500px;
-        transform: rotate(90deg);
-    }
-    .dottedLine .circle{
-        transform: rotate(-90deg);
-    }
-    
-    .dottedLine .circle::before{
-        transform: rotate(-90deg);
-        border: none;
-    }
+    padding: 10px 0 50px 0;
+  }
+  .dottedLine {
+    height: 254px;
+    width: 500px;
+    transform: rotate(90deg);
+  }
+  .dottedLine .circle {
+    transform: rotate(-90deg);
+  }
 
-    .dottedLine .circle:nth-child(2){
-        left: 15%;
-        top:58%
-    }
-    .dottedLine .circle:nth-child(3){
-        left: 60%;
-        top:-10%
-    }
-    .dottedLine .circle:nth-child(4){
-        left: 90%;
-        top:58%
-    }
-    .dottedLine .circle:nth-child(1){
-        left: -23%;
-        top:-20px
-    }
-    .blog .custom-prev-arrow {
-        left: 80% !important;
-       
-    }
-    
+  .dottedLine .circle::before {
+    transform: rotate(-90deg);
+    border: none;
+  }
+
+  .dottedLine .circle:nth-child(2) {
+    left: 15%;
+    top: 58%;
+  }
+  .dottedLine .circle:nth-child(3) {
+    left: 60%;
+    top: -10%;
+  }
+  .dottedLine .circle:nth-child(4) {
+    left: 90%;
+    top: 58%;
+  }
+  .dottedLine .circle:nth-child(1) {
+    left: -23%;
+    top: -20px;
+  }
+  .blog .custom-prev-arrow {
+    left: 80% !important;
+  }
 }

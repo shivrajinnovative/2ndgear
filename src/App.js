@@ -11,11 +11,16 @@ import NotFound from './pages/NotFound'
 import AboutUs from './pages/about/AboutUs'
 import ScrollToTop from './components/ScrollToTop'
 import TestingComponent from './test/TestingComponent'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 export default function App() {
   
+const queryClient = new QueryClient();
+
   return (
     <div>
+          <QueryClientProvider client={queryClient}>
+
       <BrowserRouter basename='/react'>
       <ScrollToTop/>
       <Navbar/>
@@ -23,7 +28,7 @@ export default function App() {
           <Route path="/"  element={<Home/>}/>
           <Route path="/allproduct"  element={<AllProducts/>}/>
           <Route path="/details" element={<ProductDetail/>} />
-          <Route path="/privacy" element={<PrivacyPolicy/>} />
+          {/* <Route path="/privacy" element={<PrivacyPolicy/>} /> */}
           <Route path="/aboutus" element={<AboutUs/>} />
           <Route path="/testing" element={<TestingComponent/>} />
           <Route path="/*" element={<NotFound/>} />
@@ -31,7 +36,8 @@ export default function App() {
         <Footer/> 
         <Copyright/>
       </BrowserRouter>
-      
+      </QueryClientProvider>
+
     </div>
   )
 }
