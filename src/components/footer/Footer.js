@@ -50,7 +50,7 @@ export default function Footer() {
             <div>
               <a href="#" className="nav-link">
                 <img src={right} alt={right} className="mx-2" />
-                Contact Us
+                Help
               </a>
             </div>
             <div>

@@ -11,9 +11,6 @@ header {
 background-size: 60% 125%;
 background-position:right -20px;
 }
-.heading{
-
-}
 header h1 {
   font-size: 40px;
   line-height: 50px;
@@ -69,17 +66,36 @@ header .list p{
 mark {
   background-color: #fff500;
 }
-.sellAndBuy h1 {
-  font-size: 45px;
-  line-height: 64px;
+
+.sellAndBuy{
+    background: url('./images/background/buySell.png') center;
+    background-size: cover;
 }
-.sellAndBuy p {
-  font-size: 14px;
+.sellAndBuy .bsComponent{
+    background: #EEEDFF;
+    color: #2C1E73;
+    height: 200px;
+    width: 200px;
+    text-align: center;
+    position: relative;
+border-radius: 40px;
+    }
+    
+    .sellAndBuy .bsComponent h1{
+position: absolute;
+top: -50px;
+font-size: 70px;
+font-weight: 800;
+    }
+.sellAndBuy button{
+    font-size: 30px;
+    color: #FFF500;
 }
-.sellAndBuy button {
-  border-radius: 50px;
-  font-size: 16px;
+.sellAndBuy button:hover{
+    font-size: 30px;
+    color: #FFF500;
 }
+
 .plantCard {
   border-radius: 10px;
   margin: 10px;
