@@ -7,6 +7,7 @@ import fleetsDark from "../assets/icons/industryPlants/dark/fleets.svg";
 
 import misc from "../assets/icons/industryPlants/light/misc.svg";
 import miscDark from "../assets/icons/industryPlants/dark/misc.svg";
+import { Link } from "react-router-dom";
 
 export default function IndustryPlants() {
   const [hoverIndex, setHoverIndex] = useState(null);
@@ -35,7 +36,7 @@ export default function IndustryPlants() {
         <div className="row justify-content-center">
           {content.map((item, index) => {
             return (
-              <div className="col-md-6 col-lg-4 col-xl-3" key={index}>
+              <Link className="col-md-6 col-lg-4 col-xl-3" to={`buy/${item.title.split(" ").join("-").toLowerCase()}`} key={index}>
                 <div
                   className={`plantCard p-2 px-3 d-flex align-items-center ${
                     hoverIndex === index
@@ -53,7 +54,7 @@ export default function IndustryPlants() {
                   </div>
                   <p className="poppins m-0 fw-500">{item.title}</p>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

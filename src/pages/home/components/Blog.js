@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from "react-slick";
-import { useQuery } from '@tanstack/react-query';
 import LazyLoad from 'react-lazyload';
+import { useDynamicQuery } from '../../../utils/apiUtils';
 
 const CustomPrevArrow = (props) => {
   const { className, onClick } = props;
@@ -27,21 +27,9 @@ const CustomNextArrow = (props) => {
   );
 };
 
-const fetchBlogs = async () => {
-  const response = await fetch(`${process.env.REACT_APP_API_URL}/get-blogs-list`);
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-  return response.json();
-};
-
 export default function Blog() {
-  const { data, error, isLoading } = useQuery({
-    queryKey: ['blogs'],
-    queryFn: fetchBlogs,
-    retry: 3, // Retry failed requests up to 3 times
-    retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000), // Retry delay with exponential backoff
-  });
+  const {data,error,isLoading}=useDynamicQuery(['blogs'],'get-blogs-list')
+
 
   const settings = {
     dots: true,

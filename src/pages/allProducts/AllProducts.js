@@ -3,22 +3,27 @@ import "./assets/AllProducts.css";
 import dummy from "./assets/images/dummy.png";
 import location from "../../assets/icons/location.svg";
 import refresh from "./assets/icons/refresh.svg";
-import downArrow from './assets/icons/downArrow.svg'
-import axios from "axios";
+import { useDynamicQuery } from "../../utils/apiUtils";
+import SideBar from "./component/SideBar";
+import { Link } from "react-router-dom";
+
+
 export default function AllProducts() {
-const [states,setStates]=useState([])
-  let products = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
+  const [products,setProducts]=useState([])
+  const { data, error, isLoading } = useDynamicQuery(['equipment'], 'get-equip-list');
 
 useEffect(()=>{
-
-  const getStates=async()=>{
-    const response=await axios('https://2gear.in/staging/api/get-states-list')
-    setStates(response.data.statesData)
-  
+  if(data){
+    
+setProducts(data.productList)
+console.log(data.productList)
   }
-getStates()
 
-},[])
+},[data])
+
+if(isLoading || error){
+  return <></>
+}
 
   return (
     <section className="bg-secondary pt-5 mt-5">
@@ -29,71 +34,7 @@ getStates()
 
         <div className="row">
           <div className="col-lg-3">
-            <div className="refinedBy card p-3">
-              <div className="d-flex justify-content-between poppins fw-400">
-                <p>Refind by</p>
-                <a>Clear all</a>
-              </div>
-              <input
-                type="text"
-                placeholder="Search"
-                className="px-3 py-1 poppins fw-400"
-              />
-
-
-
-
-
-<div class="accordion accordion-flush" id="accordionFlushExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-      Equipment Current State
-      </button>
-    </h2>
-    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">
-      {
-          states.map((state,index)=>{
-            return (
-              <div key={index}>{state.name}</div>
-            )
-          })
-        }
-     
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-      Equipment YOM
-      </button>
-    </h2>
-    <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body"></div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-      Equipment Price
-      </button>
-    </h2>
-    <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body"></div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-     
-              
-            </div>
+           <SideBar/>
           </div>
           <div className="col-lg-9">
             <div className="howWorks col-md-5 mx-auto my-5 m-lg-0 text-center py-4 text-white">
@@ -114,30 +55,30 @@ getStates()
             </div>
             <div className="productsListing">
               <div className="row">
-                {products.map((product, index) => {
+                {products?.map((product, index) => {
                   return (
                     <div className="col-md-6 col-lg-4 mb-3" key={index}>
-                      <div className="card p-3 rounded-4">
+                      <Link className="card p-3 rounded-4" to={`/equipment-details/${product.indequip_slug}`} >
                         <img src={dummy} alt={dummy} />
                         <h5 className="poppins fw-500 mt-3">
-                          Cp 30 Batching Plant
+                          {product.indequip_brand}
                         </h5>
                         <div
                           className="d-flex justify-content-between py-1"
                           style={{ "fontSize": "17px" }}
                         >
-                          <span>Cp 30</span>
-                          <span>2012</span>
+                          <span>{product.indequip_model}</span>
+                          <span>{product.indequip_yom}</span>
                         </div>
                         <p className="poppins fw-400 border-top border-bottom">
                           Concrete Batching Plant | Schwing Stetter
                         </p>
 
                         <p className="m-0 poppins fw-400">
-                          <img src={location} alt={location} /> Panchgani,
-                          Maharashtra
+                          <img src={location} alt={location} /> {product.currentCity},
+                          {product.currentState}
                         </p>
-                      </div>
+                      </Link>
                     </div>
                   );
                 })}

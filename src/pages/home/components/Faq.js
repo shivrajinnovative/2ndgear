@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useDynamicQuery } from '../../../utils/apiUtils';
 
 const Faq = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const {data,error,isLoading}=useDynamicQuery(['faq'],'get-faq-list')
 
   const faqData = [
     {
@@ -26,13 +28,16 @@ const Faq = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  if(isLoading || error){
+    return <></>
+  }
   return (
     <div className="container mt-5 faq">
       <h3 className='text-center pt-2 poppins  fw-500'>FAQ's</h3>
       <p className='text-center py-3 poppins fw-400'>Frequently Asked Questions</p>
-      <div className="container px-5">
+      <div className="container px-sm-5">
         <div className="accordion" id="faqAccordion">
-          {faqData.map((faq, index) => (
+          {data.faqsData?.map((faq, index) => (
             <div className="card my-4" key={index}>
               <div className={`card-header ${openIndex === index ? 'bg-primary text-white' : ''}`} id={`heading${index}`}>
                 <h2 className="mb-0 poppins fw-400">
@@ -47,7 +52,6 @@ const Faq = () => {
                   </div>
                 </h2>
               </div>
-
               <div
                 id={`collapse${index}`}
                 className={`collapse ${openIndex === index ? 'show' : ''} transition-height`}
@@ -65,5 +69,4 @@ const Faq = () => {
     </div>
   );
 };
-
 export default Faq;

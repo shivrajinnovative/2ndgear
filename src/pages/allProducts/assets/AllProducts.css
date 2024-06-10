@@ -17,6 +17,9 @@
 .productsListing .card p{
 font-size: 13px !important;
 }
+.productsListing a{
+text-decoration: none;
+}
 .productsListing button{
     font-size: 25px;
 }

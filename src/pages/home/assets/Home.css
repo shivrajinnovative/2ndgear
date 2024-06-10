@@ -265,7 +265,7 @@ font-weight: 800;
   background-color: #100c5a;
 }
 .customerLove .d-flex h1 {
-  font-size: 90px;
+  font-size: 60px;
 }
 .customerLove img {
   height: 70px;
@@ -418,7 +418,7 @@ font-weight: 800;
   transform: scale(1.1);
 }
 .affilate > div {
-  border: 2px dashed gray;
+  border: 1.5px dashed rgba(128, 128, 128, 0.647);
   border-spacing: 50px;
 }
 footer h5 {

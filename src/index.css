@@ -3,11 +3,14 @@
 p{
     font-size: 18px !important;
 }
+a{
+    text-decoration: none;
+}
 .bg-primary{
     background-color: #2E296C !important;
 }
 .bg-secondary{
-    background-color: #F9F9FA !important;
+    background-color: #e9e9eb79 !important;
 }
 .box-shadow{
     box-shadow: 0px 0px 10px rgb(136, 136, 136)

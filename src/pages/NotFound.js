@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function NotFound() {
   return (
-    <div>
-        <h1>NotFound PAge</h1>
+    <div className='pt-5 mt-5'>
+        <h1> PAge NotFound</h1>
     </div>
   )
 }

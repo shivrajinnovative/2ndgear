@@ -19,25 +19,26 @@ const queryClient = new QueryClient();
 
   return (
     <div>
-          <QueryClientProvider client={queryClient}>
-
+      <QueryClientProvider client={queryClient}>
       <BrowserRouter basename='/react'>
       <ScrollToTop/>
       <Navbar/>
         <Routes>
           <Route path="/"  element={<Home/>}/>
-          <Route path="/allproduct"  element={<AllProducts/>}/>
-          <Route path="/details" element={<ProductDetail/>} />
-          {/* <Route path="/privacy" element={<PrivacyPolicy/>} /> */}
+          <Route path="/buy/:category/"  element={<AllProducts/>}/>
+          <Route path="/buy/:category/:subcategory"  element={<AllProducts/>}/>
+          <Route path="/rent/*"  element={<AllProducts/>}/>
+          <Route path="/sell/*"  element={<AllProducts/>}/>
+          <Route path="/equipment-details/:id" element={<ProductDetail/>} />
+          <Route path="/privacy" element={<PrivacyPolicy/>} />
           <Route path="/aboutus" element={<AboutUs/>} />
           <Route path="/testing" element={<TestingComponent/>} />
-          <Route path="/*" element={<NotFound/>} />
+          <Route path="/*" element={<Home/>} />
         </Routes>
         <Footer/> 
         <Copyright/>
       </BrowserRouter>
       </QueryClientProvider>
-
     </div>
   )
 }

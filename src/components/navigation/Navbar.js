@@ -4,70 +4,100 @@ import person from "./person.svg";
 import logo from "./../../assets/logo.png";
 import { Link } from "react-router-dom";
 import Sublist from "./components/Sublist";
+import { useDynamicQuery } from "../../utils/apiUtils";
+
+
 const Navbar = () => {
+  const { data, error, isLoading } = useDynamicQuery(['navbar'],'get-all-main-sub-categories')
+
   useEffect(() => {
     const dropdowns = document.querySelectorAll(
       ".navbar-nav .dropdown, .navbar-nav .dropdown-submenu"
     );
 
-    dropdowns.forEach((dropdown) => {
-      dropdown.addEventListener("mouseover", () => {
-        const dropdownMenu = dropdown.querySelector(".dropdown-menu");
-        if (dropdownMenu) {
-          dropdownMenu.classList.add("show");
-        }
-      });
-      dropdown.addEventListener("mouseout", () => {
-        const dropdownMenu = dropdown.querySelector(".dropdown-menu");
-        if (dropdownMenu) {
-          dropdownMenu.classList.remove("show");
-        }
-      });
-    });
-  }, []);
+    const showDropdown = (event) => {
+      const dropdownMenu = event.currentTarget.querySelector(".dropdown-menu");
+      if (dropdownMenu) {
+        dropdownMenu.classList.add("show");
+      }
+    };
 
-  const DropDownlist = ({ heading, elements, subchild }) => {
+    const hideDropdown = (event) => {
+      const dropdownMenu = event.currentTarget.querySelector(".dropdown-menu");
+      if (dropdownMenu) {
+        dropdownMenu.classList.remove("show");
+      }
+    };
+
+    dropdowns.forEach((dropdown) => {
+      dropdown.addEventListener("mouseover", showDropdown);
+      dropdown.addEventListener("mouseout", hideDropdown);
+    });
+
+    // Cleanup event listeners on unmount
+    return () => {
+      dropdowns.forEach((dropdown) => {
+        dropdown.removeEventListener("mouseover", showDropdown);
+        dropdown.removeEventListener("mouseout", hideDropdown);
+      });
+    };
+  }, [data]);
+
+
+  const DropDownlist = ({ heading, data }) => {
     return (
       <li className="nav-item dropdown">
-        <a
+        <Link
           className="nav-link dropdown-toggle"
-          href="#about"
+          to={`/${heading.toLowerCase()}`}
           id="navbarDropdownMenuLink"
           role="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
           {heading}
-        </a>
+        </Link>
         <ul
           className="dropdown-menu dropdown-menu-end"
           aria-labelledby="navbarDropdownMenuLink"
         >
-           {elements.map((element, index) => (
-            <li key={index} className={subchild ? "dropdown-submenu" : null}>
-              <a
-                className={subchild ? "dropdown-item dropdown-toggle" : "dropdown-item"}
-                href="#about1"
-                id={`about${index}Dropdown`}
-                role="button"
-                aria-expanded="false"
+          {data?.map((item, index) => {
+            return (
+              <li
+                key={index}
+                className={item.subcategories ? "dropdown-submenu" : null}
               >
-                {element}
-              </a>
-              {subchild && <Sublist filter={subchild[index]} />}
-            </li>
-          ))}
+                <Link
+                  className={
+                    item.subcategories
+                      ? "dropdown-item dropdown-toggle"
+                      : "dropdown-item"
+                  }
+                  to={`${heading}/${item.equip_cat_slug}`}
+                  id={`about${index}Dropdown`}
+                  role="button"
+                  aria-expanded="false"
+                >
+                  {item.equip_cat_name?item.equip_cat_name:item}
+                </Link>
+                <Sublist data={item.subcategories} parentPath={`${heading}/${item.equip_cat_slug}`} />
+              </li>
+            );
+          })}
         </ul>
       </li>
     );
   };
 
+  if (isLoading || error) {
+    return <></>;
+  }
   return (
     <nav className="navbar navbar-expand-xl navbar-white fixed-top bg-white">
       <div className="container">
-        <a className="navbar-brand" href="#home">
+        <Link className="navbar-brand" to="/">
           <img src={logo} alt={logo} />
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -86,36 +116,10 @@ const Navbar = () => {
                 Home
               </Link>
             </li>
-            <DropDownlist
-              heading="Buy"
-              elements={[
-                "Industrial Plants",
-                "Industrial Fleets",
-                "Miscllaneous",
-              ]}
-              subchild={["plants", "fleets", "misc"]}
-            />
-            <DropDownlist
-              heading="Sell"
-              elements={[
-                "Industrial Plants",
-                "Industrial Fleets",
-                "Miscllaneous",
-              ]}
-              subchild={["plants", "fleets", "misc"]}
-            />
-            <DropDownlist
-              heading="Rent"
-              elements={[
-                "Industrial Plants",
-                "Industrial Fleets",
-                "Miscllaneous",
-              ]}
-              subchild={["plants", "fleets", "misc"]}
-            />
-            <DropDownlist
-              heading="Services"
-              elements={[
+            <DropDownlist heading="Buy" data={data} />
+            <DropDownlist heading="Sell" data={data} />
+            <DropDownlist heading="Rent" data={data} />
+            <DropDownlist heading="Services" data={[
                 "Inspection",
                 "Valuation",
                 "Finance",
@@ -126,57 +130,32 @@ const Navbar = () => {
                 "Dismantelling",
                 " O&M",
                 "Asset Management",
-              ]}
-            />
+              ]} />
+         
 
-          
             <li className="nav-item ">
-              <a className="nav-link" href="#about">
+              <Link className="nav-link" href="#about">
                 Buyer Specific Requirement
-              </a>
+              </Link>
             </li>
             <li className="nav-item ">
-              <a className="nav-link" href="#about">
+              <Link className="nav-link" href="#about">
                 Blog
-              </a>
+              </Link>
             </li>
             <li className="nav-item ">
-              <a className="nav-link" href="#about">
+              <Link className="nav-link" href="#about">
                 Help
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
         <div className="d-flex">
           <div className="d-flex px-3 center">
             <img src={person} height="23px" className="mx-2" alt={person} />
-
-            <a className="nav-link dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#service"
-                id="navbarDropdownMenuLink"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              ></a>
-              <ul
-                className="dropdown-menu"
-                style={{ left: "-150px" }}
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                <li>
-                  <a className="dropdown-item" href="#service1">
-                    Login
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#service2">
-                    Register
-                  </a>
-                </li>
-              </ul>
-            </a>
+              <ul className="navbar-nav">
+              <DropDownlist heading="" data={["login","register"]} />
+              </ul>            
           </div>
           <div className="contact">
             <p className="m-0 fw-400">Call Us at</p>

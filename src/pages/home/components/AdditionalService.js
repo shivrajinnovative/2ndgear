@@ -101,7 +101,7 @@ export default function AdditionalService() {
                         key={index}
                         onMouseEnter={() => setHoverIndex(index)}
                            onMouseLeave={() => setHoverIndex(null)}
-                        className={`serviceCard center mx-auto flex-column p-2 ${
+                        className={`serviceCard center  flex-column p-2 ${
                             hoverIndex === index
                               ? "bg-primary text-white"
                               : "bg-white text-primary"
