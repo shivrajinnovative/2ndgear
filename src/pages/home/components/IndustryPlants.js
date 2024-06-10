@@ -31,8 +31,7 @@ export default function IndustryPlants() {
 
   return (
     <div className="bg-secondary py-4">
-      <div className="container py-3">
-        <h2 className="poppins pb-4 fw-600 center">Industry Plants</h2>
+      <div className="container py-3 pt-5">
         <div className="row justify-content-center">
           {content.map((item, index) => {
             return (

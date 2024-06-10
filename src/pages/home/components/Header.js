@@ -32,7 +32,7 @@ export default function Header() {
         <div className="row header">
           <div className="col-lg-6"></div>
           <div className="col-lg-6">
-            <div className="poppins heading col-8 mx-auto pt-5 mt-5">
+            <div className="poppins heading col-10 col-sm-8 mx-auto pt-5 mt-5">
               <h1 className="fw-700">Unlock Great Value with Quality</h1>
               <h5 className="fw-700">
              
