@@ -1,33 +1,33 @@
 import React, { useState } from 'react'
 import additionalService from './../assets/images/additionalService.png'
 
-import plantDismentaling from './../assets/icons/additionalService/light/plantDismentaling.svg'
-import plantDismentalingDark from './../assets/icons/additionalService/dark/plantDismentaling.svg'
+import Valuation from './../assets/icons/additionalService/light/Valuation.svg'
+import ValuationDark from './../assets/icons/additionalService/dark/Valuation.svg'
 
-import equipment from './../assets/icons/additionalService/light/equipment.svg'
-import equipmentDark from './../assets/icons/additionalService/dark/equipment.svg'
+import Legal from './../assets/icons/additionalService/light/Legal.svg'
+import LegalDark from './../assets/icons/additionalService/dark/Legal.svg'
 
 
-import plant from './../assets/icons/additionalService/light/plant.svg'
-import plantDark from './../assets/icons/additionalService/dark/plant.svg'
+import Dismantling from './../assets/icons/additionalService/light/Dismantling.svg'
+import DismantlingDark from './../assets/icons/additionalService/dark/Dismantling.svg'
 
-import inspection from './../assets/icons/additionalService/light/inspection.svg'
-import inspectionDark from './../assets/icons/additionalService/dark/inspection.svg'
+import Commissioning from './../assets/icons/additionalService/light/Erection & Commissioning.svg'
+import CommissioningDark from './../assets/icons/additionalService/dark/Erection & Commissioning.svg'
 
-import operation from './../assets/icons/additionalService/light/operation.svg'
-import operationDark from './../assets/icons/additionalService/dark/operation.svg'
+import Refurbishment from './../assets/icons/additionalService/light/Refurbishment.svg'
+import RefurbishmentDark from './../assets/icons/additionalService/dark/Refurbishment.svg'
 
-import insurance from './../assets/icons/additionalService/light/insurance.svg'
-import insuranceDark from './../assets/icons/additionalService/dark/insurance.svg'
+import Maintenance from './../assets/icons/additionalService/light/Operation & Maintenance.svg'
+import MaintenanceDark from './../assets/icons/additionalService/dark/Operation & Maintenance.svg'
 
-import financial from './../assets/icons/additionalService/light/financial.svg'
-import financialDark from './../assets/icons/additionalService/dark/financial.svg'
+import Management from './../assets/icons/additionalService/light/Asset Management.svg'
+import ManagementDark from './../assets/icons/additionalService/dark/Asset Management.svg'
 
-import rental from './../assets/icons/additionalService/light/rental.svg'
-import rentalDark from './../assets/icons/additionalService/dark/rental.svg'
+import Inspection from './../assets/icons/additionalService/light/Inspection.svg'
+import InspectionDark from './../assets/icons/additionalService/dark/Inspection.svg'
 
-import ownership from './../assets/icons/additionalService/light/ownership.svg'
-import ownershipDark from './../assets/icons/additionalService/dark/ownership.svg'
+import Transport from './../assets/icons/additionalService/light/Transport.svg'
+import TransportDark from './../assets/icons/additionalService/dark/Transport.svg'
 
 
 
@@ -36,49 +36,48 @@ export default function AdditionalService() {
 
     let content=[
         {
-            title:"Plant Dismantling",
-            image:plantDismentaling,
-            imageDark:plantDismentalingDark
+            title:"Valuation",
+            image:Valuation,
+            imageDark:ValuationDark
         },
         {
-            title:"Refurbishment of Plant & Equipments",
-            image:equipment,
-            imageDark:equipmentDark
+            title:"Legal",
+            image:Legal,
+            imageDark:LegalDark
         },
         {
-            title:"Plant Erection & Commissioning",
-            image:plant,
-            imageDark:plantDark
+            title:"Dismantling",
+            image:Dismantling,
+            imageDark:DismantlingDark
         },
         {
-            title:"Inspection Reports",
-            image:inspection,
-            imageDark:inspectionDark
+            title:"Erection & Commissioning",
+            image:Commissioning,
+            imageDark:CommissioningDark},
+        {
+            title:"Refurbishment",
+            image:Refurbishment,
+            imageDark:RefurbishmentDark
+            },
+                {
+                    title:"Operation & Maintenance",
+                    image:Maintenance,
+                    imageDark:MaintenanceDark
+                },
+        {
+            title:"Asset Management",
+            image:Management,
+            imageDark:ManagementDark
         },
         {
-            title:"Operation & Maintenance",
-            image:operation,
-            imageDark:operationDark
+            title:"Inspection",
+            image:Inspection,
+            imageDark:InspectionDark
         },
         {
-            title:"Financial Assistance",
-            image:financial,
-            imageDark:financialDark
-        },
-        {
-            title:"Insurance",
-            image:insurance,
-            imageDark:insuranceDark
-        },
-        {
-            title:"Rental",
-            image:rental,
-            imageDark:rentalDark
-        },
-        {
-            title:"Ownership Transfer etc",
-            image:ownership,
-            imageDark:ownershipDark
+            title:"Transport",
+            image:Transport,
+            imageDark:TransportDark
         }
     ]
 

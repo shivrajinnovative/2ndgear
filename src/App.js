@@ -26,11 +26,11 @@ const queryClient = new QueryClient();
         <Routes>
           <Route path="/"  element={<Home/>}/>
           <Route path="/buy/:category/"  element={<AllProducts/>}/>
-          <Route path="/buy/:category/:subcategory"  element={<AllProducts/>}/>
+          <Route path="/buy/:category/:subcategmory"  element={<AllProducts/>}/>
           <Route path="/rent/*"  element={<AllProducts/>}/>
           <Route path="/sell/*"  element={<AllProducts/>}/>
           <Route path="/equipment-details/:id" element={<ProductDetail/>} />
-          <Route path="/privacy" element={<PrivacyPolicy/>} />
+          {/* <Route path="/privacy" element={<PrivacyPolicy/>} /> */}
           <Route path="/aboutus" element={<AboutUs/>} />
           <Route path="/testing" element={<TestingComponent/>} />
           <Route path="/*" element={<Home/>} />

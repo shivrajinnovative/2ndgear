@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import threeLine from "./../assets/images/background/threeLine.png";
 import tick from './../assets/icons/sellAndBuy/tick.svg'
 import circle from './../assets/icons/sellAndBuy/circle.svg'
+
+
+
 let Component = ({ number, children }) => {
   return (
     <div className="bsComponent center p-3 my-4">
