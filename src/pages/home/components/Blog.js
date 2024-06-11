@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import Slider from "react-slick";
-import LazyLoad from 'react-lazyload';
-import { useDynamicQuery } from '../../../utils/apiUtils';
+import LazyLoad from "react-lazyload";
+import { useDynamicQuery } from "../../../utils/apiUtils";
 
 const CustomPrevArrow = (props) => {
   const { className, onClick } = props;
@@ -28,8 +28,10 @@ const CustomNextArrow = (props) => {
 };
 
 export default function Blog() {
-  const {data,error,isLoading}=useDynamicQuery(['blogs'],'get-blogs-list')
-
+  const { data, error, isLoading } = useDynamicQuery(
+    ["blogs"],
+    "get-blogs-list"
+  );
 
   const settings = {
     dots: true,
@@ -73,13 +75,14 @@ export default function Blog() {
 
   if (isLoading || error) return <></>;
   return (
-      <div className='bg-secondary blog'>
-        <div className='container py-5'>
-          <h1 className='text-center poppins fw-500 py-5'>Blog</h1>
-          <div className="container">
-            <div className="slider-container">
-              <Slider {...settings}>
-                {data.blogsData && data.blogsData?.map((item, index) => (
+    <div className="bg-secondary blog">
+      <div className="container py-5">
+        <h1 className="text-center poppins fw-500 py-5">Blog</h1>
+        <div className="container">
+          <div className="slider-container">
+            <Slider {...settings}>
+              {data.blogsData &&
+                data.blogsData?.map((item, index) => (
                   <div className="col-md-6 col-lg-4 p-3" key={index}>
                     <div className="blogCard bg-white border p-3">
                       <div className="blogHeader">
@@ -89,16 +92,16 @@ export default function Blog() {
                       </div>
                       <div className="blogBody">
                         <h5>{item.blog_title}</h5>
-                        <p className='m-0'>by Aparna K S</p>
+                        <p className="m-0">by Aparna K S</p>
                         <p>{item.blog_date}</p>
                       </div>
                     </div>
                   </div>
                 ))}
-              </Slider>
-            </div>
+            </Slider>
           </div>
         </div>
       </div>
+    </div>
   );
 }

@@ -7,10 +7,14 @@ import fleetsDark from "../assets/icons/industryPlants/dark/fleets.svg";
 
 import misc from "../assets/icons/industryPlants/light/misc.svg";
 import miscDark from "../assets/icons/industryPlants/dark/misc.svg";
+import tick from "./../assets/icons/sellAndBuy/tick.svg";
+import circle from "./../assets/icons/sellAndBuy/circle.svg";
+
 import { Link } from "react-router-dom";
 
 export default function IndustryPlants() {
   const [hoverIndex, setHoverIndex] = useState(null);
+  const [check, setCheck] = useState(true);
 
   let content = [
     {
@@ -27,16 +31,37 @@ export default function IndustryPlants() {
       title: "Miscllaneous",
       image: misc,
       imageDark: miscDark,
-    }
+    },
   ];
 
   return (
-    <div className="bg-secondary py-4">
+    <div className="bg-secondary py-4 position-relative">
+      <div className="buySellBtn d-flex poppins ">
+        <div
+          className={`px-4 py-1 fw-400 ${check ? "bg-yellow" : ""}`}
+          onClick={() => setCheck(true)}
+        >
+          {" "}
+          <img src={check ? tick : circle} alt="icon" className="mx-1" /> Buy
+        </div>
+        <div
+          className={`px-4 py-1 fw-400 ${!check ? "bg-yellow" : ""}`}
+          onClick={() => setCheck(false)}
+        >
+          {" "}
+          <img src={!check ? tick : circle} alt="icon" className="mx-1" /> Sell
+        </div>
+      </div>
+
       <div className="container py-3 pt-5">
         <div className="row justify-content-center">
           {content.map((item, index) => {
             return (
-              <Link className="col-md-6 col-lg-4 col-xl-3" to={`buy/${item.title.split(" ").join("-").toLowerCase()}`} key={index}>
+              <Link
+                className="col-md-6 col-lg-4 col-xl-3"
+                to={`buy/${item.title.split(" ").join("-").toLowerCase()}`}
+                key={index}
+              >
                 <div
                   className={`plantCard p-2 px-3 d-flex align-items-center ${
                     hoverIndex === index

@@ -1,0 +1,13 @@
+.serviceSection hr{
+    width: 70%;
+    opacity: 1;
+    color: #635ea4;
+    border-top-width: 3px;
+    margin-left: 10px;
+}
+.agentForm input,.agentForm textarea{
+    width: 100%;
+    margin: 10px 0;
+    padding: 5px 10px;
+    border: 1px solid #D1D1D1    ;
+}

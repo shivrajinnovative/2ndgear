@@ -2,7 +2,8 @@ import React from 'react'
 
 export default function WhoWeAre() {
   return (
-    <div><h2 className="d-flex poppins fw-600 align-items-center ">
+    <div>
+      <h2 className="d-flex poppins fw-600 align-items-center ">
     <mark className="px-3 text-primary">Who We Are</mark>
     <hr />
   </h2>

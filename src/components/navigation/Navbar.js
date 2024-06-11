@@ -34,14 +34,13 @@ const Navbar = () => {
       dropdown.addEventListener("mouseout", hideDropdown);
     });
 
-    // Cleanup event listeners on unmount
     return () => {
       dropdowns.forEach((dropdown) => {
         dropdown.removeEventListener("mouseover", showDropdown);
         dropdown.removeEventListener("mouseout", hideDropdown);
       });
     };
-  }, [data]);
+  });
 
 
   const DropDownlist = ({ heading, data }) => {
@@ -73,7 +72,7 @@ const Navbar = () => {
                       ? "dropdown-item dropdown-toggle"
                       : "dropdown-item"
                   }
-                  to={`${heading}/${item.equip_cat_slug}`}
+                  to={item.equip_cat_name?`${heading}/${item.equip_cat_slug}`:`${heading.toLowerCase()}/${item.split(" ").join("-").toLowerCase()}`}
                   id={`about${index}Dropdown`}
                   role="button"
                   aria-expanded="false"
@@ -117,24 +116,27 @@ const Navbar = () => {
               </Link>
             </li>
             <DropDownlist heading="Buy" data={data} />
-            <DropDownlist heading="Sell" data={data} />
+            <li className="nav-item ">
+              <Link className="nav-link" to="/sell">
+              Sell
+              </Link>
+            </li>
             <DropDownlist heading="Rent" data={data} />
             <DropDownlist heading="Services" data={[
-                "Inspection",
                 "Valuation",
-                "Finance",
-                "Insurance",
                 "Legal",
-                "Transport",
-                "Finance",
-                "Dismantelling",
-                " O&M",
+                "Dismantling",
+                "Erection and Commissioning",
+                "Refurbishment",
+                "Operation and Maintenance",
                 "Asset Management",
+                "Inspection",
+                "Transport"
               ]} />
          
 
             <li className="nav-item ">
-              <Link className="nav-link" href="#about">
+              <Link className="nav-link" to="buyer-specific-requirement">
                 Buyer Specific Requirement
               </Link>
             </li>
@@ -144,7 +146,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item ">
-              <Link className="nav-link" href="#about">
+              <Link className="nav-link" to="help">
                 Help
               </Link>
             </li>

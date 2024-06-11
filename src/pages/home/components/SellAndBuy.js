@@ -1,9 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import threeLine from "./../assets/images/background/threeLine.png";
-import tick from './../assets/icons/sellAndBuy/tick.svg'
-import circle from './../assets/icons/sellAndBuy/circle.svg'
-
-
 
 let Component = ({ number, children }) => {
   return (
@@ -15,7 +11,6 @@ let Component = ({ number, children }) => {
 };
 
 export default function SellAndBuy() {
-  const [check,setCheck]=useState(true)
   return (
     <div className="container-fluid py-5 text-primary sellAndBuy">
       <div className="container">
@@ -37,14 +32,6 @@ export default function SellAndBuy() {
           RIGHT VALUE
         </button>
       </div>
-
-
-    <div className="buySellBtn d-flex poppins ">
-      <div className={`px-4 py-1 fw-400 ${check?'bg-yellow':''}`} onClick={()=>setCheck(true)} > <img src={check?tick:circle} alt="icon" className="mx-1" /> Buy</div>
-      <div className={`px-4 py-1 fw-400 ${!check?'bg-yellow':''}`} onClick={()=>setCheck(false)} > <img src={!check?tick:circle} alt="icon" className="mx-1" /> Sell</div>
-    </div>
-
-
     </div>
   );
 }

@@ -48,16 +48,16 @@ export default function Footer() {
               </Link>
             </div>
             <div>
-              <a href="#" className="nav-link">
+              <Link to="help" className="nav-link">
                 <img src={right} alt={right} className="mx-2" />
                 Help
-              </a>
+              </Link>
             </div>
             <div>
-              <a href="#" className="nav-link border-0">
+              <Link to="career" className="nav-link border-0">
                 <img src={right} alt={right} className="mx-2" />
                 Career
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col-md-6 col-lg-3 px-lg-4 mt-5">

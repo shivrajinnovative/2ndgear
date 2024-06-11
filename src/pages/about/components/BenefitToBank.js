@@ -23,7 +23,7 @@ export default function BenefitToBank() {
   return (
     <div className='py-5 benefiteBank' style={{"background-color":"#EEEDFF"}}>
             <div className="container ">
-            <h2 className='text-primary text-center'>Benefit to Banks & NBFCs</h2>
+            <h2 className='text-primary text-center headingEffect'>Benefit to Banks & NBFCs</h2>
             </div>
       <div className="container-fluid  border-bottom">
         <div className="container">

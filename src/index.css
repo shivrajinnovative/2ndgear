@@ -55,4 +55,21 @@ a{
     justify-content: center;
     align-items: center;
 }
-
+.headingEffect{
+    position: relative ;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.headingEffect::after{
+    content: " ";
+    position: absolute;
+    display: block ;
+    height: 18px ;
+    background-color: yellow ;
+    width: 120%;
+    left: 50%;
+    bottom: 0px;
+    transform: translateX(-50%);
+    z-index: -1;
+}
