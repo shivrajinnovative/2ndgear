@@ -5,74 +5,14 @@ import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
 import background from "./../services/assets/background.png";
 import image1 from "./image1.png";
 import mapPin from "./../home/assets/icons/map-pin.svg";
+import { useCsrfToken } from "../../utils/useCsrfToken";
+import { useFormSubmit } from "../../utils/useFormSubmit";
 axios.defaults.withCredentials = true;
 
 export default function Help() {
-  const [formData, setFormData] = useState({
-    name: "",
-    mobile_no: "",
-    email: "",
-    message: ""
-  });
-
-  const [cookieValue, setCookieValue] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData({
-      ...formData,
-      [id]: value
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      setLoading(true);
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/submit-contactus-enquiry-form`, formData, {
-        headers: {
-          "X-XSRF-TOKEN": cookieValue 
-        }
-      });
-      if(response.data.flag === "1") {
-        setFormData({
-          name: "",
-          mobile_no: "",
-          email: "",
-          message: ""
-        });
-        setSubmitted(true);
-      } else {
-        setError("An error occurred while submitting the form.");
-      }
-      setLoading(false);
-      setError(null);
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setError(error.message || "An error occurred while submitting the form.");
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("https://2gear.in/staging/sanctum/csrf-cookie", { withCredentials: true });
-        if (response.status === 204) {
-          const ckk = Cookies.get("XSRF-TOKEN");
-          setCookieValue(ckk);
-        } else {
-          console.error("Failed to fetch XSRF token.");
-        }
-      } catch (error) {
-        console.error("Error fetching XSRF token:", error);
-      }
-    };
-    fetchData();
-  }, []);
+  const initialFormData = { name: "", mobile_no: "", email: "", message: "" };
+  const cookieValue = useCsrfToken();
+  const { formData, handleChange, handleSubmit, loading, error, submitted } = useFormSubmit(initialFormData);
 
   return (
     <div className="pt-5 bg-secondary poppins buyerSpecific">
@@ -86,7 +26,7 @@ export default function Help() {
                 To request a quote or want to meet up for coffee. Contact us
                 directly or fill out the form and we will get back to you.
               </p>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={(e) => handleSubmit(e, cookieValue,'submit-help-form')}>
                 <div className="mb-3">
                   <label htmlFor="name" className="form-label">
                     Full Name <span>*</span>
@@ -95,6 +35,7 @@ export default function Help() {
                     type="text"
                     className="form-control"
                     id="name"
+                    name="name"
                     placeholder="Full Name"
                     value={formData.name}
                     onChange={handleChange}
@@ -110,6 +51,7 @@ export default function Help() {
                     type="tel"
                     className="form-control"
                     id="mobile_no"
+                    name="mobile_no"
                     placeholder="Mobile number"
                     pattern="[0-9]{10}"
                     title="Please enter a 10-digit mobile number"
@@ -126,6 +68,7 @@ export default function Help() {
                     type="email"
                     className="form-control"
                     id="email"
+                    name="email"
                     placeholder="Email"
                     value={formData.email}
                     onChange={handleChange}
@@ -138,6 +81,7 @@ export default function Help() {
                   <textarea
                     className="form-control"
                     id="message"
+                    name="message"
                     rows="3"
                     placeholder="Enter your message"
                     value={formData.message}
@@ -148,7 +92,7 @@ export default function Help() {
                   className="btn bg-primary w-100 text-white p-2 px-4 mt-3"
                   type="submit"
                 >
-                  {loading && <div>Loading...</div>}
+                  {loading && <div>Sending...</div>}
                   {!loading && error && "Try Again"}
                   {!loading && !error && !submitted && "Submit Request"}
                   {!loading && !error && submitted && "Submitted"}

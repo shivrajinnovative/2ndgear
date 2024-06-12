@@ -3,18 +3,17 @@ import mapPin from "../assets/icons/map-pin.svg";
 import axios from "axios";
 import inimg from './../assets/images/in.png'
 import dot from './../assets/icons/dot.svg'
+import { useDynamicQuery } from "../../../utils/apiUtils";
 export default function Header() {
   const [states, setStates] = useState([]);
 
+  const { data, error, isLoading } = useDynamicQuery(['state-list'],'get-states-list')
+  
   useEffect(() => {
-    const getStates = async () => {
-      const response = await axios(
-        `${process.env.REACT_APP_API_URL}/get-states-list`
-      );
-      setStates(response.data.statesData);
-    };
-    getStates();
-  }, []);
+    if(data){
+      setStates(data.statesData)
+    }
+  }, [data]);
 
   const ListItem=({children})=>{
     return (

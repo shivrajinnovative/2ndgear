@@ -1,79 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
 import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
 import background from "./../services/assets/background.png";
 import image1 from "./image1.png";
 import './buyerSpecific.css';
-
+import { useCsrfToken } from "../../utils/useCsrfToken";
+import { useFormSubmit } from "../../utils/useFormSubmit";
 axios.defaults.withCredentials = true;
 
 export default function BuyerSpecific() {
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     name: "",
     mobile_no: "",
     email: "",
     message: ""
-  });
-
-  const [cookieValue, setCookieValue] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData({
-      ...formData,
-      [id]: value
-    });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      setLoading(true);
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/submit-bsr-enquiry-form`, formData, {
-        headers: {
-          "X-XSRF-TOKEN": cookieValue 
-        }
-      });
-      if(response.data.flag === "1") {
-        setFormData({
-          name: "",
-          mobile_no: "",
-          email: "",
-          message: ""
-        });
-        setSubmitted(true);
-      } else {
-        setError("An error occurred while submitting the form.");
-      }
-      setLoading(false);
-      setError(null);
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setError(error.message || "An error occurred while submitting the form.");
-      setLoading(false);
-    }
-  };
+  const cookieValue = useCsrfToken();
+  const { formData, handleChange, handleSubmit, loading, error, submitted } = useFormSubmit(initialFormData);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("https://2gear.in/staging/sanctum/csrf-cookie", { withCredentials: true });
-        if (response.status === 204) {
-          const ckk = Cookies.get("XSRF-TOKEN");
-          setCookieValue(ckk);
-        } else {
-          console.error("Failed to fetch XSRF token.");
-        }
-      } catch (error) {
-        console.error("Error fetching XSRF token:", error);
-      }
-    };
-    fetchData();
-  }, []);
 
   return (
     <div className="pt-5 bg-secondary poppins buyerSpecific">
@@ -89,7 +34,7 @@ export default function BuyerSpecific() {
               directly or fill out the form and we will get back to you.
             </p>
             <div className="card col-md-8 my-5 p-3 p-md-5">
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={(e) => handleSubmit(e, cookieValue,'submit-bsr-enquiry-form')}>
                 <div className="mb-3">
                   <label htmlFor="name" className="form-label">
                     Name <span>*</span>
@@ -97,7 +42,7 @@ export default function BuyerSpecific() {
                   <input
                     type="text"
                     className="form-control"
-                    id="name"
+                    name="name"
                     placeholder="Name"
                     value={formData.name}
                     onChange={handleChange}
@@ -111,7 +56,7 @@ export default function BuyerSpecific() {
                   <input
                     type="tel"
                     className="form-control"
-                    id="mobile_no"
+                    name="mobile_no"
                     placeholder="Mobile number"
                     pattern="[0-9]{10}"
                     title="Please enter a 10-digit mobile number"
@@ -127,33 +72,30 @@ export default function BuyerSpecific() {
                   <input
                     type="email"
                     className="form-control"
-                    id="email"
+                    name="email"
                     placeholder="Email"
                     value={formData.email}
                     onChange={handleChange}
-                    
                   />
                 </div>
-               
                 <div className="mb-3">
                   <label htmlFor="message" className="form-label">
                     Message
                   </label>
                   <textarea
                     className="form-control"
-                    id="message"
+                    name="message"
                     rows="3"
                     placeholder="Enter your message"
                     value={formData.message}
                     onChange={handleChange}
-                    
                   ></textarea>
                 </div>
                 <button
                   className="btn bg-primary text-white p-2 px-4 mt-3"
                   type="submit"
                 >
-                  {loading && <div>Loading...</div>}
+                  {loading && <div>Sending...</div>}
                   {!loading && error && "Try Again"}
                   {!loading && !error && !submitted && "Submit Requirement"}
                   {!loading && !error && submitted && "Submitted"}
