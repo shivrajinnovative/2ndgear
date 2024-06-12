@@ -73,3 +73,6 @@ a{
     transform: translateX(-50%);
     z-index: -1;
 }
+form span{
+    color: red;
+}

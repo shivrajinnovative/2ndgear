@@ -140,16 +140,7 @@ const Navbar = () => {
                 Buyer Specific Requirement
               </Link>
             </li>
-            <li className="nav-item ">
-              <Link className="nav-link" href="#about">
-                Blog
-              </Link>
-            </li>
-            <li className="nav-item ">
-              <Link className="nav-link" to="help">
-                Help
-              </Link>
-            </li>
+            
           </ul>
         </div>
         <div className="d-flex">

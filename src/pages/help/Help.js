@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
 import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
 import background from "./../services/assets/background.png";
 import image1 from "./image1.png";
 import mapPin from "./../home/assets/icons/map-pin.svg";
+axios.defaults.withCredentials = true;
 
 export default function Help() {
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    mobileNumber: '',
-    location: '',
-    message: ''
+    name: "",
+    mobile_no: "",
+    email: "",
+    message: ""
   });
+
+  const [cookieValue, setCookieValue] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -21,11 +28,51 @@ export default function Help() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form data submitted:", formData);
-    // You can add your form submission logic here
+    try {
+      setLoading(true);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/submit-contactus-enquiry-form`, formData, {
+        headers: {
+          "X-XSRF-TOKEN": cookieValue 
+        }
+      });
+      if(response.data.flag === "1") {
+        setFormData({
+          name: "",
+          mobile_no: "",
+          email: "",
+          message: ""
+        });
+        setSubmitted(true);
+      } else {
+        setError("An error occurred while submitting the form.");
+      }
+      setLoading(false);
+      setError(null);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setError(error.message || "An error occurred while submitting the form.");
+      setLoading(false);
+    }
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("https://2gear.in/staging/sanctum/csrf-cookie", { withCredentials: true });
+        if (response.status === 204) {
+          const ckk = Cookies.get("XSRF-TOKEN");
+          setCookieValue(ckk);
+        } else {
+          console.error("Failed to fetch XSRF token.");
+        }
+      } catch (error) {
+        console.error("Error fetching XSRF token:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className="pt-5 bg-secondary poppins buyerSpecific">
@@ -34,23 +81,41 @@ export default function Help() {
         <div className="row pt-3">
           <div className="col-lg-6">
             <div className="card col-md-9 my-5 p-3 p-md-5">
-              <h4 className="text-primary fw-600 py-2">Let's Talk</h4>
+              <h4 className="text-primary fw-500 py-2">Let's Talk</h4>
               <p>
                 To request a quote or want to meet up for coffee. Contact us
                 directly or fill out the form and we will get back to you.
               </p>
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                  <label htmlFor="fullName" className="form-label">
-                    Full Name
+                  <label htmlFor="name" className="form-label">
+                    Full Name <span>*</span>
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="fullName"
+                    id="name"
                     placeholder="Full Name"
-                    value={formData.fullName}
+                    value={formData.name}
                     onChange={handleChange}
+                    required
+                  />
+                </div>
+                
+                <div className="mb-3">
+                  <label htmlFor="mobile_no" className="form-label">
+                    Mobile Number <span>*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    className="form-control"
+                    id="mobile_no"
+                    placeholder="Mobile number"
+                    pattern="[0-9]{10}"
+                    title="Please enter a 10-digit mobile number"
+                    value={formData.mobile_no}
+                    onChange={handleChange}
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -63,32 +128,6 @@ export default function Help() {
                     id="email"
                     placeholder="Email"
                     value={formData.email}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="mobileNumber" className="form-label">
-                    Mobile Number
-                  </label>
-                  <input
-                    type="tel"
-                    className="form-control"
-                    id="mobileNumber"
-                    placeholder="Enter your mobile number"
-                    value={formData.mobileNumber}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="location" className="form-label">
-                    Location
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="location"
-                    placeholder="Location"
-                    value={formData.location}
                     onChange={handleChange}
                   />
                 </div>
@@ -109,9 +148,13 @@ export default function Help() {
                   className="btn bg-primary w-100 text-white p-2 px-4 mt-3"
                   type="submit"
                 >
-                  Submit Request
+                  {loading && <div>Loading...</div>}
+                  {!loading && error && "Try Again"}
+                  {!loading && !error && !submitted && "Submit Request"}
+                  {!loading && !error && submitted && "Submitted"}
                 </button>
               </form>
+              {error && <div className="mt-3 text-danger">{error && "Error in form submission. Please try again later."}</div>}
             </div>
           </div>
           <div className="col-lg-6 center">
