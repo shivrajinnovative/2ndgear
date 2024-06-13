@@ -29,7 +29,7 @@ export default function Section({service}) {
             </div>
     </div>
 
-  <img src={image} className=' col-md-8 d-block mx-auto' alt={image} />
+  <img src={image} className='col-10 my-3 col-md-8 d-block mx-auto' alt={image} />
     </section>
   )
 }

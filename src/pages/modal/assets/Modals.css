@@ -1,0 +1,53 @@
+
+.modal{
+    --bs-modal-width: 60vw;
+    }
+    .modal-content {
+        border-radius: 30px;
+        overflow: hidden;
+}
+.modal-body{
+    padding:0;
+}
+
+.modal.signIn .row>div:nth-child(1){
+    background-image: linear-gradient(270deg, rgba(99, 94, 165, 0.9) 12.04%, rgba(9, 5, 64, 0.9) 99.99%), url('./images/background.png');
+    background-size: 100% 100%;
+   
+}
+.modal h2{
+     font-family: "Yeseva One", serif;
+    font-style: normal;
+}
+
+.signIn .signInHeading{
+    font-size: 26px !important;
+}
+.signIn .signOption{
+font-size: 10px !important;
+}
+.signIn p.text-end {
+    font-size: 16px !important;
+}
+.signIn p.text-center {
+    font-size: 14px !important;
+}
+
+.forgotPassword p{
+    font-size: 14px !important;
+}
+.forgotPassword input{
+    height: 30px;
+    width: 30px;
+    background-color: #E9E7FF;
+    outline: none;
+    border: none;
+    margin: 5px;
+    border-radius: 2px;
+}
+.modal .row>div>img{
+border-right: 1px dashed gray;
+}
+.resetPassword label{
+    font-size: 14px !important;
+}

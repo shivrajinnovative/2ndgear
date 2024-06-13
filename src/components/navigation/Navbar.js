@@ -143,18 +143,9 @@ const Navbar = () => {
             
           </ul>
         </div>
-        <div className="d-flex">
-          <div className="d-flex px-3 center">
-            <img src={person} height="23px" className="mx-2" alt={person} />
-              <ul className="navbar-nav">
-              <DropDownlist heading="" data={["login","register"]} />
-              </ul>            
-          </div>
-          <div className="contact">
-            <p className="m-0 fw-400">Call Us at</p>
-            <span>99-6989-4448</span>
-          </div>
-        </div>
+        <button  data-bs-target="#loginModal" data-bs-toggle="modal" className="btn bg-primary text-white p-2 px-4">
+        Log In / Sign Up
+        </button>
       </div>
     </nav>
   );

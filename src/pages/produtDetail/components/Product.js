@@ -9,7 +9,7 @@ const CustomPrevArrow = (props) => {
         className={`custom-arrow custom-prev-arrow ${className}`}
         onClick={onClick}
       >
-       <i class="bi bi-chevron-left"></i>
+       <i className="bi bi-chevron-left"></i>
       </div>
     );
   };
@@ -21,7 +21,7 @@ const CustomPrevArrow = (props) => {
         className={`custom-arrow custom-next-arrow ${className}`}
         onClick={onClick}
       >
-      <i class="bi bi-chevron-right"></i>
+      <i className="bi bi-chevron-right"></i>
       </div>
     );
   };

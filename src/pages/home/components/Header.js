@@ -44,13 +44,13 @@ export default function Header() {
                   <ListItem>Aggregate & Sand Plants</ListItem>
                   <ListItem>Blocks/ Bricks Making Plants
                   </ListItem>
-                  <ListItem>Dry Mix Mortar Plants & More
+                  <ListItem>Dry Mix Mortar Plants 
                   </ListItem>
                 </div>
                 <div className="col-md-6">
                   <ListItem>Asphalt Plant (ASP)</ListItem>
-                  <ListItem>Concrete Batching Plants
-                  </ListItem>
+                  <ListItem>Concrete Batching Plants</ListItem>
+                  <ListItem>And More...</ListItem>
                   </div>
               </div>
               <div className="inputBox d-flex justify-content-between">

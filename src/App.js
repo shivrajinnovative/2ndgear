@@ -7,7 +7,6 @@ import Copyright from "./components/copyright/Copyright";
 import AllProducts from "./pages/allProducts/AllProducts";
 import ProductDetail from "./pages/produtDetail/ProductDetail";
 import PrivacyPolicy from "./pages/privacyPolicy/PrivacyPolicy";
-import NotFound from "./pages/NotFound";
 import AboutUs from "./pages/about/AboutUs";
 import ScrollToTop from "./components/ScrollToTop";
 import TestingComponent from "./test/TestingComponent";
@@ -16,6 +15,8 @@ import Service from "./pages/services/Service";
 import BuyerSpecific from "./pages/buyerRequirements/BuyerSpecific";
 import Help from "./pages/help/Help";
 import Carrer from "./pages/carrer/Carrer";
+import LoginModal from "./pages/modal/LoginModal";
+import AuthModals from "./pages/modal/AuthModals";
 
 export default function App() {
   const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ export default function App() {
         <BrowserRouter basename="/react">
           <ScrollToTop />
           <Navbar />
+          <AuthModals/>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/buy/:category/" element={<AllProducts />} />
@@ -46,6 +48,7 @@ export default function App() {
             <Route path="/*" element={<Home />} />
           </Routes>
           <Footer />
+          
           <Copyright />
         </BrowserRouter>
       </QueryClientProvider>

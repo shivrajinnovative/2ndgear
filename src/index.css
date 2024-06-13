@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
 p{
     font-size: 18px !important;
 }
@@ -22,7 +22,7 @@ a{
     color:#ffffff !important
 }
 .text-yellow{
-    color:#FBCB03 !important
+    color:#FFF500 !important
 }
 .bg-yellow{
     background-color:#FBCB03 !important
