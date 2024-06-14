@@ -42,7 +42,7 @@ export default function Footer() {
               </Link>
             </div>
             <div>
-              <Link href="#" className="nav-link">
+              <Link to="terms-and-condition" className="nav-link">
                 <img src={right} alt={right} className="mx-2" />
                 Terms & Conditions
               </Link>

@@ -15,8 +15,8 @@ import Service from "./pages/services/Service";
 import BuyerSpecific from "./pages/buyerRequirements/BuyerSpecific";
 import Help from "./pages/help/Help";
 import Carrer from "./pages/carrer/Carrer";
-import LoginModal from "./pages/modal/LoginModal";
-import AuthModals from "./pages/modal/AuthModals";
+import AuthModals from "./modal/AuthModals";
+import Terms from "./pages/termsOfCondition/Terms";
 
 export default function App() {
   const queryClient = new QueryClient();
@@ -39,6 +39,7 @@ export default function App() {
             <Route path="/sell/*" element={<AllProducts />} />
             <Route path="/equipment-details/:id" element={<ProductDetail />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms-and-condition" element={<Terms />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/services/:service" element={<Service />} />
             <Route path="/buyer-specific-requirement" element={<BuyerSpecific/>} />

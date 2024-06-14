@@ -1,20 +1,9 @@
-import React, { useState } from "react";
-import logo from "./../../assets/logo.png";
-import line from "./assets/line.svg";
-import google from "./assets/google.svg";
+import React from "react";
+import logo from "./../assets/logo.png";
 
-import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
 export default function LoginModal() {
-    const [number,setNumber]=useState('')
-    const [error,setError]=useState('')
-  const handleLoginSuccess = (response) => {
-    console.log("Login Success:", response);
-  };
 
-  const handleLoginFailure = (error) => {
-    console.log("Login Failed:", error);
-  };
   return (
     <div
       className="modal fade signIn"
@@ -68,24 +57,11 @@ export default function LoginModal() {
                     <button className="btn text-white d-block mx-auto bg-primary my-3 px-5">
                       Sign in
                     </button>
-                    <div className="px-sm-5 d-flex justify-content-center">
-                      <img src={line} alt="line" className="col-2" />
-                      <span className="signOption col-6 text-center">
-                        OR YOU CAN SIGNIN VIA
-                      </span>
-                      <img src={line} alt="line" className="col-2" />
-                    </div>
-                    <div className="px-5 m-4 mx-5">
-                      <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
-                        <GoogleLogin
-                          onSuccess={handleLoginSuccess}
-                          onError={handleLoginFailure}
-                        />
-                      </GoogleOAuthProvider>
-                    </div>
+                   
                     <p className="text-center">
                       New to 2ndgear ?
-                      <span className="text-primary"> Signup </span>
+                      <span className="text-primary"  data-bs-target="#registerModal"
+                        data-bs-toggle="modal" type='button'>&nbsp; Signup </span>
                     </p>
                   </div>
                 </div>
