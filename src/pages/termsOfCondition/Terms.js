@@ -4,7 +4,6 @@ import laptop from "./laptop.png";
 import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
 
 export default function Terms() {
-  //terms-and-condition
   return (
     <div className="pt-5 bg-secondary terms poppins">
       <Breadcrumb page="Terms & Conditions" image={laptop} />
@@ -22,7 +21,7 @@ export default function Terms() {
             registered under the laws of India, hereinafter referred to as “Us”,
             “We”, or “2nd Gear.com”. The following Site Usage Terms and
             Conditions govern the terms of your use of www.2gear.in Website and
-            the Service is provided subject to these terms and conditions .{" "}
+            the Service is provided subject to these terms and conditions .
           </p>
           <p>
             We thank you for interest shown in 2nd Gear.com. 2nd Gear.com is the
@@ -116,12 +115,9 @@ export default function Terms() {
             selling or renting of Equipment/ material.
           </p>
           <p>
-            The Members agree to identify, verify or authenticate the origin of
-            a Rental/ Listing. It is agreed that the site would not be used for
-            making false statements or diffusion of confidential, illegal or
-            offensive content. The Members agrees not to engage in (i) use,
-            copying or diffusion of copyright protected works without express
-            authorization, (ii) upload invalid data, viruses, worms or other
+            The Members agree to identify, verify or authenticate the origin of a Rental/ Listing. It is agreed that the site would not be used for
+            making false statements or diffusion of confidential, illegal or offensive content. The Members agrees not to engage in (i) use,
+            copying or diffusion of copyright protected works without express            authorization, (ii) upload invalid data, viruses, worms or other
             software agents through the site, (iii) impersonate another person
             or conducting fraud, hiding or attempting to hide your identity
             otherwise misrepresenting your identity, (iv) abusive or fraudulent
@@ -587,7 +583,9 @@ export default function Terms() {
           </p>
         </div>
         <div className="px-3 px-md-5">
-          <h5 className="text-primary">Applicable Law and Legal Jurisdiction</h5>
+          <h5 className="text-primary">
+            Applicable Law and Legal Jurisdiction
+          </h5>
           <p>
             The user or member accepts to defend and compensate www.2gear.in
             (including reasonable lawyer fees), its agents, directors,

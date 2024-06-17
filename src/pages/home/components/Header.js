@@ -33,7 +33,6 @@ export default function Header() {
             <div className="poppins heading col-10 col-sm-8 mx-auto pt-5 mt-5">
               <h1 className="fw-700">Unlock Great Value with Quality</h1>
               <h5 className="fw-700">
-             
                 Pre-Owned Used <span className="fw-400">Surplus Asset</span>
               </h5>
               <div className="mx-auto col-3 my-4">

@@ -15,11 +15,11 @@ export default function RegisterModal() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [confirmError, setConfirmError] = useState("");
-  // const initialFormData = { name: "", mobile_no: "", email: "" ,address:"", state: "", city:"", pin_code:"", profile: "", message: "" };
+  const initialFormData = { name: "", mobile_no: "", email: "" ,address:"", state: "", city:"", pin_code:"", profile: "", message: "" };
 
   const { data, isLoading } = useDynamicQuery(["state-list"], "get-states-list");
   // const cookieValue = useCsrfToken();
-  // const { formData, handleChange, handleSubmit, loading, error:formError, submitted } = useFormSubmit(initialFormData);
+  const { formData, handleChange, handleSubmit, loading, error:formError, submitted } = useFormSubmit(initialFormData);
 
   const buyerList = ["Looking For Myself", "Agent", "Corporate Buyer"];
   const sellerList = ["Asset Owner", "Agent", "Corporate Representative"];
@@ -66,7 +66,7 @@ export default function RegisterModal() {
   };
 
   const handleStateChange = (e) => {
-    setSelectedState(e.target.value);
+    setSelectedState(e.target.value); 
   };
 
   const handleCityChange = (e) => {
@@ -76,7 +76,7 @@ export default function RegisterModal() {
   const handleRegisteredAsChange = (e) => {
     const value = e.target.value;
     setRegisteredAs(value);
-    setYouAre(""); // Reset "You Are" selection when "Registered As" changes
+    setYouAre("");
     if (value === "buy") {
       setYouAreOptions(buyerList);
     } else if (value === "sell") {

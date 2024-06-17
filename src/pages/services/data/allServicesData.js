@@ -11,7 +11,12 @@ import TransportImg from './../assets/Transport.png'
 
 
 
- const services={
+const services={
+    "inspection":{
+        heading:"Inspection",
+        para:"The role of engineering inspection is to identify any faults or defects in plant and machinery that have or will in the course of time, present an unacceptable risk. Many inspections are mandatory in order to comply with applicable health and safety legislation.",
+        image:InspectionImg
+    },
     "valuation":{
         heading:"Valuation",
         para:"Valuation is the process of determining the worth of an asset or company. Valuation is important because it provides prospective buyers with an idea of how much they should pay for an asset or company and for prospective sellers, how much they should sell for.",
@@ -42,16 +47,20 @@ import TransportImg from './../assets/Transport.png'
         para:"The dismantling of industrial plants involves the use of certified vehicles, as well as complex management of environmental permits due to the disposal of specific materials such as asbestos, waste oils from processing, acids and radioactive material.",
         image:DismantlingImg
     },
-    "erection-and-commissioning":{
-        heading:"Erection & Commissioning",
+    "transport":{
+        heading:"Transport",
         para:[
-           "Erection and commissioning of industrial plants involves building and installing a plant, as well as performing tests to ensure it meets industry standards:",
-           "Erection",
-           "Contractors, vendors, and other project operatives install equipment, frames, brackets, and materials within a building structure to create a complete plant. This can include electrical, mechanical, fire, controls, HVAC, and plumbing systems.",
-           "Commissioning",
-           "This involves performing tests and procedures to show that the plant can deliver heat or perform its intended function. During this process, quality control measures should be implemented to ensure that the equipment is installed correctly and functions as intended. This may include checking for proper alignment, verifying components, conducting tests and inspections, and documenting the results. Any deviations from the approved design should be addressed and resolved promptly."
+            "Our extensive experience and highly qualified professional staff ensure seamless completion of each stage of the transportation and assembly of parts of or entire industrial plants.",
+            "Dismantling",
+            "Packaging",
+            "Layout study",
+            "Geometric control",
+            `"Turnkey" transportation`,
+            "Assembly",
+            "Commissioning",
+            `The application of cutting-edge working methods allows us to offer highly competitive cost effectiveness, turnaround times and end quality. We offer customers total peace of mind thanks to its corporate structure based around a solid global group, guaranteeing total supervision and control of the entire "turnkey" process.`
         ],
-        image:CommissioningImg
+        image:TransportImg
     },
     "refurbishment":{
         heading:"Refurbishment",
@@ -68,25 +77,16 @@ import TransportImg from './../assets/Transport.png'
         para:"A asset manager oversees the care of a company's assets. This could be a dedicated position within a large company, or fall on the shoulders of the owner in a smaller haulage firm. They are responsible for keeping the assets optimized at all times by regularly assessing and maintaining the assets.",
         image:ManagementImg
     },
-    "inspection":{
-        heading:"Inspection",
-        para:"The role of engineering inspection is to identify any faults or defects in plant and machinery that have or will in the course of time, present an unacceptable risk. Many inspections are mandatory in order to comply with applicable health and safety legislation.",
-        image:InspectionImg
-    },
-    "transport":{
-        heading:"Transport",
+    "erection-and-commissioning":{
+        heading:"Erection & Commissioning",
         para:[
-            "Our extensive experience and highly qualified professional staff ensure seamless completion of each stage of the transportation and assembly of parts of or entire industrial plants.",
-            "Dismantling",
-            "Packaging",
-            "Layout study",
-            "Geometric control",
-            `"Turnkey" transportation`,
-            "Assembly",
-            "Commissioning",
-            `The application of cutting-edge working methods allows us to offer highly competitive cost effectiveness, turnaround times and end quality. We offer customers total peace of mind thanks to its corporate structure based around a solid global group, guaranteeing total supervision and control of the entire "turnkey" process.`
+           "Erection and commissioning of industrial plants involves building and installing a plant, as well as performing tests to ensure it meets industry standards:",
+           "Erection",
+           "Contractors, vendors, and other project operatives install equipment, frames, brackets, and materials within a building structure to create a complete plant. This can include electrical, mechanical, fire, controls, HVAC, and plumbing systems.",
+           "Commissioning",
+           "This involves performing tests and procedures to show that the plant can deliver heat or perform its intended function. During this process, quality control measures should be implemented to ensure that the equipment is installed correctly and functions as intended. This may include checking for proper alignment, verifying components, conducting tests and inspections, and documenting the results. Any deviations from the approved design should be addressed and resolved promptly."
         ],
-        image:TransportImg
+        image:CommissioningImg
     },
 }
 

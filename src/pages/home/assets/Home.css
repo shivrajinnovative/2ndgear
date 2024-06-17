@@ -542,3 +542,32 @@ footer p {
     left: 80% !important;
   }
 }
+.floatingForm{
+  right: 100px;
+  position: fixed;
+  bottom: 50px;
+  box-shadow: 0 0 10px -5px rgb(130, 130, 130);
+padding-bottom: 30px;
+}
+.formIcon{
+  position: fixed;
+  height: 60px;
+  width: 60px;
+  background-color: white;
+  z-index: 999;
+  bottom: 50px;
+  right: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px -5px rgb(130, 130, 130);
+  cursor: pointer;
+}
+.formIcon:hover{
+  background-color: #100c5a;
+}
+.formIcon img{
+  height:30px;
+  width:30px
+}

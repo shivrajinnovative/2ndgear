@@ -12,17 +12,7 @@ export default function AboutUs() {
       <Breadcrumb page="About Us" image={background} />
       <div className="container aboutcontent">
         <p className="my-5">
-          Nowadays, it’s hard to imagine the process of buying, selling, or
-          renting without the Internet as a guide. We are the first on line
-          service provider in the country for all Surplus. We are trying to find
-          communities of people who buy and sell the Surplus. We are best at
-          bringing buyers, sellers, and renters together, and arming them with
-          the intel they need to do the deal. We have created virtual market for
-          contractors, Construction companies, farmers, municipalities and
-          equipments manufacturers, and owners. Surplus is an online platform
-          that helps businesses find their required Surplus like dumpers, cement
-          mixer etc. to buy or on rent. Also its a great platform to list the
-          equipment for rent and connect with related community.
+        Nowadays, it’s hard to imagine the process of buying, selling, or renting without the Internet as a guide. We are the first online service provider in the country for all Surplus Assets. We are trying to find communities of people who buy and sell the Surplus Assets. We are best at bringing buyers, sellers, and renters together, and arming them with the intel they need to do the deal. We have created a virtual market for contractors, Construction companies,and equipment's manufacturers, and owners. 2nd Gear is an online platform that helps businesses find their required Surplus assets like dumpers, cement mixer etc. to buy or on rent. Also it's a great platform to list the equipment for rent and connect with related communities.
         </p>
         <WhoWeAre/>
       </div>

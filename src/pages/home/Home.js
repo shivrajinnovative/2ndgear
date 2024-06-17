@@ -10,6 +10,8 @@ import BestSellingPlant from './components/BestSellingPlant'
 import Blog from './components/Blog'
 import Faq from './components/Faq'
 import Affiliation from './components/Affiliation'
+import FormIcon from './components/FormIcon'
+
 export default function Home() {
 
   
@@ -25,6 +27,7 @@ export default function Home() {
         <Faq/>
         <Blog/>
         <Affiliation/>
+      <FormIcon/>
     </div>
   )
 }

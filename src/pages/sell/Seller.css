@@ -1,0 +1,12 @@
+.registrationBenefit{
+    border-radius: 50px 0 50px 0;
+    box-shadow: 10px 10px 0  #FFF500;
+}
+.registrationBenefit div:nth-child(1){
+border-right: 2px dashed white;
+}
+.seller .container-fluid{
+    background: url('./assets/background.png');
+    background-size: 110% 100%;
+    background-position: center;
+}

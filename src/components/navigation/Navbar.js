@@ -123,15 +123,15 @@ const Navbar = () => {
             </li>
             <DropDownlist heading="Rent" data={data} />
             <DropDownlist heading="Services" data={[
+              "Inspection",
                 "Valuation",
                 "Legal",
                 "Dismantling",
-                "Erection and Commissioning",
+                "Transport",
                 "Refurbishment",
                 "Operation and Maintenance",
                 "Asset Management",
-                "Inspection",
-                "Transport"
+                "Erection and Commissioning",
               ]} />
          
 

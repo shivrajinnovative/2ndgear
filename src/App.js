@@ -17,6 +17,8 @@ import Help from "./pages/help/Help";
 import Carrer from "./pages/carrer/Carrer";
 import AuthModals from "./modal/AuthModals";
 import Terms from "./pages/termsOfCondition/Terms";
+import Seller from "./pages/sell/Seller";
+import Blog from "./pages/blog/Blog";
 
 export default function App() {
   const queryClient = new QueryClient();
@@ -36,9 +38,10 @@ export default function App() {
               element={<AllProducts />}
             />
             <Route path="/rent/*" element={<AllProducts />} />
-            <Route path="/sell/*" element={<AllProducts />} />
+            <Route path="/sell" element={<Seller />} />
             <Route path="/equipment-details/:id" element={<ProductDetail />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/blog/:slug?" element={<Blog/>} />
             <Route path="/terms-and-condition" element={<Terms />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/services/:service" element={<Service />} />
