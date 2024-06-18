@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import background from "../../services/assets/background.png";
 import { useDynamicQuery } from "../../../utils/apiUtils";
 
 export default function RecentBlog() {
   const [blogs, setBlogs] = useState([]);
 
   const { data, error, isLoading } = useDynamicQuery(
-    ["recentblogs"],
+    ["blogs"],
     "get-blogs-list"
   );
 
@@ -36,7 +35,7 @@ export default function RecentBlog() {
               <div className="py-3 fw-500 text-primary d-flex justify-content-between">
                 <div>
                   <i className="bi bi-calendar4 mx-1"></i>
-                  <span className="text-primary">10 June 2024</span>
+                  <span className="text-primary">{item.blog_date}</span>
                 </div>
                 <div>
                   <span className="">

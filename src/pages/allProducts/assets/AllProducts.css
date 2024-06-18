@@ -13,7 +13,9 @@
 .refinedBy ul{
     font-size: 12px;
 }
-
+.productsListing .card{
+    box-shadow: 0 0 10px -5px gray;
+}
 .productsListing .card p{
 font-size: 13px !important;
 }

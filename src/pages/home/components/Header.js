@@ -7,7 +7,7 @@ import { useDynamicQuery } from "../../../utils/apiUtils";
 export default function Header() {
   const [states, setStates] = useState([]);
 
-  const { data, error, isLoading } = useDynamicQuery(['state-list'],'get-states-list')
+  const { data, error, isLoading } = useDynamicQuery(['states'],'get-states-list')
   
   useEffect(() => {
     if(data){

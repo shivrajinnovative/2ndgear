@@ -14,7 +14,7 @@ export default function AgentForm() {
   const { formData, handleChange, handleSubmit, loading, error, submitted } = useFormSubmit(initialFormData);
 
 
-  const { data, isLoading } = useDynamicQuery(['state-list'],'get-states-list')
+  const { data, isLoading } = useDynamicQuery(['states'],'get-states-list')
   
   useEffect(() => {
     if(data){

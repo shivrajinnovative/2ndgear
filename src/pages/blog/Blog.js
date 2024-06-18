@@ -16,9 +16,9 @@ export default function Blog() {
       <Breadcrumb page="Blog" image={background} />
       <div className="container">
         {!slug && (
-          <div className="d-flex justify-content-between">
+          <div className="d-flex justify-content-between align-items-center">
             <h1 className="pt-5 fw-400">Read our Blog</h1>
-            <select name="" id="" className="my-4 px-5">
+            <select className="py-2 px-4">
               <option>Sort By</option>
               <option>New</option>
               <option>Old</option>
@@ -26,10 +26,10 @@ export default function Blog() {
           </div>
         )}
         <div className="row py-3">
-          <div className="col-lg-7 bg-white py-2  ">
+          <div className="col-xl-7 bg-white py-2  ">
             {slug ? <SingleBlog slug={slug} /> : <BlogList />}
           </div>
-          <div className="col-lg-5 px-md-5 bg-white">
+          <div className="col-xl-5 px-md-5 bg-white">
             <h3 className="fw-600 py-3">Recent Post </h3>
             <RecentBlog />
           </div>

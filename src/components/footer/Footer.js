@@ -73,33 +73,18 @@ export default function Footer() {
             </div>
           </div>
           <div className="col-md-6 col-lg-3 px-lg-4 mt-5">
-            <h5 className="poppins fw-700">Industrial Plants</h5>
-            <div>
-              <Link href="#" className="nav-link">
-                <img src={right} alt={right} className="mx-2" />
-                Concrete Batching Plant
-              </Link>
-            </div>
-            <div>
-              <Link href="#" className="nav-link">
-                <img src={right} alt={right} className="mx-2" />
-                Aggregate & Sand Plant
-              </Link>
-            </div>
-            <div>
-              <Link href="#" className="nav-link">
-                <img src={right} alt={right} className="mx-2" />
-                Block/Brick Making Plant
-              </Link>
-            </div>
-            <div>
-              <Link href="#" className="nav-link border-0">
-                <img src={right} alt={right} className="mx-2" />
-                Dry Mix Mortar Plant
-              </Link>
-            </div>
+            <Link to="Buy/industrial-plants" className="nav-link pb-3">
+              <h5 className="poppins fw-600">Industrial Plants</h5>
+            </Link>
+            <Link to="Buy/industrial-fleets" className="nav-link py-3">
+              <h5 className="poppins fw-600">Industrial Fleets</h5>
+            </Link>
+            <Link to="Buy/miscllaneous" className="nav-link py-3">
+              <h5 className="poppins fw-600">Miscllaneous</h5>
+            </Link>
+          
           </div>
-          <div className="col-md-6 col-lg-3 px-lg-4 px-md-0 mt-5">
+          <div className="col-md-6 col-lg-3 px-lg-3 px-md-0 mt-5">
             <h5 className="poppins fw-700">Reach Us</h5>
             <div className="d-flex align-items-start">
               <img className="m-2" src={location} alt={location} />

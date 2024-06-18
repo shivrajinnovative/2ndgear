@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import "./Navbar.css";
 import person from "./person.svg";
 import logo from "./../../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Sublist from "./components/Sublist";
 import { useDynamicQuery } from "../../utils/apiUtils";
 
 
 const Navbar = () => {
   const { data, error, isLoading } = useDynamicQuery(['navbar'],'get-all-main-sub-categories')
-
+  const navigate = useNavigate();
   useEffect(() => {
     const dropdowns = document.querySelectorAll(
       ".navbar-nav .dropdown, .navbar-nav .dropdown-submenu"
@@ -41,7 +41,10 @@ const Navbar = () => {
       });
     };
   });
-
+  const handleNavClick = (e, path) => {
+    e.preventDefault();
+    navigate(path);
+  };
 
   const DropDownlist = ({ heading, data }) => {
     return (
@@ -53,6 +56,8 @@ const Navbar = () => {
           role="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
+          onClick={(e) => handleNavClick(e, `/${heading.toLowerCase()}`)}
+
         >
           {heading}
         </Link>
@@ -72,14 +77,14 @@ const Navbar = () => {
                       ? "dropdown-item dropdown-toggle"
                       : "dropdown-item"
                   }
-                  to={item.equip_cat_name?`${heading}/${item.equip_cat_slug}`:`${heading.toLowerCase()}/${item.split(" ").join("-").toLowerCase()}`}
+                  to={item.equip_cat_name?`${heading.toLowerCase()}/${item.equip_cat_slug}`:`${heading.toLowerCase()}/${item.split(" ").join("-").toLowerCase()}`}
                   id={`about${index}Dropdown`}
                   role="button"
                   aria-expanded="false"
                 >
                   {item.equip_cat_name?item.equip_cat_name:item}
                 </Link>
-                <Sublist data={item.subcategories} parentPath={`${heading}/${item.equip_cat_slug}`} />
+                <Sublist data={item.subcategories} parentPath={`${heading.toLowerCase()}/${item.equip_cat_slug}`} />
               </li>
             );
           })}

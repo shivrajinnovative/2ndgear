@@ -28,7 +28,7 @@ export default function HowToBuy() {
       imageDark: verifyYourselfDark,
     },
     {
-      title: "Make Payment",
+      title: "Second gear will do the rest",
       image: makePayment,
       imageDark: makePaymentDark,
     },

@@ -17,7 +17,7 @@ export default function RegisterModal() {
   const [confirmError, setConfirmError] = useState("");
   const initialFormData = { name: "", mobile_no: "", email: "" ,address:"", state: "", city:"", pin_code:"", profile: "", message: "" };
 
-  const { data, isLoading } = useDynamicQuery(["state-list"], "get-states-list");
+  const { data, isLoading } = useDynamicQuery(["states"], "get-states-list");
   // const cookieValue = useCsrfToken();
   const { formData, handleChange, handleSubmit, loading, error:formError, submitted } = useFormSubmit(initialFormData);
 

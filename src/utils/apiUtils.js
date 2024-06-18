@@ -1,6 +1,5 @@
-
-import axios from 'axios';
-import { useQuery } from '@tanstack/react-query';
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 export const fetchData = async (url) => {
   try {
@@ -24,6 +23,8 @@ export const useDynamicQuery = (queryKey, apiEndpoint) => {
     queryKey,
     queryFn,
     retry: 3,
-    retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000),
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+    refetchOnMount: false, // Avoid refetching on component mount
+    refetchOnWindowFocus: false, // Avoid refetching on window focus
   });
 };

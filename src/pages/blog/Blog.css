@@ -6,3 +6,6 @@
 .blog .card{
     box-shadow: 0 0 15px -5px rgba(128, 128, 128, 0.676);
 }
+.bloglist img{
+    object-fit: cover;
+}

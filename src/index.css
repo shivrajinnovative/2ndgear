@@ -76,3 +76,9 @@ a{
 form span{
     color: red;
 }
+.agentForm input,.agentForm textarea,.agentForm select{
+    width: 100%;
+    margin: 10px 0;
+    padding: 5px 10px;
+    border: 1px solid #D1D1D1    ;
+}

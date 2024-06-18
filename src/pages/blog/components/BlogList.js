@@ -17,7 +17,7 @@ export default function BlogList() {
   }, [data]);
 
   return (
-    <div className="row">
+    <div className="row bloglist">
       {blogs?.map((blogDetails, index) => {
         return (
           <div className="col-lg-6 my-3" key={index}>

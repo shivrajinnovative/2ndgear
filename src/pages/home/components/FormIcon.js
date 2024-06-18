@@ -11,7 +11,7 @@ export default function FormIcon() {
       {click && (
         <div className="col-3 bg-white rounded-3 overflow-hidden floatingForm">
           <h4 className="bg-primary text-white px-4 d-flex justify-content-around py-3">
-            Register As Agent Form
+            Register As Agent
             <i
               className="bi bi-x"
               onClick={() => setClick(!click)}
