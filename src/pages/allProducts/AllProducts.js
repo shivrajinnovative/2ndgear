@@ -6,19 +6,20 @@ import { useDynamicQuery } from "../../utils/apiUtils";
 import SideBar from "./component/SideBar";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addAllProducts } from "../../store/slices/productSlice";
+import { setApiData } from "../../store/slices/equipmentSlice";
 
 export default function AllProducts({type}) {
   const {category, subcategory } = useParams();
   const [totalProducts,setTotalProducts]=useState(null)
   const dispatch=useDispatch()
+  
   const {data,error,isLoading}=useDynamicQuery(['get-equip-list'],'get-equip-list')
-  const productData=useSelector((state)=>state.products.filteredData)
+  const productData=useSelector((state)=>state.equipments.filteredData)
   
   
   useEffect(()=>{
     if(data){
-      dispatch(addAllProducts(data.productList))
+      dispatch(setApiData(data.productList))
       setTotalProducts(data.productList.length)
     }
   },[data,dispatch])
@@ -36,7 +37,7 @@ export default function AllProducts({type}) {
 
         <div className="row">
           <div className="col-lg-3">
-            <SideBar />
+            <SideBar category={category}  subcategory={subcategory} />
           </div>
           <div className="col-lg-9">
             <div className="howWorks col-md-5 mx-auto my-5 m-lg-0 text-center py-4 text-white">

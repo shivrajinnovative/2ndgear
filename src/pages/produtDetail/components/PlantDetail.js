@@ -85,20 +85,25 @@ export default function PlantDetail() {
   return (
     <div className="plantDetail poppins table-responsive">
       <table className="table">
+      <thead>
+
         <tr className="border-bottom">
           {firstRow.map((data, index) => {
             return (
-              <td>
+              <td key={index}>
                 <p className="fw-400">{data.title}</p>
                 <p className="fw-500">{data.value}</p>
               </td>
             );
           })}
         </tr>
+          </thead>
+          <tbody>
+
         <tr className="border-bottom">
           {secondRow.map((data, index) => {
             return (
-              <td>
+              <td  key={index}>
                 <p className="fw-400">{data.title}</p>
                 <p className="fw-500">{data.value}</p>
               </td>
@@ -108,7 +113,7 @@ export default function PlantDetail() {
         <tr className="border-bottom">
           {thirdRow.map((data, index) => {
             return (
-              <td>
+              <td key={index}>
                 <p className="fw-400">{data.title}</p>
                 <p className="fw-500">{data.value}</p>
               </td>
@@ -126,6 +131,7 @@ export default function PlantDetail() {
             <p className="fw-500">Rent</p>
           </td>
         </tr>
+          </tbody>
       </table>
     </div>
   );

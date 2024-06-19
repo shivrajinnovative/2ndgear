@@ -5,8 +5,7 @@ const initialState = {
   filteredData: [],
   statesForFilter: [],
   priceForFilter: [],
-  yearForFilter: [],
-  statesForFilter:[]
+  yearForFilter: []
 };
 
 const equipmentSlice = createSlice({
@@ -36,8 +35,8 @@ const equipmentSlice = createSlice({
       const { priceForFilter, yearForFilter ,statesForFilter } = state;
       const [low, high] = priceForFilter;
       state.filteredData = state.apiData.filter((product) => {
-        const matchPrice =
-          product.indequip_price >= low && product.indequip_price <= high;
+        const matchPrice =priceForFilter.length>0?
+          product.indequip_price >= low && product.indequip_price <= high :true;
         const matchYear =
           yearForFilter.length > 0
             ? yearForFilter.includes(Number(product.indequip_yom))
@@ -48,6 +47,6 @@ const equipmentSlice = createSlice({
     },
   },
 });
-export const { setApiData, resetFilter, setYearForFilter, setPriceForFilter } =
+export const { setApiData, resetFilter, setYearForFilter, setPriceForFilter,setStateForFilter } =
   equipmentSlice.actions;
 export default equipmentSlice.reducer;

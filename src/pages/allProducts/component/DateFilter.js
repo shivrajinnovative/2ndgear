@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDynamicQuery } from "../../../utils/apiUtils";
-import { filterByYear } from "../../../store/slices/productSlice";
 import { useDispatch } from "react-redux";
+import { setYearForFilter } from "../../../store/slices/equipmentSlice";
 
 export default function DateFilter() {
   const [years, setYears] = useState([]);
@@ -33,7 +33,7 @@ export default function DateFilter() {
     }
 };
 useEffect(() => {
-    dispatch(filterByYear(selectedYears));
+    dispatch(setYearForFilter(selectedYears));
   }, [selectedYears, dispatch]);
 
    

@@ -48,7 +48,7 @@ const Navbar = () => {
 
   const DropDownlist = ({ heading, data }) => {
     return (
-      <li className="nav-item dropdown">
+      <li className="nav-item dropdown text-capitalize">
         <Link
           className="nav-link dropdown-toggle"
           to={`/${heading.toLowerCase()}`}

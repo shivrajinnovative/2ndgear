@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+axios.defaults.withCredentials = true;
 
 export const fetchData = async (url) => {
   try {

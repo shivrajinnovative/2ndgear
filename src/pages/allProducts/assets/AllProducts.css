@@ -25,3 +25,6 @@ text-decoration: none;
 .productsListing button{
     font-size: 25px;
 }
+.filterGray *{
+background-color: rgba(223, 220, 220, 0.648);
+}

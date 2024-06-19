@@ -80,13 +80,13 @@ export default function RelatedEquipments() {
         <Slider {...settings}>
           {products.map((product, index) => {
             return (
-              <div className="p-3">
+              <div className="p-3" key={index}>
                 <div className="card p-3 rounded-5">
                   <img src={dummy} alt={dummy} />
                   <h5 className="poppins fw-500 mt-3">Cp 30 Batching Plant</h5>
                   <div
                     className="d-flex justify-content-between py-1"
-                    style={{ "font-size": "17px" }}
+                    style={{ "fontSize": "17px" }}
                   >
                     <span>Cp 30</span>
                     <span>2012</span>

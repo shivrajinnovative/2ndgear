@@ -73,13 +73,13 @@ export default function Footer() {
             </div>
           </div>
           <div className="col-md-6 col-lg-3 px-lg-4 mt-5">
-            <Link to="Buy/industrial-plants" className="nav-link pb-3">
+            <Link to="buy/industrial-plants" className="nav-link pb-3">
               <h5 className="poppins fw-600">Industrial Plants</h5>
             </Link>
-            <Link to="Buy/industrial-fleets" className="nav-link py-3">
+            <Link to="buy/industrial-fleets" className="nav-link py-3">
               <h5 className="poppins fw-600">Industrial Fleets</h5>
             </Link>
-            <Link to="Buy/miscllaneous" className="nav-link py-3">
+            <Link to="buy/miscllaneous" className="nav-link py-3">
               <h5 className="poppins fw-600">Miscllaneous</h5>
             </Link>
           

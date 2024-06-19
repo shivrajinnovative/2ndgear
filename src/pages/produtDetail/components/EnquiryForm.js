@@ -1,42 +1,42 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useFormSubmit } from "../../../utils/useFormSubmit";
+import { useDynamicQuery } from "../../../utils/apiUtils";
+import { useCsrfToken } from "../../../utils/useCsrfToken";
 
-export default function EnquiryForm() {
-  const [formData, setFormData] = useState({
+export default function EnquiryForm({ hashed }) {
+  const [states, setStates] = useState([]);
+  const cookieValue = useCsrfToken();
+
+  const initialFormData = {
     name: "",
     mobile_no: "",
     email: "",
     state: "",
     buy_or_rent: "buy",
     message: "",
-    for:'admin'
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    for: "admin",
+    equipment: hashed,
   };
+  const { formData, handleChange, handleSubmit, loading, error, submitted } =
+    useFormSubmit(initialFormData);
+    const { data, isLoading } = useDynamicQuery(['states'],'get-states-list')
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-    //   const response = await axios.post("", formData);
-      console.log("Form submitted successfully:",formData);
-    } catch (error) {
-      console.error("Error submitting form:", error);
-    }
-  };
-
+    useEffect(() => {
+      if(data){
+        setStates(data.statesData)
+      }
+    }, [data]);
+  
   return (
     <div className="card m-2 py-3 px-4 rounded enquiryForm">
-        <h3 className="poppins fw-500 text-center text-primary">
-          Make An Enquiry
-        </h3>
+      <h3 className="poppins fw-500 text-center text-primary">
+        Make An Enquiry
+      </h3>
+        <p className="d-none">{cookieValue}</p>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => handleSubmit(e, cookieValue, 'submit-equip-enquiry-form')} >
+      {error && <span className="border-0 center">Error in form submission. Please try again later.</span>}
+
         <input
           type="text"
           name="name"
@@ -60,19 +60,27 @@ export default function EnquiryForm() {
           placeholder="Email"
           value={formData.email}
           onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="state"
+        />  
+        <select
+        name="state"
+        value={formData.state}
+        onChange={handleChange}
+        required
           className="w-100 my-2 p-2"
-          placeholder="State"
-          value={formData.state}
-          onChange={handleChange}
-        />
+      >
+        <option value="" disabled>- Select State -</option> 
+        {states?.map((city, index) => {
+          return (
+            <option value={city.hashed} key={index}>
+              {city.name}
+            </option>
+          );
+        })}
+      </select>
         <select
           name="buy_or_rent"
           className="w-100 my-2 p-2"
-          value={formData.buyRent}
+          value={formData.buy_or_rent}
           onChange={handleChange}
         >
           <option value="buy">Buy</option>
@@ -90,7 +98,11 @@ export default function EnquiryForm() {
           className="btn bg-primary rounded-pill text-white p-2 px-4 mt-3"
           type="submit"
         >
-          Get Seller Details
+        {loading && <div>Sending...</div>}
+        {!loading && error && "Try Again"}
+        {!loading && !error && submitted && "Submitted"}
+        {!loading && !error && !submitted && "Get Seller Details"}
+          
         </button>
       </form>
     </div>

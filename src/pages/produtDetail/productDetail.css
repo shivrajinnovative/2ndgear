@@ -1,6 +1,11 @@
 .produtDetail p{
    font-size: 13px !important; 
 }
+.produtDetail .slider img{
+    object-fit:cover;
+    height: 80px;
+    width: 100px;
+}
 .produtDetail .slick-next,.produtDetail .slick-prev{
     height: 20px !important;
     width: 20px !important;
@@ -60,4 +65,47 @@
     height: 8px;
     border-radius: 10px 10px 0 0;
     background-color: #2E296C 
+}
+.slick-next,
+.slick-prev {
+  color: #100c5a !important;
+  font-size: 16px !important;
+  height: 25px !important;
+  width: 25px !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center !important;
+  border: 1px solid #dcdcdc !important;
+}
+
+.slick-next:hover,
+.slick-prev:hover {
+  border: 1px solid #100c5a !important;
+}
+
+.custom-arrow:hover {
+  color: #100c5a !important;
+}
+
+.custom-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  color: #dcdcdc !important;
+  border-radius: 50%;
+}
+
+.slick-prev {
+  left: -39px !important;
+}
+
+.custom-next-arrow {
+  right: -35px !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  display: none;
+  background-color: #100c5a !important;
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDynamicQuery } from '../../../utils/apiUtils';
 import { Slider } from 'antd';
 import { useDispatch } from 'react-redux';
-import { filterByPrice } from '../../../store/slices/productSlice';
+import { setPriceForFilter } from '../../../store/slices/equipmentSlice';
 
 export default function PriceRange() {
   const [priceRange, setPriceRange] = useState([0, 100]);
@@ -27,13 +27,13 @@ export default function PriceRange() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(filterByPrice(priceRange));
+    dispatch(setPriceForFilter(priceRange));
   };
 
   const clearPriceFilter = (e) => {
     e.preventDefault();
-    setPriceRange([minPrice, maxPrice]); // Reset price range to min and max
-    dispatch(filterByPrice([minPrice, maxPrice])); // Dispatch action to reset filter
+    setPriceRange([minPrice, maxPrice]); 
+    dispatch(setPriceForFilter([minPrice, maxPrice])); 
   };
 
   if (isLoading) {

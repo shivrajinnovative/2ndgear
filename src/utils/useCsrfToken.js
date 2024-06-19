@@ -13,8 +13,8 @@ export const useCsrfToken = () => {
       try {
         const response = await axios.get("https://2gear.in/staging/sanctum/csrf-cookie", { withCredentials: true });
         if (response.status === 204) {
-          const ckk = Cookies.get("XSRF-TOKEN");
-          setCookieValue(ckk);
+          const token = Cookies.get("XSRF-TOKEN");
+          setCookieValue(token);
         } else {
           console.error("Failed to fetch XSRF token.");
         }

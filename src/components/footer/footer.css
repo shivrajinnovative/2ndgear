@@ -4,3 +4,26 @@ footer{
   background-size: 50% 100%;
   
 }
+footer h5 {
+  font-size: 23px;
+}
+
+footer .nav-link {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 39px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.577);
+}
+
+footer div:last-child() {
+  border-bottom: none !important;
+}
+
+footer p {
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}

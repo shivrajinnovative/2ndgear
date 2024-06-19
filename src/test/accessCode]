@@ -1,0 +1,10 @@
+# NOTE: This configuration is for handling client-side routing for the React project.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /react/
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /react/index.html [L]
+</IfModule>
+# NOTE: This configuration is for handling client-side routing for the React project.
