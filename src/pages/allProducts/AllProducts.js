@@ -6,7 +6,7 @@ import { useDynamicQuery } from "../../utils/apiUtils";
 import SideBar from "./component/SideBar";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setApiData } from "../../store/slices/equipmentSlice";
+import { setApiData, setCategoryForFilter } from "../../store/slices/equipmentSlice";
 
 export default function AllProducts({type}) {
   const {category, subcategory } = useParams();
@@ -20,14 +20,30 @@ export default function AllProducts({type}) {
   useEffect(()=>{
     if(data){
       dispatch(setApiData(data.productList))
-      setTotalProducts(data.productList.length)
+      setTotalProducts(data.productList && data.productList.length)
     }
   },[data,dispatch])
+  
+  
+  useEffect(()=>{
+    if(category){
+      dispatch(setCategoryForFilter([category]))
+    }
+  },[category,dispatch])
   
   
   if (type !== 'buy' && type !== 'rent') {
     return <Navigate to="/" />;
   }
+  
+  if(!productData || productData.length===0){
+   return <>
+   <div className="container pt-5 mt-5">
+   <h1>Products not found...</h1>
+   </div>
+   </>
+  }
+
   return (
     <section className="bg-secondary pt-5 mt-5">
       <div className="container pt-3 ">

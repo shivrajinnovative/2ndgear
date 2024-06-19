@@ -5,7 +5,9 @@ const initialState = {
   filteredData: [],
   statesForFilter: [],
   priceForFilter: [],
-  yearForFilter: []
+  yearForFilter: [],
+  categoryForFilter:[],
+  subCategoryForFilter:[]
 };
 
 const equipmentSlice = createSlice({
@@ -31,8 +33,12 @@ const equipmentSlice = createSlice({
         state.statesForFilter=action.payload 
         equipmentSlice.caseReducers.applyFilter(state);
     },
+    setCategoryForFilter:(state,action)=>{
+        state.categoryForFilter=action.payload 
+        equipmentSlice.caseReducers.applyFilter(state); 
+    },
     applyFilter: (state) => {
-      const { priceForFilter, yearForFilter ,statesForFilter } = state;
+      const { priceForFilter, yearForFilter ,statesForFilter,categoryForFilter } = state;
       const [low, high] = priceForFilter;
       state.filteredData = state.apiData.filter((product) => {
         const matchPrice =priceForFilter.length>0?
@@ -42,11 +48,13 @@ const equipmentSlice = createSlice({
             ? yearForFilter.includes(Number(product.indequip_yom))
             : true;
         const matchState=statesForFilter.length>0?statesForFilter.includes(product.currentState):true
-        return matchPrice && matchYear && matchState;
+        
+        const matchCategory=categoryForFilter.length>0?categoryForFilter.includes(product.equip_cat_slug):true
+        return matchPrice && matchYear && matchState && matchCategory;
       });   
     },
   },
 });
-export const { setApiData, resetFilter, setYearForFilter, setPriceForFilter,setStateForFilter } =
+export const { setApiData, resetFilter, setYearForFilter, setPriceForFilter,setStateForFilter,setCategoryForFilter } =
   equipmentSlice.actions;
 export default equipmentSlice.reducer;

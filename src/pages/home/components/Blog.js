@@ -73,7 +73,7 @@ export default function Blog() {
     nextArrow: <CustomNextArrow />,
   };
 
-  if (isLoading || error) return <></>;
+  if (isLoading || error || !data.blogsData) return <></>;
   return (
     <div className="bg-secondary blog">
       <div className="container py-5">
