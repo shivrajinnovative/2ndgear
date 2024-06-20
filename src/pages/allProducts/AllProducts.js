@@ -24,19 +24,17 @@ export default function AllProducts({type}) {
     }
   },[data,dispatch])
   
-  
   useEffect(()=>{
     if(category){
       dispatch(setCategoryForFilter([category]))
     }
   },[category,dispatch])
   
-  
   if (type !== 'buy' && type !== 'rent') {
     return <Navigate to="/" />;
   }
   
-  if(!productData || productData.length===0){
+  if(!productData){
    return <>
    <div className="container pt-5 mt-5">
    <h1>Products not found...</h1>

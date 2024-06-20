@@ -2,8 +2,7 @@
   "name": "myapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://2gear.in",
-  "proxy": "https://2gear.in",
+  "homepage": "https://2gear.in/react",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
     "@tanstack/react-query": "^5.45.1",

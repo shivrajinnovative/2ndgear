@@ -48,8 +48,8 @@ export default function Product({ equipGallery,indequip_brand }) {
             className="img-fluid"
           />
           <div className="d-flex justify-content-between poppins pt-3 ">
-            <h5 className="fw-400 text-primary m-0">{indequip_brand}</h5>
-            <span className="fw-500 text-danger">Price on Request</span>
+            <h5 className="fw-400 text-primary m-0 text-capitalize">{indequip_brand}</h5>
+            <span className="fw-500 text-danger"  data-bs-target="#loginModal" data-bs-toggle="modal" type='button'>Price on Request</span>
           </div>
           <p className="p-0">Concrete Batching Plant | Schwing Stetter</p>
           <div className="col-md-6">

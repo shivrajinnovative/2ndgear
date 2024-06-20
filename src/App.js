@@ -20,6 +20,7 @@ import Carrer from "./pages/carrer/Carrer";
 import Terms from "./pages/termsOfCondition/Terms";
 import Seller from "./pages/sell/Seller";
 import Blog from "./pages/blog/Blog";
+import NotFound from "./pages/NotFound";
 
 export default function App() {
   const queryClient = new QueryClient({
@@ -27,7 +28,6 @@ export default function App() {
       queries: {
         refetchOnMount: false, 
         refetchOnWindowFocus: false,
-        staleTime: 1000 * 60 * 5, // 5 minutes
       },
     },
   });
@@ -50,10 +50,11 @@ export default function App() {
             <Route path="/blog/:slug?" element={<Blog/>} />
             <Route path="/terms-and-condition" element={<Terms />} />
             <Route path="/aboutus" element={<AboutUs />} />
-            <Route path="/services/:service" element={<Service />} />
+            <Route path="/services/:service?" element={<Service />} />
             <Route path="/buyer-specific-requirement" element={<BuyerSpecific/>} />
             <Route path="/help" element={<Help/>} />
             <Route path="/career" element={<Carrer/>} />
+            <Route path="/*" element={<NotFound/>} />
         
           </Routes>
           <Footer />

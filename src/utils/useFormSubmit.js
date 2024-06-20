@@ -6,7 +6,7 @@ export const useFormSubmit = (initialData) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [submitted, setSubmitted] = useState(false);
-
+  const [responseData,setResponseData]=useState(null)
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -30,6 +30,7 @@ export const useFormSubmit = (initialData) => {
       } else {
         setError("An error occurred while submitting the form.");
       }
+      setResponseData(response.data)
       setLoading(false);
       setError(null);
     } catch (error) {
@@ -39,5 +40,5 @@ export const useFormSubmit = (initialData) => {
     }
   };
 
-  return { formData, handleChange, handleSubmit, loading, error, submitted };
+  return { formData, handleChange, handleSubmit, loading, error, submitted ,responseData};
 };

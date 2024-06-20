@@ -32,8 +32,6 @@ export default function EnquiryForm({ hashed }) {
       <h3 className="poppins fw-500 text-center text-primary">
         Make An Enquiry
       </h3>
-        <p className="d-none">{cookieValue}</p>
-
       <form onSubmit={(e) => handleSubmit(e, cookieValue, 'submit-equip-enquiry-form')} >
       {error && <span className="border-0 center">Error in form submission. Please try again later.</span>}
 

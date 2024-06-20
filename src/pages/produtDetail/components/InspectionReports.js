@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function InspectionReports({ equipReports }) {
   return (
     <div className="d-flex p-5">
-      {equipReports.length ? (
+      {equipReports.length>0 ? (
         equipReports.map((report, index) => {
           return (
             <Link className="px-2" to={report.report} key={index}>

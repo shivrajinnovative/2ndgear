@@ -5,11 +5,15 @@ import logo from "./../../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import Sublist from "./components/Sublist";
 import { useDynamicQuery } from "../../utils/apiUtils";
+import { useDispatch, useSelector } from "react-redux";
+import { setLogout } from "../../store/slices/authSlice";
 
 
 const Navbar = () => {
   const { data, error, isLoading } = useDynamicQuery(['navbar'],'get-all-main-sub-categories')
   const navigate = useNavigate();
+  const isLogin=useSelector((state)=>state.login)
+  const dispatch=useDispatch()
   useEffect(() => {
     const dropdowns = document.querySelectorAll(
       ".navbar-nav .dropdown, .navbar-nav .dropdown-submenu"
@@ -148,9 +152,16 @@ const Navbar = () => {
             
           </ul>
         </div>
-        <button  data-bs-target="#loginModal" data-bs-toggle="modal" className="btn bg-primary text-white p-2 px-4">
-        Log In / Sign Up
-        </button>
+
+        {
+          isLogin?
+          <button className="btn bg-yellow text-primary fw-600 p-2 px-4" onClick={()=>dispatch(setLogout())} >Logout</button>
+          :
+            <button  data-bs-target="#loginModal" data-bs-toggle="modal" className="btn bg-primary text-white p-2 px-4">
+            Log In / Sign Up
+            </button>
+         
+        }
       </div>
     </nav>
   );

@@ -11,6 +11,12 @@ import { useDynamicQuery } from "../../utils/apiUtils";
 export default function ProductDetail() {
   const { slug } = useParams();
   const [equipment, setEquipment] = useState([]);
+  const [equipDetails,setEquipDetails]=useState([])
+  const [equipGallery,setEquipGallery]=useState([])
+  const [equipReports,setEquipReports]=useState([])
+
+
+
   const { data, error, isLoading } = useDynamicQuery(
     [`equipment-detail-${slug}`],
     `get-equip-details/${slug}`
@@ -19,23 +25,26 @@ export default function ProductDetail() {
 
   useEffect(() => {
     if (data) {
-      setEquipment(data.productDetails);
+      setEquipment(data.otherEquipDetails);
+      setEquipDetails(data.equipDetails[0])
+      setEquipGallery(data.equipGallery)
+      setEquipReports(data.equipReports)
     }
   }, [data, slug]);
   return (
     <section className="bg-light pt-5 produtDetail">
-      {equipment.length > 0  && (
+      {equipment  && (
           <div className="container pt-5">
             <div className="row pt-5">
               <div className="col-lg-7">
                 <Product
-                  sub_equip_cat_name={equipment[0].sub_equip_cat_name}
-                  equipGallery={equipment[0].equipGallery}
-                  indequip_brand={equipment[0].indequip_brand}
+                  sub_equip_cat_name={equipment.sub_equip_cat_name}
+                  equipGallery={equipGallery}
+                  indequip_brand={equipment.indequip_brand}
                 />
               </div>
               <div className="col-lg-5">
-                <EnquiryForm hashed={equipment[0].hashed} />
+                <EnquiryForm hashed={equipment.hashed} />
               </div>
               <div className="my-5">
                 <div className="card rounded-4">
@@ -63,13 +72,13 @@ export default function ProductDetail() {
                       </span>
                     </div>
                   </div>
-                  {click ? (
-                    <PlantDetail />
+                   {click ? (
+                    <PlantDetail  equipment={equipDetails} />
                   ) : (
                     <InspectionReports
-                      equipReports={equipment[0].equipReports}
+                      equipReports={equipReports}
                     />
-                  )}
+                  )} 
                 </div>
               </div>
             </div>

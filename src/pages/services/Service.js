@@ -8,8 +8,10 @@ import { useParams } from 'react-router-dom'
 import background from './assets/background.png'
 
 export default function Service() {
-    const {service}=useParams()
-
+    let {service}=useParams()
+    if(!service){
+        service="inspection"
+    }
     return (
     <div className="pt-5 bg-secondary poppins">
         <Breadcrumb page={services[service].heading} image={background} />
