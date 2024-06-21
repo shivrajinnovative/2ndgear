@@ -9,7 +9,7 @@ export default function FormIcon() {
   return (
     <>
       {click && (
-        <div className="col-3 bg-white rounded-3 overflow-hidden floatingForm">
+        <div className="col-8 col-lg-3 bg-white rounded-3 overflow-hidden floatingForm">
           <h4 className="bg-primary text-white px-4 d-flex justify-content-around py-3">
             Register As Agent
             <i
@@ -19,7 +19,8 @@ export default function FormIcon() {
             ></i>
           </h4>
           <div className="px-5">
-            <AgentForm />
+          <AgentForm purpose="agentregistration" />
+
           </div>
         </div>
       )}

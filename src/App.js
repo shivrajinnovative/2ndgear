@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -21,6 +21,8 @@ import Terms from "./pages/termsOfCondition/Terms";
 import Seller from "./pages/sell/Seller";
 import Blog from "./pages/blog/Blog";
 import NotFound from "./pages/NotFound";
+import { useDispatch } from "react-redux";
+import { checkLogin } from "./store/slices/authSlice";
 
 export default function App() {
   const queryClient = new QueryClient({
@@ -31,8 +33,13 @@ export default function App() {
       },
     },
   });
+const dispatch=useDispatch()
+  useEffect(()=>{
+    dispatch(checkLogin())
+  },[])
 
   const baseUrl = process.env.REACT_APP_BASE_URL || "/";
+
   return (
     <div>
       <QueryClientProvider client={queryClient}>
@@ -54,7 +61,7 @@ export default function App() {
             <Route path="/buyer-specific-requirement" element={<BuyerSpecific/>} />
             <Route path="/help" element={<Help/>} />
             <Route path="/career" element={<Carrer/>} />
-            <Route path="/*" element={<NotFound/>} />
+            {/* <Route path="/*" element={<NotFound/>} /> */}
         
           </Routes>
           <Footer />

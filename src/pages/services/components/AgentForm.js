@@ -7,9 +7,9 @@ import { useDynamicQuery } from "../../../utils/apiUtils";
 
 axios.defaults.withCredentials = true;
 
-export default function AgentForm() {
+export default function AgentForm({purpose}) {
   const [states, setStates] = useState([]);
-  const initialFormData = { name: "", mobile_no: "", email: "", state: "", profile: "", message: "" };
+  const initialFormData = { name: "", mobile_no: "", email: "", state: "", profile: "", message: "",purpose };
   const cookieValue = useCsrfToken();
   const { formData, handleChange, handleSubmit, loading, error, submitted } = useFormSubmit(initialFormData);
 
@@ -21,7 +21,6 @@ export default function AgentForm() {
       setStates(data.statesData)
     }
   }, [data]);
-
   return (
     <form onSubmit={(e) => handleSubmit(e, cookieValue, 'submit-service-enquiry-form')} className="agentForm">
       {error && <div>Error in form submission. Please try again later.</div>}
@@ -58,7 +57,9 @@ export default function AgentForm() {
         required
       >
         <option value="" disabled>- Select State -</option> 
-        {states?.map((city, index) => {
+
+        {
+          states?.map((city, index) => {
           return (
             <option value={city.hashed} key={index}>
               {city.name}

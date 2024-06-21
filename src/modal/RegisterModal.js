@@ -1,25 +1,51 @@
 import React, { useEffect, useState, useRef } from "react";
 import signUp from "./assets/images/signUp.png";
 import { useDynamicQuery } from "./../utils/apiUtils";
-import { useCsrfToken } from "./../utils/useCsrfToken";
 import { useFormSubmit } from "./../utils/useFormSubmit";
- 
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setRegistrationTokens } from "../store/slices/registerSlice";
+
 export default function RegisterModal() {
   const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [youAreOptions, setYouAreOptions] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const [name,setName]=useState("")
+  const [mobile,setMobile]=useState("")
+  const [email,setEmail]=useState("")
+  const [address,setAddress]=useState("")
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
+  const [pincode,setPincode] = useState("");
   const [registeredAs, setRegisteredAs] = useState("");
-  const [youAreOptions, setYouAreOptions] = useState([]);
   const [youAre, setYouAre] = useState("");
   const [newPassword, setNewPassword] = useState("");
+
+  // aA1@3456
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [confirmError, setConfirmError] = useState("");
-  const initialFormData = { name: "", mobile_no: "", email: "" ,address:"", state: "", city:"", pin_code:"", profile: "", message: "" };
+  const dispatch=useDispatch()
+  const formData = {
+    name,
+    mobile_no: mobile,
+    email,
+    address,
+    state: selectedState,
+    city: selectedCity,
+    pincode,
+    registeras: registeredAs,
+    roledesc: youAre,
+    password: newPassword,
+    password_confirmation: confirmPassword
+  };
 
-  const { data, isLoading } = useDynamicQuery(["states"], "get-states-list");
-  // const cookieValue = useCsrfToken();
-  const { formData, handleChange, handleSubmit, loading, error:formError, submitted } = useFormSubmit(initialFormData);
+  const { data: statesData, isLoading: statesLoading } = useDynamicQuery(
+    ["states"],
+    "get-states-list"
+  );
 
   const buyerList = ["Looking For Myself", "Agent", "Corporate Buyer"];
   const sellerList = ["Asset Owner", "Agent", "Corporate Representative"];
@@ -27,10 +53,10 @@ export default function RegisterModal() {
   const registeredAsRef = useRef(null);
 
   useEffect(() => {
-    if (data) {
-      setStates(data.statesData);
+    if (statesData) {
+      setStates(statesData.statesData);
     }
-  }, [data]);
+  }, [statesData]);
 
   const validatePassword = (password) => {
     if (password.length < 8) {
@@ -65,8 +91,25 @@ export default function RegisterModal() {
     }
   };
 
-  const handleStateChange = (e) => {
-    setSelectedState(e.target.value); 
+  const handleStateChange = async (e) => {
+    const stateHash = e.target.value;
+    setSelectedState(stateHash);
+
+    try {
+      const {
+        data: citiesResponse
+      } = await axios.post(
+        `${process.env.REACT_APP_API_URL}/get-states-cities-list`,
+        { stateid: stateHash }
+      );
+      if (citiesResponse && citiesResponse.citiesData) {
+        setSelectedCity(""); 
+        console.log(citiesResponse.citiesData);
+        setCities(citiesResponse.citiesData);
+      }
+    } catch (error) {
+      console.error("Error fetching cities:", error);
+    }
   };
 
   const handleCityChange = (e) => {
@@ -77,24 +120,30 @@ export default function RegisterModal() {
     const value = e.target.value;
     setRegisteredAs(value);
     setYouAre("");
-    if (value === "buy") {
+    if (value === "buyer") {
       setYouAreOptions(buyerList);
-    } else if (value === "sell") {
+    } else if (value === "seller") {
       setYouAreOptions(sellerList);
     } else {
       setYouAreOptions([]);
     }
   };
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit =async (e) => {
     e.preventDefault();
-    handleSubmit(e).then(() => {
-        const modalTrigger = document.getElementById("mobileVerificationModalTrigger");
+    setLoading(true); 
+
+    const {data} = await axios.post(`${process.env.REACT_APP_API_URL}/user-registration`, formData);
+    if(data.flag==='1'){
+      setLoading(false);
+      dispatch(setRegistrationTokens({hashedtoken:data.hashedtoken,hashtoverify:data.htvo}))
+        const modalTrigger = document.getElementById(
+          "mobileVerificationModalTrigger"
+        );
         if (modalTrigger) {
           modalTrigger.click();
-        }
-      
-    });
-  };
+        }   
+    }
+};
   return (
     <div
       className="modal fade registerform"
@@ -112,32 +161,32 @@ export default function RegisterModal() {
               </div>
               <div className="col-lg-7 pt-lg-0 poppins">
                 <h4 className="mx-3">Sign Up</h4>
-                <form className="row mx-2"  onSubmit={handleFormSubmit} >
-                {formError && <div>Error in form submission. Please try again later.</div>}
-
+                <form className="row mx-2" onSubmit={handleFormSubmit}>
                   <div className="mb-3 col-lg-6">
                     <label htmlFor="name" className="form-label">
                       Name <span>*</span>
                     </label>
-                    <input type="text"  className="form-control" required />
+                    <input type="text" className="form-control" value={name} onChange={(e)=>setName(e.target.value)} required />
                   </div>
                   <div className="mb-3 col-lg-6">
                     <label htmlFor="mobileNumber" className="form-label">
                       Mobile Number <span>*</span>
                     </label>
-                    <input type="text" className="form-control" required />
+                    <input type="tel" 
+        pattern="[0-9]{10}"
+        title="Please enter a 10-digit mobile number" className="form-control"  value={mobile} onChange={(e)=>setMobile(e.target.value)}  required />
                   </div>
                   <div className="mb-3 col-lg-6">
                     <label htmlFor="email" className="form-label">
                       Email
                     </label>
-                    <input type="email" className="form-control" />
+                    <input type="email" className="form-control"  value={email} onChange={(e)=>setEmail(e.target.value)} />
                   </div>
                   <div className="mb-3 col-lg-6">
                     <label htmlFor="address" className="form-label">
                       Address
                     </label>
-                    <input type="text" className="form-control" />
+                    <input type="text" className="form-control"  value={address} onChange={(e)=>setAddress(e.target.value)}  />
                   </div>
                   <div className="mb-3 col-lg-6">
                     <label htmlFor="state" className="form-label">
@@ -154,7 +203,11 @@ export default function RegisterModal() {
                         - Select State -
                       </option>
                       {states?.map((state, index) => (
-                        <option value={state.hashed} key={index}>
+                        <option
+                          value={state.hashed}
+                          key={index}
+                          onChange={handleCityChange}
+                        >
                           {state.name}
                         </option>
                       ))}
@@ -174,9 +227,9 @@ export default function RegisterModal() {
                       <option value="" disabled>
                         - Select City -
                       </option>
-                      {states?.map((city, index) => (
+                      {cities?.map((city, index) => (
                         <option value={city.hashed} key={index}>
-                          {city.name}
+                          {city.city}
                         </option>
                       ))}
                     </select>
@@ -185,7 +238,7 @@ export default function RegisterModal() {
                     <label htmlFor="pinCode" className="form-label">
                       Pin Code
                     </label>
-                    <input type="number" className="form-control" />
+                    <input type="number" className="form-control"  value={pincode} onChange={(e)=>setPincode(e.target.value)}  />
                   </div>
                   <div className="mb-3 col-lg-6">
                     <label htmlFor="registeredAs" className="form-label">
@@ -203,8 +256,8 @@ export default function RegisterModal() {
                       <option value="" disabled>
                         - Select Option -
                       </option>
-                      <option value="buy">Buy</option>
-                      <option value="sell">Sell</option>
+                      <option value="buyer">Buyer</option>
+                      <option value="seller">Seller</option>
                     </select>
                   </div>
                   <div className="mb-3 col-lg-12">
@@ -256,20 +309,25 @@ export default function RegisterModal() {
                       onChange={handleConfirmPasswordChange}
                       required
                     />
-                    {confirmError && <small className="text-danger">{confirmError}</small>}
+                    {confirmError && (
+                      <small className="text-danger">{confirmError}</small>
+                    )}
                   </div>
-                  <button type="submit" className="btn text-white d-block col-5 mx-4 bg-primary">
-                    Submit
+                  <button
+                    type="submit"
+                    className="btn text-white d-block col-5 mx-4 bg-primary"
+                  >
+                    {loading?"Wait...":"Submit"}
                   </button>
                   <button
-                  id="mobileVerificationModalTrigger"
-                  type="button"
-                  className="d-none"
-                  data-bs-toggle="modal"
-                  data-bs-target="#mobileVerificationModal"
-                >
-                  Trigger Modal
-                </button>
+                    id="mobileVerificationModalTrigger"
+                    type="button"
+                    className="d-none"
+                    data-bs-toggle="modal"
+                    data-bs-target="#mobileVerificationModal"
+                  >
+                    Trigger Modal
+                  </button>
                 </form>
               </div>
             </div>

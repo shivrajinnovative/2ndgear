@@ -25,7 +25,9 @@ export const useDynamicQuery = (queryKey, apiEndpoint) => {
     queryFn,
     retry: 3,
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
-    refetchOnMount: false, // Avoid refetching on component mount
-    refetchOnWindowFocus: false, // Avoid refetching on window focus
+    refetchOnMount: false, 
+    refetchOnWindowFocus: false, 
+    staleTime: Infinity, 
+    cacheTime: Infinity, 
   });
 };

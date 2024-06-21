@@ -1,10 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import mobile from './assets/images/mobile.png';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
 export default function MobileVerificationModal() {
     const [otp, setOtp] = useState(new Array(6).fill(''));
+    const [error,setError]=useState("")
   const inputsRef = useRef([]);
-
+const tokens=useSelector((state)=>state.register)
   useEffect(() => {
     inputsRef.current = inputsRef.current.slice(0, otp.length);
   }, [otp]);
@@ -54,9 +58,22 @@ export default function MobileVerificationModal() {
   };
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-  
+    let OTP=otp.join("")
+    const {data} = await axios.post(`${process.env.REACT_APP_API_URL}/user-otp-verification`, {otp_code:OTP,...tokens});
+    if(data.flag==='1'){
+      setError("")
+      const modalTrigger = document.getElementById(
+        "loginTarget"
+      ); 
+       if (modalTrigger) {
+        modalTrigger.click();
+      }  
+    }
+    if(data.flag==='2'){
+      setError(data.emsg)
+    }
   };
 
   return (
@@ -74,6 +91,7 @@ export default function MobileVerificationModal() {
                   <h5 className='py-3'>Mobile Phone Verification</h5>
                   <p>Enter OTP</p>
                   <form className='my-3' onSubmit={handleSubmit}>
+                  <span className='d-block text-center'>{error}</span>
                     {otp.map((_, index) => (
                       <input
                         key={index}
@@ -96,7 +114,6 @@ export default function MobileVerificationModal() {
                       />
                     ))}
                     <button type="submit"   className='d-block mx-auto btn bg-primary text-white mt-3 px-5 '>Verify Account</button>
-                    <p className='mt-3'>Didn't Receive code? <span className='text-danger' type="button">  Resend</span></p>
                   </form>
                 
                 </div>
@@ -107,6 +124,14 @@ export default function MobileVerificationModal() {
           </div>
         </div>
       </div>
+      <button
+            data-bs-target="#loginModal"
+            data-bs-toggle="modal"
+            className="d-none"
+            id='loginTarget'
+          >
+           
+          </button>
     </div>
   );
 }

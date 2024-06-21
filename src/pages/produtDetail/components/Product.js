@@ -1,6 +1,8 @@
 import React from "react";
 import Slider from "react-slick";
 import './../productDetail.css'
+import { Skeleton } from "antd";
+import { useSelector } from "react-redux";
 const CustomPrevArrow = (props) => {
   const { className, onClick } = props;
   return (
@@ -24,7 +26,9 @@ const CustomNextArrow = (props) => {
     </div>
   );
 };
-export default function Product({ equipGallery,indequip_brand }) {
+export default function Product({ equipGallery,indequip_brand ,isLoading,price}) {
+  const isLogin = useSelector((state) => state.login);
+
   var settings = {
     infinite: true,
     speed: 1000,
@@ -36,8 +40,11 @@ export default function Product({ equipGallery,indequip_brand }) {
     cssEase: "linear",
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
-  };
+  }
+if(isLoading){
+  return <Skeleton.Image active={true}  style={{"height":"300px","width":"300px"}} className="justify-content-center d-flex" />
 
+}
   return (
     <div className="card m-2 p-3 ">
       {equipGallery && equipGallery.length > 0 && (
@@ -49,7 +56,12 @@ export default function Product({ equipGallery,indequip_brand }) {
           />
           <div className="d-flex justify-content-between poppins pt-3 ">
             <h5 className="fw-400 text-primary m-0 text-capitalize">{indequip_brand}</h5>
-            <span className="fw-500 text-danger"  data-bs-target="#loginModal" data-bs-toggle="modal" type='button'>Price on Request</span>
+            {
+              isLogin ? 
+              <span className="fw-700 text-primary">  Price : &#8377; {price}</span>
+              :
+              <span className="fw-500 text-danger"  data-bs-target="#loginModal" data-bs-toggle="modal" type='button'>Price on Request</span>
+            }
           </div>
           <p className="p-0">Concrete Batching Plant | Schwing Stetter</p>
           <div className="col-md-6">

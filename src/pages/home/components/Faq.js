@@ -5,25 +5,6 @@ const Faq = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const {data,error,isLoading}=useDynamicQuery(['faq'],'get-faq-list')
 
-  const faqData = [
-    {
-      question: "What Is Secondgear Rental Service?",
-      answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, fugiat, vel accusantium reprehenderit aspernatur commodi eligendi dolorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, fugiat, vel accusantium reprehenderit aspernatur commodi eligendi dolorem "
-    },
-    {
-      question: "Is Secondgear Available in my City?",
-      answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, fugiat, vel accusantium reprehenderit aspernatur commodi eligendi dolorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, fugiat, vel accusantium reprehenderit aspernatur commodi eligendi dolorem "
-    },
-    {
-      question: "How much does it Cost to Rent A Plants At Secondgear?",
-      answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, fugiat, vel accusantium reprehenderit aspernatur commodi eligendi dolorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, fugiat, vel accusantium reprehenderit aspernatur commodi eligendi dolorem "
-    },
-    {
-      question: "What are the Advantages of Availing Plants on Rent At Secondgear?",
-      answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, fugiat, vel accusantium reprehenderit aspernatur commodi eligendi dolorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, fugiat, vel accusantium reprehenderit aspernatur commodi eligendi dolorem "
-    }
-  ];
-
   const toggleFaq = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
@@ -37,7 +18,7 @@ const Faq = () => {
       <p className='text-center py-3 poppins fw-400'>Frequently Asked Questions</p>
       <div className="container px-sm-5">
         <div className="accordion" id="faqAccordion">
-          {data.faqsData?.map((faq, index) => (
+          {data && data.faqsData?.map((faq, index) => (
             <div className="card my-4" key={index}>
               <div className={`card-header ${openIndex === index ? 'bg-primary text-white' : ''}`} id={`heading${index}`}>
                 <h2 className="mb-0 poppins fw-400">

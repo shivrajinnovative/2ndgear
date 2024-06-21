@@ -6,10 +6,15 @@ import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "../store/slices/authSlice";
 
+// aA1@3456
+// aA1@3456
+// aA1@3456
+// aA1@3456
+
 export default function LoginModal() {
   const cookieValue = useCsrfToken();
-  const login=useSelector((state)=>state.auth)
-  const dispatch=useDispatch()
+  const login = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const initialFormData = {
     mobile_no: "",
     password: "",
@@ -27,12 +32,12 @@ export default function LoginModal() {
   } = useFormSubmit(initialFormData);
 
   useEffect(() => {
-    if (responseData && responseData.flag === '1') {
+    if (responseData && responseData.flag === "1") {
       dispatch(setLogin());
       localStorage.setItem("token", responseData.userData.token);
       localStorage.setItem("name", responseData.userData.name);
-      <Navigate to="/" />
-      document.getElementById("closeModalBtn").click()
+      <Navigate to="/" />;
+      document.getElementById("closeModalBtn").click();
     }
   }, [responseData]);
 
@@ -122,7 +127,14 @@ export default function LoginModal() {
                       {!loading && !error && !submitted && "Sign in"}
                       {!loading && !error && submitted && "Signed in"}
                     </button>
-                    <button type="button" className="d-none" id='closeModalBtn' data-bs-dismiss="modal">Close</button>
+                    <button
+                      type="button"
+                      className="d-none"
+                      id="closeModalBtn"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
 
                     <p className="text-center">
                       New to 2ndgear?

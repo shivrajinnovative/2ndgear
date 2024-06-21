@@ -11,10 +11,16 @@ const authSlice=createSlice({
             localStorage.removeItem("token")
             localStorage.removeItem("name")
             return state=false;
-           
+        },
+        checkLogin:(state)=>{
+            if(localStorage.getItem("token")){
+                return state=true;
+            }else{
+                return state=false
+            }
         }
     }
 })
 
-export const {setLogin,setLogout}=authSlice.actions
+export const {setLogin,setLogout,checkLogin}=authSlice.actions
 export default authSlice.reducer

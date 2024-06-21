@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import "./Navbar.css";
-import person from "./person.svg";
 import logo from "./../../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import Sublist from "./components/Sublist";
@@ -8,12 +7,14 @@ import { useDynamicQuery } from "../../utils/apiUtils";
 import { useDispatch, useSelector } from "react-redux";
 import { setLogout } from "../../store/slices/authSlice";
 
-
 const Navbar = () => {
-  const { data, error, isLoading } = useDynamicQuery(['navbar'],'get-all-main-sub-categories')
+  const { data, error, isLoading } = useDynamicQuery(
+    ["navbar"],
+    "get-all-main-sub-categories"
+  );
   const navigate = useNavigate();
-  const isLogin=useSelector((state)=>state.login)
-  const dispatch=useDispatch()
+  const isLogin = useSelector((state) => state.login);
+  const dispatch = useDispatch();
   useEffect(() => {
     const dropdowns = document.querySelectorAll(
       ".navbar-nav .dropdown, .navbar-nav .dropdown-submenu"
@@ -61,7 +62,6 @@ const Navbar = () => {
           data-bs-toggle="dropdown"
           aria-expanded="false"
           onClick={(e) => handleNavClick(e, `/${heading.toLowerCase()}`)}
-
         >
           {heading}
         </Link>
@@ -81,14 +81,24 @@ const Navbar = () => {
                       ? "dropdown-item dropdown-toggle"
                       : "dropdown-item"
                   }
-                  to={item.equip_cat_name?`${heading.toLowerCase()}/${item.equip_cat_slug}`:`${heading.toLowerCase()}/${item.split(" ").join("-").toLowerCase()}`}
+                  to={
+                    item.equip_cat_name
+                      ? `${heading.toLowerCase()}/${item.equip_cat_slug}`
+                      : `${heading.toLowerCase()}/${item
+                          .split(" ")
+                          .join("-")
+                          .toLowerCase()}`
+                  }
                   id={`about${index}Dropdown`}
                   role="button"
                   aria-expanded="false"
                 >
-                  {item.equip_cat_name?item.equip_cat_name:item}
+                  {item.equip_cat_name ? item.equip_cat_name : item}
                 </Link>
-                <Sublist data={item.subcategories} parentPath={`${heading.toLowerCase()}/${item.equip_cat_slug}`} />
+                <Sublist
+                  data={item.subcategories}
+                  parentPath={`${heading.toLowerCase()}/${item.equip_cat_slug}`}
+                />
               </li>
             );
           })}
@@ -127,12 +137,14 @@ const Navbar = () => {
             <DropDownlist heading="Buy" data={data} />
             <li className="nav-item ">
               <Link className="nav-link" to="/sell">
-              Sell
+                Sell
               </Link>
             </li>
             <DropDownlist heading="Rent" data={data} />
-            <DropDownlist heading="Services" data={[
-              "Inspection",
+            <DropDownlist
+              heading="Services"
+              data={[
+                "Inspection",
                 "Valuation",
                 "Legal",
                 "Dismantling",
@@ -141,27 +153,33 @@ const Navbar = () => {
                 "Operation and Maintenance",
                 "Asset Management",
                 "Erection and Commissioning",
-              ]} />
-         
+              ]}
+            />
 
             <li className="nav-item ">
               <Link className="nav-link" to="buyer-specific-requirement">
                 Buyer Specific Requirement
               </Link>
             </li>
-            
           </ul>
         </div>
 
-        {
-          isLogin?
-          <button className="btn bg-yellow text-primary fw-600 p-2 px-4" onClick={()=>dispatch(setLogout())} >Logout</button>
-          :
-            <button  data-bs-target="#loginModal" data-bs-toggle="modal" className="btn bg-primary text-white p-2 px-4">
+        {isLogin ? (
+          <button
+            className="btn bg-yellow text-primary fw-600 p-2 px-4"
+            onClick={() => dispatch(setLogout())}
+          >
+            Logout
+          </button>
+        ) : (
+          <button
+            data-bs-target="#loginModal"
+            data-bs-toggle="modal"
+            className="btn bg-primary text-white p-2 px-4"
+          >
             Log In / Sign Up
-            </button>
-         
-        }
+          </button>
+        )}
       </div>
     </nav>
   );

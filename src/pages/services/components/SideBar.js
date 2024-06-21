@@ -16,7 +16,7 @@ export default function SideBar({services,active}) {
         </div>
         <div className="card my-5 p-3 px-4">
             <h3 className='text-primary text-center '>Service Enquiry Form</h3>
-            <AgentForm/>
+            <AgentForm purpose="serviceenquiry" />
         </div>
     </div>
   )

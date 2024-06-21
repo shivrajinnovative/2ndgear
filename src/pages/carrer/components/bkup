@@ -1,0 +1,143 @@
+import React, { useEffect, useState } from 'react';
+import { useFormSubmit } from '../../../utils/useFormSubmit';
+import { useDynamicQuery } from '../../../utils/apiUtils';
+import { useCsrfToken } from '../../../utils/useCsrfToken';
+
+const CareerForm = () => {
+  // State and variables
+  const [states, setStates] = useState([]);
+  const cookieValue = useCsrfToken();
+
+  // Form data and submission handling
+  const initialFormData = {
+    first_name: "",
+    email_id: "",
+    mobile_no: "",
+    state: "",
+    resume: null, // for file upload
+  };
+
+  const { formData, handleChange, handleSubmit, loading, error, submitted ,responseData ,handleFileChange} =
+    useFormSubmit(initialFormData);
+
+  // Fetch states data
+  const { data, isLoading } = useDynamicQuery(['states'], 'get-states-list');
+ 
+  // Effect to update states list when data changes
+  useEffect(() => {
+    if (data) {
+      setStates(data.statesData);
+    }
+  }, [data]);
+  
+  useEffect(()=>{
+    if(responseData){
+      console.log(responseData)
+    }
+  },[responseData])
+
+  return (
+    <div style={{ backgroundColor: "#EEEDFF" }} className="py-5">
+      <form className="container px-lg-5" onSubmit={(e) => handleSubmit(e, cookieValue, 'submit-careers-enquiry-form')}>
+        <h3 className="text-center text-primary fw-600 headingEffect">
+          Get in Touch
+        </h3>
+        {error && <span className="border-0 center">Error in form submission. Please try again later.</span>}
+        <div className="row col-md-9 mx-auto">
+          {/* Name input */}
+          <div className="mb-3 col-md-6">
+            <label htmlFor="name" className="form-label">
+              Name
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              name="first_name"
+              placeholder="Your Name"
+              value={formData.first_name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          {/* Email input */}
+          <div className="mb-3 col-md-6">
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              name="email_id"
+              placeholder="Your Email"
+              value={formData.email_id}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          {/* Mobile input */}
+          <div className="mb-3 col-md-4">
+            <label htmlFor="mobile" className="form-label">
+              Mobile
+            </label>
+            <input
+              type="tel"
+              className="form-control"
+              id="mobile"
+              name="mobile_no"
+              placeholder="Your Mobile"
+              value={formData.mobile_no}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          {/* Location input */}
+          <div className="mb-3 col-md-4">
+            <label htmlFor="location" className="form-label">
+              Location
+            </label>
+            <select
+              className="form-control"
+              id="location"
+              name="state"
+              value={formData.state}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select State</option>
+              {states.map((state,index) => (
+                <option key={index} value={state.name}>
+                  {state.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          {/* Resume upload input */}
+          <div className="mb-3 col-md-4">
+            <label htmlFor="resume" className="form-label">
+              Upload Resume
+            </label>
+            <input
+              type="file"
+              className="form-control"
+              id="resume"
+              name="resume"
+              accept=".pdf,.doc,.docx"
+              onChange={handleFileChange}
+            />
+          </div>
+        </div>
+        {/* Submit button */}
+        <button
+          type="submit"
+          className="btn bg-primary mt-4 px-5 mx-auto d-block text-white"
+        >
+          {loading ? 'Submitting...' : 'Submit'}
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default CareerForm;

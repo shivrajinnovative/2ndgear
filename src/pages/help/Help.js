@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
 import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
 import background from "./../services/assets/background.png";
 import image1 from "./image1.png";
@@ -26,7 +25,7 @@ export default function Help() {
                 To request a quote or want to meet up for coffee. Contact us
                 directly or fill out the form and we will get back to you.
               </p>
-              <form onSubmit={(e) => handleSubmit(e, cookieValue,'submit-help-form')}>
+              <form onSubmit={(e) => handleSubmit(e, cookieValue,'submit-contactus-enquiry-form')}>
                 <div className="mb-3">
                   <label htmlFor="name" className="form-label">
                     Full Name <span>*</span>
@@ -50,7 +49,7 @@ export default function Help() {
                   <input
                     type="tel"
                     className="form-control"
-                    id="mobile_no"
+                    id="mobile_nohelp"
                     name="mobile_no"
                     placeholder="Mobile number"
                     pattern="[0-9]{10}"
@@ -67,7 +66,7 @@ export default function Help() {
                   <input
                     type="email"
                     className="form-control"
-                    id="email"
+                    id="emailhelp"
                     name="email"
                     placeholder="Email"
                     value={formData.email}

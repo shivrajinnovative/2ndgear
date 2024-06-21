@@ -2,11 +2,12 @@ import React from "react";
 import DateFilter from "./DateFilter";
 import PriceRange from "./PriceRange";
 import StateFilter from "./StateFilter";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { resetFilter } from "../../../store/slices/equipmentSlice";
 import { useDynamicQuery } from "../../../utils/apiUtils";
 
 const Accordion = ({ heading, children }) => {
+
   return (
     <div className="accordion-item text-capitalize">
       <h2 className="accordion-header">
@@ -33,6 +34,8 @@ const Accordion = ({ heading, children }) => {
 };
 
 export default function SideBar({ category, subcategory }) {
+  const isLogin = useSelector((state) => state.login);
+
   const dispatch = useDispatch();
   const { data, error, isLoading } = useDynamicQuery(
     ["navbar"],
@@ -81,9 +84,12 @@ export default function SideBar({ category, subcategory }) {
         <Accordion heading="Equipment YOM">
           <DateFilter />
         </Accordion>
+        {
+          isLogin &&
         <Accordion heading="Equipment Price">
           <PriceRange />
         </Accordion>
+        }
       </div>
     </form>
   );

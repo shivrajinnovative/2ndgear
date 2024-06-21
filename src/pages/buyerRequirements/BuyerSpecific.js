@@ -1,12 +1,10 @@
 import React from "react";
-import axios from "axios";
 import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
 import background from "./../services/assets/background.png";
 import image1 from "./image1.png";
 import './buyerSpecific.css';
 import { useCsrfToken } from "../../utils/useCsrfToken";
 import { useFormSubmit } from "../../utils/useFormSubmit";
-axios.defaults.withCredentials = true;
 
 export default function BuyerSpecific() {
   const initialFormData = {
@@ -19,6 +17,7 @@ export default function BuyerSpecific() {
   const cookieValue = useCsrfToken();
   const { formData, handleChange, handleSubmit, loading, error, submitted } = useFormSubmit(initialFormData);
 
+  
 
   return (
     <div className="pt-5 bg-secondary poppins buyerSpecific">
@@ -101,7 +100,7 @@ export default function BuyerSpecific() {
                   {!loading && !error && submitted && "Submitted"}
                 </button>
               </form>
-              {error && <div className="mt-3 text-danger">{error && 'Error in form submission. Please try again later.'}</div>}
+              {error && <div className="mt-3 text-danger">Error in form submission. Please try again later.</div>}
             </div>
           </div>
           <div className="col-lg-6 center">
