@@ -1,23 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
 import background from "./../services/assets/background.png";
 import image1 from "./image1.png";
 import './buyerSpecific.css';
 import { useCsrfToken } from "../../utils/useCsrfToken";
 import { useFormSubmit } from "../../utils/useFormSubmit";
+import { Bounce, toast } from "react-toastify";
 
 export default function BuyerSpecific() {
   const initialFormData = {
     name: "",
     mobile_no: "",
     email: "",
-    message: ""
+    requirement: ""
   };
 
   const cookieValue = useCsrfToken();
   const { formData, handleChange, handleSubmit, loading, error, submitted } = useFormSubmit(initialFormData);
 
   
+  useEffect(() => {
+    if(submitted){
+      toast.success('Form Submitted Successfully!', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
+    }
+  }, [submitted]);
 
   return (
     <div className="pt-5 bg-secondary poppins buyerSpecific">
@@ -83,10 +99,10 @@ export default function BuyerSpecific() {
                   </label>
                   <textarea
                     className="form-control"
-                    name="message"
+                    name="requirement"
                     rows="3"
                     placeholder="Enter your message"
-                    value={formData.message}
+                    value={formData.requirement}
                     onChange={handleChange}
                   ></textarea>
                 </div>

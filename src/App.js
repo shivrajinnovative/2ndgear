@@ -23,6 +23,7 @@ import Blog from "./pages/blog/Blog";
 import NotFound from "./pages/NotFound";
 import { useDispatch } from "react-redux";
 import { checkLogin } from "./store/slices/authSlice";
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
   const queryClient = new QueryClient({
@@ -45,11 +46,14 @@ const dispatch=useDispatch()
       <QueryClientProvider client={queryClient}>
         <BrowserRouter  basename={baseUrl} >
           <ScrollToTop />
+          <ToastContainer />
+
           <Navbar />
+
           <AuthModals/>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/buy/:category?/:subcategory?" element={<AllProducts type="buy" />} />
+            <Route path="/buy/:category?/:subcategory?" element={<AllProducts type="sell" />} />
             <Route path="/rent/:category?/:subcategory?" element={<AllProducts type="rent" />} />
             <Route path="/sell" element={<Seller />} />
             <Route path="/equipment-details/:slug" element={<ProductDetail />} />

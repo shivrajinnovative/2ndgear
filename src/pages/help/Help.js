@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
 import background from "./../services/assets/background.png";
@@ -6,6 +6,7 @@ import image1 from "./image1.png";
 import mapPin from "./../home/assets/icons/map-pin.svg";
 import { useCsrfToken } from "../../utils/useCsrfToken";
 import { useFormSubmit } from "../../utils/useFormSubmit";
+import { Bounce, toast } from "react-toastify";
 axios.defaults.withCredentials = true;
 
 export default function Help() {
@@ -13,6 +14,21 @@ export default function Help() {
   const cookieValue = useCsrfToken();
   const { formData, handleChange, handleSubmit, loading, error, submitted } = useFormSubmit(initialFormData);
 
+  useEffect(() => {
+    if(submitted){
+      toast.success('Form Submitted Successfully!', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
+    }
+  }, [submitted]);
   return (
     <div className="pt-5 bg-secondary poppins buyerSpecific">
       <Breadcrumb page="Help" image={background} />

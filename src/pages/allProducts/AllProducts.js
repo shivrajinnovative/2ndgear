@@ -4,14 +4,16 @@ import location from "../../assets/icons/location.svg";
 import refresh from "./assets/icons/refresh.svg";
 import { useDynamicQuery } from "../../utils/apiUtils";
 import SideBar from "./component/SideBar";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setApiData, setCategoryForFilter } from "../../store/slices/equipmentSlice";
+import { setApiData, setCategoryForFilter, setMainCategory } from "../../store/slices/equipmentSlice";
 
-export default function AllProducts({type}) {
+export default function AllProducts(props) {
   const {category, subcategory } = useParams();
   const [totalProducts,setTotalProducts]=useState(null)
   const dispatch=useDispatch()
+  const [type,setType]=useState(props.type)
+  const navigate = useNavigate();
   
   const {data,error,isLoading}=useDynamicQuery(['get-equip-list'],'get-equip-list')
   const productData=useSelector((state)=>state.equipments.filteredData)
@@ -21,18 +23,23 @@ export default function AllProducts({type}) {
     if(data){
       dispatch(setApiData(data.productList))
       setTotalProducts(data.productList && data.productList.length)
+      dispatch(setMainCategory(type))
     }
-  },[data,dispatch])
+  },[data])
   
   useEffect(()=>{
     if(category){
       dispatch(setCategoryForFilter([category]))
+    }else{
+      dispatch(setCategoryForFilter([]))
     }
   },[category,dispatch])
-  
-  if (type !== 'buy' && type !== 'rent') {
-    return <Navigate to="/" />;
-  }
+
+     useEffect(()=>{
+      if(productData && props.type){
+        dispatch(setMainCategory(props.type))
+      }
+     },[props.type])
   
   if(!productData){
    return <>

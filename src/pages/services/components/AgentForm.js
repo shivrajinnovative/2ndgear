@@ -4,12 +4,14 @@ import axios from "axios";
 import { useCsrfToken } from "../../../utils/useCsrfToken";
 import { useFormSubmit } from "../../../utils/useFormSubmit";
 import { useDynamicQuery } from "../../../utils/apiUtils";
+import { Bounce, toast } from "react-toastify";
 
 axios.defaults.withCredentials = true;
 
-export default function AgentForm({purpose}) {
+export default function AgentForm({purpose,active}) {
   const [states, setStates] = useState([]);
-  const initialFormData = { name: "", mobile_no: "", email: "", state: "", profile: "", message: "",purpose };
+  const [service,setService]=useState(active)
+  const initialFormData = { name: "", mobile_no: "", email: "", state: "", profile: service ? service : "", message: "",purpose };
   const cookieValue = useCsrfToken();
   const { formData, handleChange, handleSubmit, loading, error, submitted } = useFormSubmit(initialFormData);
 
@@ -21,6 +23,29 @@ export default function AgentForm({purpose}) {
       setStates(data.statesData)
     }
   }, [data]);
+
+  useEffect(() => {
+    if(active){
+      setService(active)
+    }
+  }, [active]);
+
+  useEffect(() => {
+    if(submitted){
+      toast.success('Form Submitted Successfully!', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
+    }
+  }, [submitted]);
+
   return (
     <form onSubmit={(e) => handleSubmit(e, cookieValue, 'submit-service-enquiry-form')} className="agentForm">
       {error && <div>Error in form submission. Please try again later.</div>}
@@ -67,14 +92,17 @@ export default function AgentForm({purpose}) {
           );
         })}
       </select>
+      {
+        purpose!=="serviceenquiry" &&
       <input
-        type="text"
-        name="profile"
-        placeholder="Profile"
-        value={formData.profile}
-        onChange={handleChange}
-        required
+      type="text"
+      name="profile"
+      placeholder="Profile"
+      value={formData.profile}
+      onChange={handleChange}
+      required
       />
+    }
       <textarea
         name="message"
         placeholder="Message"

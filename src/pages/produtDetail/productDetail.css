@@ -1,6 +1,10 @@
 .produtDetail p{
    font-size: 13px !important; 
 }
+.produtDetail .detailImage{
+  object-fit: cover;
+  height: 400px;
+}
 .produtDetail .slider img{
     object-fit:cover;
     height: 80px;

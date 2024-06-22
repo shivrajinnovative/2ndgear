@@ -10,7 +10,6 @@ export const fetchPostData = async (url, postData) => {
     if (response.status !== 200) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    console.log(response.data)
     return response.data;
   } catch (error) {
     throw new Error(`Error fetching data: ${error.message}`);
@@ -20,11 +19,8 @@ export const fetchPostData = async (url, postData) => {
 // Custom hook for handling dynamic POST queries
 export const useDynamicPostQuery = () => {
   const executeQuery = async (apiEndpoint, postData) => {
-    console.log(process.env.REACT_APP_API_URL)
-    console.log(apiEndpoint)
-    console.log(postData)
+   
     const apiUrl = `${process.env.REACT_APP_API_URL}/${apiEndpoint} `;
-    console.log(apiUrl)
     return await fetchPostData(apiUrl, postData);
   };
   return useQuery({

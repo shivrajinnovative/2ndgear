@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useFormSubmit } from "../../../utils/useFormSubmit";
 import { useDynamicQuery } from "../../../utils/apiUtils";
 import { useCsrfToken } from "../../../utils/useCsrfToken";
+import { Bounce, toast } from "react-toastify";
 
 export default function EnquiryForm({ hashed ,sentEnquiryTo}) {
   const [states, setStates] = useState([]);
@@ -34,11 +35,23 @@ export default function EnquiryForm({ hashed ,sentEnquiryTo}) {
         equipment: hashed,
       }));
     }, [hashed, sentEnquiryTo, setFormData]);
-  useEffect(()=>{
-    if(responseData){
-      console.log(responseData)
-    }
-  },[responseData])
+ 
+    useEffect(() => {
+      if(submitted){
+        toast.success('Form Submitted Successfully!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
+      }
+    }, [submitted]);
+ 
   return (
     <div className="card m-2 py-3 px-4 rounded enquiryForm">
       <h3 className="poppins fw-500 text-center text-primary">

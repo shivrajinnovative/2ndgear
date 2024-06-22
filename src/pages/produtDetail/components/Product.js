@@ -52,7 +52,7 @@ if(isLoading){
           <img
             src={equipGallery[0].imgOrVid}
             alt={equipGallery[0].imgOrVid}
-            className="img-fluid"
+            className="detailImage"
           />
           <div className="d-flex justify-content-between poppins pt-3 ">
             <h5 className="fw-400 text-primary m-0 text-capitalize">{indequip_brand}</h5>

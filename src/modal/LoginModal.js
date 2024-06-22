@@ -5,11 +5,13 @@ import { useCsrfToken } from "../utils/useCsrfToken";
 import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "../store/slices/authSlice";
+import { Bounce, toast } from "react-toastify";
 
 // aA1@3456
 // aA1@3456
 // aA1@3456
 // aA1@3456
+// 12345678aA!
 
 export default function LoginModal() {
   const cookieValue = useCsrfToken();
@@ -33,6 +35,17 @@ export default function LoginModal() {
 
   useEffect(() => {
     if (responseData && responseData.flag === "1") {
+      toast.success('Login Successfully!', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
       dispatch(setLogin());
       localStorage.setItem("token", responseData.userData.token);
       localStorage.setItem("name", responseData.userData.name);
@@ -110,7 +123,7 @@ export default function LoginModal() {
                     <p className="text-end">
                       <span
                         className="text-primary"
-                        data-bs-target="#forgotPasswordModal"
+                        data-bs-target="#enterMobileNumber"
                         data-bs-toggle="modal"
                         role="button"
                       >

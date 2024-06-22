@@ -104,7 +104,6 @@ export default function RegisterModal() {
       );
       if (citiesResponse && citiesResponse.citiesData) {
         setSelectedCity(""); 
-        console.log(citiesResponse.citiesData);
         setCities(citiesResponse.citiesData);
       }
     } catch (error) {

@@ -6,6 +6,7 @@ import Sublist from "./components/Sublist";
 import { useDynamicQuery } from "../../utils/apiUtils";
 import { useDispatch, useSelector } from "react-redux";
 import { setLogout } from "../../store/slices/authSlice";
+import { Bounce, toast } from "react-toastify";
 
 const Navbar = () => {
   const { data, error, isLoading } = useDynamicQuery(
@@ -50,6 +51,21 @@ const Navbar = () => {
     e.preventDefault();
     navigate(path);
   };
+
+  const handelLogout=()=>{
+    dispatch(setLogout())
+    toast.success('Logout Successfully!', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+      });
+  }
 
   const DropDownlist = ({ heading, data }) => {
     return (
@@ -167,7 +183,8 @@ const Navbar = () => {
         {isLogin ? (
           <button
             className="btn bg-yellow text-primary fw-600 p-2 px-4"
-            onClick={() => dispatch(setLogout())}
+            
+            onClick={() => handelLogout()}
           >
             Logout
           </button>

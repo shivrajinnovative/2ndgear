@@ -89,7 +89,7 @@ export default function Footer() {
             <div className="d-flex align-items-start">
               <img className="m-2" src={location} alt={location} />
               <p>
-              G4, Aakansha chs, Prashant Nagar, Behind Naupada police station, Near Teen Hath Naka, Thane(W)- 400 602
+              G4, Aakansha chs, Prashant Nagar, Behind Naupada police station, Near Teen Hath Naka, Thane(W) Maharashtra, India - 400 602
               </p>
             </div>
             <div className="d-flex align-items-start">

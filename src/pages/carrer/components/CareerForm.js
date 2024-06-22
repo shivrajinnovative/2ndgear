@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Bounce, toast } from 'react-toastify';
 
 const CareerForm = () => {
   // State
@@ -91,6 +92,19 @@ const CareerForm = () => {
           resume: null,
         });
         setSubmitted(true);
+        
+      toast.success('Form Submitted Successfully!', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
+    
       } else {
         setError('An error occurred while submitting the form.');
       }

@@ -1,21 +1,30 @@
-import React, { useState, useRef, useEffect } from 'react';
-import otpImage from './assets/images/otp.png';
+import React, { useState, useRef, useEffect } from "react";
+import otpImage from "./assets/images/otp.png";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { setHTVP, setRegistrationTokens } from "../store/slices/registerSlice";
+import { useCsrfToken } from "../utils/useCsrfToken";
+axios.defaults.withCredentials = true;
 
 export default function ForgotPasswordModal() {
-  const [otp, setOtp] = useState(new Array(6).fill(''));
-  const inputsRef = useRef([]);
+  const [otp, setOtp] = useState(new Array(6).fill(""));
+  const cookieValue = useCsrfToken();
 
+  const inputsRef = useRef([]);
+  const [error, setError] = useState("");
+  const tokens = useSelector((state) => state.register);
+  const dispatch = useDispatch();
   useEffect(() => {
     inputsRef.current = inputsRef.current.slice(0, otp.length);
   }, [otp]);
 
   const handleChange = (element, index) => {
     const value = element.value;
-    if (/^[0-9]$/.test(value) || value === '') {
+    if (/^[0-9]$/.test(value) || value === "") {
       setOtp((prevOtp) => {
         const newOtp = [...prevOtp];
         newOtp[index] = value;
-        if (value !== '' && index < 5) {
+        if (value !== "" && index < 5) {
           setTimeout(() => {
             inputsRef.current[index + 1].focus();
           }, 10);
@@ -26,7 +35,7 @@ export default function ForgotPasswordModal() {
   };
 
   const handleFocus = (index) => {
-    const firstEmptyIndex = otp.findIndex(value => value === '');
+    const firstEmptyIndex = otp.findIndex((value) => value === "");
     if (firstEmptyIndex !== -1 && firstEmptyIndex !== index) {
       inputsRef.current[firstEmptyIndex].focus();
     } else {
@@ -34,46 +43,75 @@ export default function ForgotPasswordModal() {
     }
   };
   const handleKeyDown = (e, index) => {
-    if (e.key === 'Backspace') {
+    if (e.key === "Backspace") {
       if (index > 0) {
         e.preventDefault();
         setOtp((prevOtp) => {
           const newOtp = [...prevOtp];
-          newOtp[index - 1] = '';
+          newOtp[index - 1] = "";
           inputsRef.current[index - 1].focus();
           return newOtp;
         });
       } else {
         setOtp((prevOtp) => {
           const newOtp = [...prevOtp];
-          newOtp[0] = '';
+          newOtp[0] = "";
           return newOtp;
         });
       }
     }
   };
 
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    let OTP = otp.join("");
+    const { data } = await axios.post(
+      `${process.env.REACT_APP_API_URL}/user-otp-verification-forfp/${tokens.hashtoverify}`,
+      { otp_code: OTP },
+      {
+        headers: {
+          "X-XSRF-TOKEN":cookieValue,
+          Authorization: `Bearer ${tokens.hashedtoken}`,
+        },
+      }
+    );
+    if (data.flag === "1") {
+      setError("");
+      dispatch(setHTVP(data.htvp));
+      dispatch(setRegistrationTokens({hashedtoken:data.token,hashtoverify:data.htvp}))
+
+      const modalTrigger = document.getElementById("resetPasswordModalbtn");
+      if (modalTrigger) {
+        modalTrigger.click();
+      }
+    }
+    if (data.flag === "2") {
+      setError(data.emsg);
+    }
   };
 
   return (
-    <div className="modal fade forgotPassword" id="forgotPasswordModal" aria-hidden="true" aria-labelledby="forgotPasswordModalLabel" tabIndex="-1">
+    <div
+      className="modal fade forgotPassword"
+      id="forgotPasswordModal"
+      aria-hidden="true"
+      aria-labelledby="forgotPasswordModalLabel"
+      tabIndex="-1"
+    >
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-body">
             <div className="row">
-                
               <div className="col-lg-6 p-lg-5 ">
-                <img src={otpImage} className='img-fluid p-lg-5' alt="OTP" />
+                <img src={otpImage} className="img-fluid p-lg-5" alt="OTP" />
               </div>
               <div className="col-lg-6 pt-5 pt-lg-0 text-center  center poppins">
                 <div>
-                  <h5 className='py-3'>Forgot your Password</h5>
+                  <h5 className="py-3">Forgot your Password</h5>
                   <p>Enter OTP</p>
-                  <form className='my-3' onSubmit={handleSubmit}>
+                  <form className="my-3" onSubmit={handleSubmit}>
+                    <span className="d-block text-center">{error}</span>
+
                     {otp.map((_, index) => (
                       <input
                         key={index}
@@ -83,28 +121,33 @@ export default function ForgotPasswordModal() {
                         onChange={(e) => handleChange(e.target, index)}
                         onFocus={() => handleFocus(index)}
                         onKeyDown={(e) => handleKeyDown(e, index)}
-                        ref={el => inputsRef.current[index] = el}
+                        ref={(el) => (inputsRef.current[index] = el)}
                         style={{
-                          width: '2rem',
-                          height: '2rem',
-                          margin: '0 0.5rem',
-                          fontSize: '1.5rem',
-                          textAlign: 'center',
-                          border: '1px solid #ced4da',
-
+                          width: "2rem",
+                          height: "2rem",
+                          margin: "0 0.5rem",
+                          fontSize: "1.5rem",
+                          textAlign: "center",
+                          border: "1px solid #ced4da",
                         }}
                       />
                     ))}
-                    <p className='mt-3'>Didn't Receive code? <span className='text-danger' type="button">  Resend</span></p>
-                    <button type="submit"   data-bs-target="#resetPasswordModal"
-                        data-bs-toggle="modal" className='d-block mx-auto btn bg-primary text-white mt-3 px-5 '>Verify Account</button>
+                    <button
+                      type="submit"
+                      className="d-block mx-auto btn bg-primary text-white mt-3 px-5 "
+                    >
+                      Verify Account
+                    </button>
                   </form>
-                  <p  data-bs-target="#loginModal"
-                        data-bs-toggle="modal" type="button" >Back to Log in</p>
+                  <p
+                  id="resetPasswordModalbtn"
+                    data-bs-target="#resetPasswordModal"
+                    className="d-none"
+                    data-bs-toggle="modal"
+                    type="button"
+                  ></p>
                 </div>
               </div>
-
-
             </div>
           </div>
         </div>

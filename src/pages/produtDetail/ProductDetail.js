@@ -83,9 +83,9 @@ export default function ProductDetail() {
         </div>
       )}
 
-      <div className="container">
+      {/* <div className="container">
         <RelatedEquipments />
-      </div>
+      </div> */}
     </section>
   );
 }
