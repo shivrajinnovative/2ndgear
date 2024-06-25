@@ -7,7 +7,7 @@ import object from './assets/OBJECTS.png'
 import './Seller.css'
 export default function Seller() {
   return (
-    <div className="pt-5 mt-5 poppins seller">
+    <div className="pt-2 pt-md-5 mt-5 poppins seller">
       <div className="container py-5 text-center">
         <h1 className="text-primary">4 Simple Steps for Seller Account Registration</h1>
         <h2 className="pt-5">Registration Benefits</h2>

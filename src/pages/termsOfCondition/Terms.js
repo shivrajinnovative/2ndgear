@@ -5,7 +5,7 @@ import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
 
 export default function Terms() {
   return (
-    <div className="pt-4 bg-secondary terms poppins">
+    <div className="pt-2 pt-md-4 bg-secondary terms poppins">
       <Breadcrumb page="Terms & Conditions" image={laptop} />
       <div className="container box-shadow  bg-white py-4">
         <div className="px-3 px-md-5">

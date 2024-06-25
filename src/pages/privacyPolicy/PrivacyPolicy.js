@@ -4,7 +4,7 @@ import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
 import laptop from "./laptop.png";
 export default function PrivacyPolicy() {
   return (
-    <div className="pt-4 bg-secondary">
+    <div className="pt-2 pt-md-4 bg-secondary">
       <Breadcrumb page="Privacy Policy" image={laptop} />
       <div className="container bg-white py-4 px-5 box-shadow privacyContent">
         <h4 className="poppins fw-500 text-primary">Privacy Policy</h4>

@@ -16,6 +16,7 @@ const Navbar = () => {
   const isLogin = useSelector((state) => state.login);
   const dispatch = useDispatch();
   const [btnOn, setBtnOn] = useState(false);
+  const [showPopup,setShowPopup]=useState(true)
   const handelCloseNav = () => {
     if (btnOn) {
       document.getElementById("closeBtn")?.click();
@@ -199,9 +200,9 @@ const Navbar = () => {
         </div>
        
         <div
+                    onClick={()=>setShowPopup(!showPopup)}
+
           className="d-md-none"
-          data-bs-target="#pop"
-          data-bs-toggle="modal"
         >
           <i className="bi bi-person-circle display-3 text-primary"></i>
         </div>
@@ -215,14 +216,50 @@ const Navbar = () => {
             </button>
           ) : (
             <button
-            data-bs-target="#pop"
-            data-bs-toggle="modal"
+            onClick={()=>setShowPopup(!showPopup)}
             className="btn bg-primary text-white p-2 px-4"
           >
             Log In / Sign Up
           </button>
           )}
         </div>
+
+{
+  showPopup && 
+        <div className="customePopUp">
+<div className="row p-3">
+              <div className="col-6 center text-center flex-column border-end">
+                <p>Not a member yet?</p>
+
+                <button
+              data-bs-target="#registerModal"
+              data-bs-toggle="modal"
+              className="btn bg-primary text-white p-1 px-3"
+            >
+              Sign Up
+            </button>
+
+              </div>
+              <div className="col-6  center flex-column poppins">
+                
+                  <p className='m-0'>Login as..</p>
+                  <button
+              data-bs-target="#loginModal"
+              data-bs-toggle="modal"
+              className="btn bg-primary  m-2 text-white p-1 px-3"
+            >
+              Buyer 
+            </button>  
+            <p className='text-center m-0'> - OR -</p>
+            <a href=""
+              className="btn bg-primary text-white p-1 m-2 px-3"
+            >
+              Seller
+            </a>
+                </div>
+            </div>
+        </div>
+}
       
       </div>
     </nav>

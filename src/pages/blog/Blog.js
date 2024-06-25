@@ -12,7 +12,7 @@ export default function Blog() {
   useEffect(() => {}, [slug]);
 
   return (
-    <div className="pt-5 bg-white poppins blog">
+    <div className="pt-2 pt-md-4 bg-white poppins blog">
       <Breadcrumb page="Blog" image={background} />
       <div className="container">
         {!slug && (

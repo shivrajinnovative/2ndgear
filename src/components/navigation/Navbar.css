@@ -44,11 +44,21 @@ nav a{
   position: absolute !important;
 
 }
-.authMods{
-  position: absolute !important;
-  width: 500px !important;
-  height: 300px;
-  transform: translateX(-20%);
+.customePopUp{
+  max-width: 400px;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 0 10px -5px rgb(33, 32, 32);
+  right: 3%;
+  top: 10vh;
+  border-radius: 4px;
+}
+.customePopUp p{
+  font-size: 15px !important;
+  line-height: 20px;
+}
+.customePopUp button{
+  font-size: 14px !important;
 }
 
 @media  (max-width:500px){

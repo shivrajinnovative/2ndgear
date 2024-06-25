@@ -6,12 +6,10 @@ import ResetPasswordModal from './ResetPasswordModal';
 import './assets/Modals.css'
 import MobileVerificationModal from './MobileVerificationModal';
 import EnterMobileNumber from './EnterMobileNumber';
-import Popup from './Popup';
 
 export default function AuthModals() {
     return (
         <>
-        <Popup/>
           <LoginModal/>
           <EnterMobileNumber/>
           <ForgotPasswordModal/>

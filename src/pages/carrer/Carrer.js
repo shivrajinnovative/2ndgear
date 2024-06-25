@@ -22,7 +22,7 @@ const WhyWork = ({ image, heading, children }) => {
 
 export default function Carrer() {
   return (
-    <div className="pt-4 bg-secondary poppins buyerSpecific">
+    <div className="pt-2 pt-md-4 bg-secondary poppins buyerSpecific">
       <Breadcrumb page="Career" image={background} />
       {/* <div className="container py-5">
         <p className="py-3">
