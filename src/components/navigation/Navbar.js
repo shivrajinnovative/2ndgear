@@ -16,7 +16,7 @@ const Navbar = () => {
   const isLogin = useSelector((state) => state.login);
   const dispatch = useDispatch();
   const [btnOn, setBtnOn] = useState(false);
-  const [showPopup,setShowPopup]=useState(true)
+  const [showPopup,setShowPopup]=useState(false)
   const handelCloseNav = () => {
     if (btnOn) {
       document.getElementById("closeBtn")?.click();
@@ -251,7 +251,7 @@ const Navbar = () => {
               Buyer 
             </button>  
             <p className='text-center m-0'> - OR -</p>
-            <a href=""
+            <a href="https://2gear.in/production/seller/login" target="_blank"
               className="btn bg-primary text-white p-1 m-2 px-3"
             >
               Seller

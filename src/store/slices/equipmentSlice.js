@@ -55,7 +55,7 @@ const equipmentSlice = createSlice({
         const matchState=statesForFilter.length>0?statesForFilter.includes(product.currentState):true
         
         const matchCategory=categoryForFilter.length>0?categoryForFilter.includes(product.equip_cat_slug):true
-        const mainCat=product.indequip_upfor===mainCategory
+        const mainCat=product.indequip_upfor===mainCategory || product.indequip_upfor==='sell/rent'
         return matchPrice && matchYear && matchState && matchCategory && mainCat;
       });   
     },
