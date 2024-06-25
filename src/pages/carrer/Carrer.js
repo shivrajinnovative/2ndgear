@@ -22,9 +22,9 @@ const WhyWork = ({ image, heading, children }) => {
 
 export default function Carrer() {
   return (
-    <div className="pt-5 bg-secondary poppins buyerSpecific">
+    <div className="pt-4 bg-secondary poppins buyerSpecific">
       <Breadcrumb page="Career" image={background} />
-      <div className="container py-5">
+      {/* <div className="container py-5">
         <p className="py-3">
           We are trying to find communities of people who buy and sell the heavy
           equipments. We are best at bringing buyers, sellers, and renters
@@ -53,7 +53,7 @@ export default function Carrer() {
             and communications contractor headquartered in HYDERABAD, TELANGANA.
           </WhyWork>
         </div>
-      </div>
+      </div> */}
      <CareerForm/>
     </div>
   );

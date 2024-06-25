@@ -28,3 +28,41 @@ text-decoration: none;
 .filterGray *{
 background-color: rgba(223, 220, 220, 0.648);
 }
+
+@media(max-width:767px){
+    .productlistCard{
+        flex-direction: row;
+    }
+    
+    .productlistCard>img{
+        height: 100px;
+        width: 100px;
+    }
+    .productlistCard{
+        flex-direction: row;
+    }
+
+    .refinedBy{
+        position: fixed;
+        z-index: 999;
+        transition: all .2s;
+        left: 100%;
+        width: 80%;
+        top: 150px;
+        
+    }
+    .showFilter{
+        left: 10%;
+    }
+    .refinedBy .accordion-body{
+        max-height: 150px;
+        width: 100%;
+        overflow: scroll;
+    }
+    .assetHeading{
+        position: fixed;
+        z-index:999;
+        width: 95%;
+        box-shadow: 0 0 10px -5px gray;
+    }
+}

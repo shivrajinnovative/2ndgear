@@ -33,7 +33,7 @@ const Accordion = ({ heading, children }) => {
   );
 };
 
-export default function SideBar({ category, subcategory }) {
+export default function SideBar({ category, subcategory ,showFilter,setShowFilter}) {
   const isLogin = useSelector((state) => state.login);
 
   const dispatch = useDispatch();
@@ -42,7 +42,8 @@ export default function SideBar({ category, subcategory }) {
     "get-all-main-sub-categories"
   );
   return (
-    <form className="refinedBy card p-3">
+    <form className={`refinedBy card p-3 ${showFilter && 'showFilter'} `}>
+      <i className="bi bi-x display-5 text-end d-md-none" onClick={()=>setShowFilter(false)} ></i>
       <div className="filterGray">
         {!category && !subcategory && (
           <div

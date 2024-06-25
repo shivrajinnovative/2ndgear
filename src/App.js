@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import Navbar from "./components/navigation/Navbar";
+// import Navbar from "./components/navigation/Navbar";
 import Footer from "./components/footer/Footer";
 import Copyright from "./components/copyright/Copyright";
 import ScrollToTop from "./components/ScrollToTop";
@@ -24,6 +24,7 @@ import NotFound from "./pages/NotFound";
 import { useDispatch } from "react-redux";
 import { checkLogin } from "./store/slices/authSlice";
 import { ToastContainer } from "react-toastify";
+import Navbar from "./components/navigation/Navbar";
 
 export default function App() {
   const queryClient = new QueryClient({
@@ -49,7 +50,6 @@ const dispatch=useDispatch()
           <ToastContainer />
 
           <Navbar />
-
           <AuthModals/>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -65,7 +65,7 @@ const dispatch=useDispatch()
             <Route path="/buyer-specific-requirement" element={<BuyerSpecific/>} />
             <Route path="/help" element={<Help/>} />
             <Route path="/career" element={<Carrer/>} />
-            {/* <Route path="/*" element={<NotFound/>} /> */}
+            <Route path="/*" element={<NotFound/>} />
         
           </Routes>
           <Footer />

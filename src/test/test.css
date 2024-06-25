@@ -1,0 +1,10 @@
+/* TestingComponent.css */
+
+/* Hide default dropdown arrow */
+.dropdown-toggle::after {
+    display: none !important;
+  }
+
+  .dropdown-menu{
+    top:100%
+  }

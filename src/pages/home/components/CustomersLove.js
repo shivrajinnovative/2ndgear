@@ -11,7 +11,7 @@ const Component = ({ image, heading, textColor, children }) => {
         <img src={image} alt={image} />
         <h1 className={`poppins fw-600 mx-2 ${textColor}`}>{heading}</h1>
       </div>
-      <p className="poppins fw-500 mt-3">{children}</p>
+      <p className="poppins fw-500 mt-md-3">{children}</p>
     </div>
   );
 };
@@ -20,7 +20,7 @@ export default function CustomersLove() {
   return (
     <div className="bg-secondary customerLove py-5">
       <div className="container">
-        <h1 className="poppins fw-500 py-5 text-center">
+        <h1 className="poppins fw-500 py-md-5 text-center">
           Our Journey so far..
         </h1>
         <div className="d-flex flex-wrap">

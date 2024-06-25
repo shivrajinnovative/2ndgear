@@ -6,12 +6,14 @@ const registerSlice=createSlice({
     initialState:{
         hashedtoken:"",
         hashtoverify:"",
-        htvpToken:""
+        htvpToken:"",
+        bearer:""
     },
     reducers:{
         setRegistrationTokens:(state,action)=>{
             state.hashedtoken=action.payload.hashedtoken
             state.hashtoverify=action.payload.hashtoverify
+            state.bearer=action.payload.bearer
         },
         setHTVP:(state,action)=>{
             state.htvpToken=action.payload

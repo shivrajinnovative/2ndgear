@@ -93,7 +93,7 @@ export default function AdditionalService() {
           </div>
           <div className="col-lg-8 pt-5 px-2">
             <h1 className="poppins fw-500">Additional Service</h1>
-            <div className="d-flex flex-wrap py-4">
+            <div className="d-flex flex-wrap py-4 justify-content-center justify-content-md-start">
               {content.map((item, index) => {
                 return (
                   <Link to={`services/${item.title.toLowerCase().split(" ").join("-").replace("&","and")}`}

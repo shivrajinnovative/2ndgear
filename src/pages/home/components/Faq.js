@@ -31,7 +31,7 @@ const Faq = () => {
                 >
                   <h2 className="mb-0 poppins fw-400">
                     <div
-                      className="d-flex p-3 justify-content-between custom-button w-100"
+                      className="d-flex p-sm-3 justify-content-between custom-button w-100"
                       onClick={() => toggleFaq(index)}
                     >
                       {faq.question}

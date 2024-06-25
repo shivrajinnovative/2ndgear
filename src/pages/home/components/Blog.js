@@ -77,7 +77,7 @@ export default function Blog() {
   return (
     <div className="bg-secondary blog">
       <div className="container py-5">
-        <h1 className="text-center poppins fw-500 py-5">Blog</h1>
+        <h1 className="text-center poppins fw-500 py-sm-5">Blog</h1>
         <div className="container">
           <div className="slider-container">
             <Slider {...settings}>

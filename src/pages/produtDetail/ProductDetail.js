@@ -33,7 +33,7 @@ export default function ProductDetail() {
     <section className="bg-light pt-5 produtDetail">
       {equipment && (
         <div className="container pt-5">
-          <div className="row pt-5">
+          <div className="row pt-md-5">
             <div className="col-lg-7">
               <Product
                 isLoading={isLoading}

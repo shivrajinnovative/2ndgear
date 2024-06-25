@@ -4,6 +4,11 @@
 .produtDetail .detailImage{
   object-fit: cover;
   height: 400px;
+  width: 100%;
+}
+.equipmentSubimg{
+  height: 100px;
+  width: 100px;
 }
 .produtDetail .slider img{
     object-fit:cover;
@@ -112,4 +117,10 @@
 .slick-next:before {
   display: none;
   background-color: #100c5a !important;
+}
+
+@media (max-width:500px){
+  .produtDetail .detailImage{
+    height: 200px;
+  }
 }

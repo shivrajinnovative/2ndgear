@@ -36,7 +36,7 @@ export default function BuyerSpecific() {
   }, [submitted]);
 
   return (
-    <div className="pt-5 bg-secondary poppins buyerSpecific">
+    <div className="pt-4 bg-secondary poppins buyerSpecific">
       <Breadcrumb page="Buyer Specific requirements" image={background} />
       <div className="container">
         <div className="row pt-3">

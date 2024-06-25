@@ -6,15 +6,14 @@ nav{
 }
 nav li{
     padding: 0 5px;
+    line-height: 36px;
 }
 nav .nav-link{
-  
   font-size: 16px !important;
 }
-.dropdown-submenu {
-    position: relative;
-    padding-right: 20px;
-    
+.dropdown-menu{
+  position: relative;
+  top: 100%;
 }
 
 .dropdown-submenu .dropdown-menu {
@@ -25,20 +24,56 @@ nav .nav-link{
   .dropdown-submenu .dropdown-toggle{
     position: relative;
   }
-.dropdown-submenu .dropdown-toggle::after{
-    position: absolute;
-    right: -5px;
-    top: 10px;
+.dropdown-toggle::after {
+  display: none !important;
 }
-  .dropdown-toggle::after {
-    border:none;
-    padding: 2px;
-    border-right:2px solid;
-    border-bottom:2px solid ;
-    transform: rotate(45deg);
-    margin-left: 7px;
-}
+
 nav .contact  *{
   font-size: 14px !important;
   line-height: 12px;
+}
+nav i{
+  font-size: 14px;
+  padding:0 5px;
+}
+nav a{
+  padding: 0 !important;
+  padding-left: 10px !important;
+}
+.btn-group > .btn {
+  position: absolute !important;
+
+}
+.authMods{
+  position: absolute !important;
+  width: 500px !important;
+  height: 300px;
+  transform: translateX(-20%);
+}
+
+@media  (max-width:500px){
+  nav .navbar-brand img{
+    width: 110px;
+  }
+  nav .btn{
+    font-size: 14px !important;
+  }
+
+}
+
+@media (max-width:1200px){
+  
+.dropdown-menu{
+  position: relative !important;
+  top: 100% !important;
+  width: 100% !important;
+  flex-wrap: wrap;
+}
+.innerSubdiv{
+  z-index: 999 !important;
+  position: relative !important;
+  left: -50% !important;
+  top: 30px !important;
+  width: 100%;
+}
 }

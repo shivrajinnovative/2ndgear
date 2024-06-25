@@ -3,7 +3,7 @@ header {
   background-size: 100% 100%;
   height: 670px;
   color: white;
-  margin-top: 100px;
+  margin-top: 80px;
 }
 
 .header {
@@ -71,7 +71,7 @@ header .list p {
 
 @media (max-width: 500px) {
   header h1 {
-    font-size: 30px;
+    font-size: 26px;
   }
 
   .header {
@@ -79,13 +79,17 @@ header .list p {
   }
 
   header h5 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   header .list p {
-    font-size: 14px !important;
-    line-height: 16px;
+    font-size: 12px !important;
+    line-height: 14px;
   }
+  header {
+    margin-top: 0px;
+  }
+  
 }
 
 @media (min-width: 500px) and (max-width: 768px) {
@@ -151,10 +155,23 @@ mark {
   .sellAndBuy {
     background-image: none;
   }
+ .buySellBtn {
+    width: 80%;
+    font-size: 24px;
+  }
+  .buySellBtn div{
+    width: 50%;
+  }
+  .sellAndBuy .bsComponent {
+    width: 180px;
+    height: 160px;
+  }
+}
 
-  .sellAndBuy .buySellBtn {
-    bottom: -50px;
-    text-align: center;
+@media (max-width: 500px) {
+ .buySellBtn {
+    font-size: 22px;
+    top: -20px;
   }
 }
 
@@ -301,13 +318,18 @@ mark {
   width: 70px;
 }
 
-@media (min-width: 576px) {
+@media (max-width: 576px) {
+  
+.customerLove img {
+  height: 50px;
+  width: 50px;
+}
   .customerLove .d-flex h1 {
-    font-size: 50px;
+    font-size: 45px;
   }
 
   .serviceCard {
-    width: 144px;
+    width: 130px;
   }
 }
 
@@ -417,7 +439,15 @@ mark {
 .faq .accordion .card h2 {
   font-size: 20px;
 }
-
+@media (max-width:500px){
+  .faq .accordion .card h2 {
+    font-size: 16px;
+  }
+  .faq .accordion .card p {
+    font-size: 16px !important;
+  }
+  
+}
 .faq .custom-button {
   text-decoration: none;
 }
@@ -467,7 +497,11 @@ mark {
   border: 1.5px dashed rgba(128, 128, 128, 0.647);
   border-spacing: 50px;
 }
-
+@media (max-width:500px){
+  .blogHeader {
+    height: 174px;
+}
+}
 
 
 @media (max-width: 976px) {

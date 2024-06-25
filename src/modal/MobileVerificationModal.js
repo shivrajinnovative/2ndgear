@@ -3,11 +3,14 @@ import mobile from "./assets/images/mobile.png";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Bounce, toast } from "react-toastify";
+import { useCsrfToken } from "../utils/useCsrfToken";
 
 export default function MobileVerificationModal() {
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const [error, setError] = useState("");
   const inputsRef = useRef([]);
+  const cookieValue = useCsrfToken();
+
   const tokens = useSelector((state) => state.register);
   useEffect(() => {
     inputsRef.current = inputsRef.current.slice(0, otp.length);
@@ -60,9 +63,17 @@ export default function MobileVerificationModal() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let OTP = otp.join("");
+
+    const {hashedtoken,hashtoverify,bearer}=tokens
     const { data } = await axios.post(
       `${process.env.REACT_APP_API_URL}/user-otp-verification`,
-      { otp_code: OTP, ...tokens }
+      { otp_code: OTP, hashedtoken, hashtoverify},
+      {
+        headers: {
+          "X-XSRF-TOKEN": cookieValue,
+          Authorization: `Bearer ${bearer}`,
+        },
+      }
     );
     if (data.flag === "1") {
       setError("");

@@ -8,7 +8,7 @@ export default function InspectionReports({ equipReports }) {
         equipReports.map((report, index) => {
           return (
             <Link className="px-2" to={report.report} key={index}>
-              <img src={pdf} alt={pdf} className="w-100" height="100px" />
+              <img src={pdf} alt={pdf} className="w-100" height="80px" />
               <span className="poppins fw-500 d-block text-center">
                 Reports
               </span>

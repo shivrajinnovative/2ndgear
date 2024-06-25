@@ -14,10 +14,16 @@ export default function AllProducts(props) {
   const dispatch=useDispatch()
   const [type,setType]=useState(props.type)
   const navigate = useNavigate();
-  
+  const [showFilter,setShowFilter]=useState(false)
   const {data,error,isLoading}=useDynamicQuery(['get-equip-list'],'get-equip-list')
   const productData=useSelector((state)=>state.equipments.filteredData)
   
+
+  useEffect(()=>{
+    if(window.innerWidth <= 768 ){
+        setShowFilter(false)
+    }
+  },[])
   
   useEffect(()=>{
     if(data){
@@ -50,18 +56,20 @@ export default function AllProducts(props) {
   }
 
   return (
-    <section className="bg-secondary pt-5 mt-5">
+    <section className="bg-secondary pt-md-5 mt-5">
       <div className="container pt-3 ">
-        <h1 className="poppins py-3 fw-300">
-          Plants <span className="text-primary fw-700">({totalProducts})</span>
+        <h1 className="poppins assetHeading py-3 my-2 bg-white fw-300 justify-content-between px-3 d-flex">
+        <span>  Assets <span className="text-primary fw-700">({totalProducts})</span></span>
+          <i className="bi bi-funnel-fill d-md-none text-primary" onClick={()=>{setShowFilter(!showFilter)}}></i>
         </h1>
 
         <div className="row">
-          <div className="col-lg-3">
-            <SideBar category={category}  subcategory={subcategory} />
+          <div className="col-lg-3 overflow-hidden position-relative ">
+            
+            <SideBar category={category} setShowFilter={setShowFilter} showFilter={showFilter} subcategory={subcategory} />
           </div>
-          <div className="col-lg-9">
-            <div className="howWorks col-md-5 mx-auto my-5 m-lg-0 text-center py-4 text-white">
+          <div className="col-lg-9 ">
+            <div className="howWorks d-none d-lg-block col-md-5 mx-auto my-5 m-lg-0 text-center py-4 text-white">
               <h4 className="poppins fw-600">How Secondgear® Works?</h4>
               <hr className="mx-5" />
               <p>
@@ -69,29 +77,30 @@ export default function AllProducts(props) {
                 Buy them.
               </p>
             </div>
-            <div className="d-flex justify-content-between bg-white my-3 p-3 rounded-3">
-              <h4 className="poppins fw-400">All Plants</h4>
-              <select className="poppins fw-400 px-2">
+            <div className="d-none d-md-flex justify-content-between bg-white my-3 p-3 rounded-3">
+              <h4 className="poppins fw-400">All Assets</h4>
+               <select className="poppins fw-400 px-2">
                 <option value="">Sort By: </option>
                 <option value="">hight to low </option>
                 <option value=""> low to height </option>
-              </select>
+              </select> 
             </div>
-            <div className="productsListing">
-              <div className="row">
+            <div className="productsListing  mt-5 pt-5 p-md-0 m-md-0">
+              <div className="row ">
                 {productData?.map((product, index) => {
                   return (
                     <div className="col-md-6 col-lg-4 mb-3" key={index}>
                       <Link
-                        className="card p-3 rounded-4"
+                        className="card productlistCard p-3 rounded-4"
                         to={`/equipment-details/${product.indequip_slug}`}
                       >
-                        <img src={product.productImage} alt={product.indequip_brand} height='200px' />
-                        <h5 className="poppins fw-500 mt-3">
+                        <img src={product.productImage} alt={product.indequip_brand}  height='200px' />
+                       <div className="px-2 px-md-0">
+                       <h5 className="poppins fw-500 mt-md-3">
                           {product.indequip_brand}
                         </h5>
                         <div
-                          className="d-flex justify-content-between py-1"
+                          className="d-flex justify-content-between py-md-1"
                           style={{ fontSize: "17px" }}
                         >
                           <span>{product.indequip_model}</span>
@@ -105,6 +114,7 @@ export default function AllProducts(props) {
                           <img src={location} alt={location} />{" "}
                           {product.currentCity},{product.currentState}
                         </p>
+                       </div>
                       </Link>
                     </div>
                   );

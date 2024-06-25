@@ -12,13 +12,13 @@ import phone from "./icons/phone.svg";
 import { Link } from "react-router-dom";
 export default function Footer() {
   return (
-    <footer className="bg-primary text-white py-5">
+    <footer className="bg-primary text-white py-sm-5">
       <div className="container ">
         <div className="row">
-          <div className="col-md-6 col-lg-3 mt-5 px-5">
-            <img src={logo} alt={logo} />
+          <div className="col-md-6 col-lg-3 mt-5 px-5 text-center">
+            <img src={logo} alt={logo} className="logo" />
             <h5 className="poppins fw-600">Keep in Touch</h5>
-            <div className="col-6 d-flex justify-content-between">
+            <div className="col-6 d-flex mx-auto justify-content-between">
               <Link>
                 <img src={facebook} alt={facebook} />
               </Link>

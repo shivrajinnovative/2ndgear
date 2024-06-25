@@ -2,7 +2,6 @@ footer{
   overflow: hidden;
   background: url('./background.png') center no-repeat;
   background-size: 50% 100%;
-  
 }
 footer h5 {
   font-size: 23px;
@@ -26,4 +25,32 @@ footer p {
   font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 400;
+}
+
+@media (max-width:500px){
+  
+footer h5 {
+  font-size: 18px;
+}
+footer .nav-link{
+  font-size: 14px;
+  line-height: 35px;
+
+}
+footer p {
+  font-size: 15px !important;
+}
+footer div>img {
+  height: 14px;
+  width: 14px;
+}
+footer .logo{
+  height: 100px;
+  width: 180px;
+
+}
+.copyright p{
+  font-size: 15px !important;
+  margin: 0 !important;
+}
 }

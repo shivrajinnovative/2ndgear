@@ -99,7 +99,7 @@ export default function LoginModal() {
                         type="tel"
                         pattern="[0-9]{10}"
                         title="Please enter a 10-digit mobile number"
-                        id="mobile_no"
+                        id="mobile_no1"
                         name="mobile_no"
                         value={formData.mobile_no}
                         onChange={handleChange}

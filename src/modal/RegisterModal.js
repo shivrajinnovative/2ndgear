@@ -62,15 +62,6 @@ export default function RegisterModal() {
     if (password.length < 8) {
       return "Password must be at least 8 characters long.";
     }
-    if (!/[A-Z]/.test(password)) {
-      return "Password must contain at least one uppercase letter.";
-    }
-    if (!/[0-9]/.test(password)) {
-      return "Password must contain at least one number.";
-    }
-    if (!/[!@#$%^&*]/.test(password)) {
-      return "Password must contain at least one special character.";
-    }
     return "";
   };
 
@@ -134,7 +125,7 @@ export default function RegisterModal() {
     const {data} = await axios.post(`${process.env.REACT_APP_API_URL}/user-registration`, formData);
     if(data.flag==='1'){
       setLoading(false);
-      dispatch(setRegistrationTokens({hashedtoken:data.hashedtoken,hashtoverify:data.htvo}))
+      dispatch(setRegistrationTokens({hashedtoken:data.hashedtoken,hashtoverify:data.htvo,bearer:data.token}))
         const modalTrigger = document.getElementById(
           "mobileVerificationModalTrigger"
         );

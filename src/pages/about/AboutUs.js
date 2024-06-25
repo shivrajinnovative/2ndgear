@@ -8,7 +8,7 @@ import WhoWeAre from "./components/WhoWeAre";
 import UsedEquipment from "./components/UsedEquipment";
 export default function AboutUs() {
   return (
-    <div className="pt-5 bg-secondary poppins">
+    <div className="pt-4 bg-secondary poppins">
       <Breadcrumb page="About Us" image={background} />
       <div className="container aboutcontent">
         <p className="my-5">
