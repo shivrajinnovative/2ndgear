@@ -3,9 +3,9 @@ import { useDynamicQuery } from "../../../utils/apiUtils";
 import { setStateForFilter } from "../../../store/slices/equipmentSlice";
 import { useDispatch } from "react-redux";
 
-export default function StateFilter() {
+export default function StateFilter({defaultState}) {
   const [states, setStates] = useState([]);
-  const [selectedStates, setSelectedStates] = useState([]);
+  const [selectedStates, setSelectedStates] = useState(defaultState?[defaultState]:[]);
   const dispatch=useDispatch()
   const {
     data: statesData,
@@ -41,6 +41,8 @@ export default function StateFilter() {
               type="checkbox"
               onChange={handelClick}
               value={state.name}
+              checked={selectedStates.includes(state.name)}
+              
             />
             {state.name}
           </label>

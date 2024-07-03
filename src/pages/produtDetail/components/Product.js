@@ -8,6 +8,9 @@ export default function Product({
   equipGallery,
   indequip_brand,
   price,
+  sub_equip_cat_name,
+  contactno,
+  equip_cat_slug
 }) {
   const isLogin = useSelector((state) => state.login);
   const [activeImage, setActiveImage] = useState("");
@@ -26,10 +29,19 @@ export default function Product({
             <h5 className="fw-400 text-primary m-0 text-capitalize">
               {indequip_brand}
             </h5>
+
             {isLogin ? (
-              <span className="fw-700 text-primary">
+              
+              <div>
+
+              <div className="fw-700 text-primary">
                 Price : &#8377; {price}
-              </span>
+              </div>
+              <div className="fw-600 text-primary">
+                 Contact :- {contactno}
+              </div>
+              </div>
+              
             ) : (
               <span
                 className="fw-500 text-danger"
@@ -41,7 +53,7 @@ export default function Product({
               </span>
             )}
           </div>
-          <p className="p-0">Concrete Batching Plant | Schwing Stetter</p>
+          <p className="p-0">{sub_equip_cat_name}</p>
           <div className="d-flex flex-wrap">
          
              

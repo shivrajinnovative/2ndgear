@@ -41,15 +41,13 @@ export default function IndustryPlants() {
           className={`px-4 py-1 fw-400 ${check ? "bg-yellow" : ""}`}
           onClick={() => setCheck(true)}
         >
-          {" "}
           <img src={check ? tick : circle} alt="icon" className="mx-1" /> Buy
         </div>
         <div
           className={`px-4 py-1 fw-400 ${!check ? "bg-yellow" : ""}`}
           onClick={() => setCheck(false)}
         >
-          {" "}
-          <img src={!check ? tick : circle} alt="icon" className="mx-1" /> Sell
+          <img src={!check ? tick : circle} alt="icon" className="mx-1" /> Rent
         </div>
       </div>
 
@@ -59,7 +57,7 @@ export default function IndustryPlants() {
             return (
               <Link
                 className="col-md-6 col-lg-4 col-xl-3"
-                to={`buy/${item.title.split(" ").join("-").toLowerCase()}`}
+                to={`${check?'buy':'rent'}/${item.title.split(" ").join("-").toLowerCase()}`}
                 key={index}
               >
                 <div

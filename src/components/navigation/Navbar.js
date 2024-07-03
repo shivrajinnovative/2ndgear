@@ -235,6 +235,8 @@ const Navbar = () => {
               data-bs-target="#registerModal"
               data-bs-toggle="modal"
               className="btn bg-primary text-white p-1 px-3"
+              onClick={()=>setShowPopup(!showPopup)}
+
             >
               Sign Up
             </button>
@@ -247,12 +249,15 @@ const Navbar = () => {
               data-bs-target="#loginModal"
               data-bs-toggle="modal"
               className="btn bg-primary  m-2 text-white p-1 px-3"
+              onClick={()=>setShowPopup(!showPopup)}
+
             >
               Buyer 
             </button>  
             <p className='text-center m-0'> - OR -</p>
             <a href="https://2gear.in/production/seller/login" target="_blank"
               className="btn bg-primary text-white p-1 m-2 px-3"
+              
             >
               Seller
             </a>

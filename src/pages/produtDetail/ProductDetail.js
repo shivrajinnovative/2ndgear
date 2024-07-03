@@ -4,7 +4,7 @@ import Product from "./components/Product";
 import EnquiryForm from "./components/EnquiryForm";
 import PlantDetail from "./components/PlantDetail";
 import InspectionReports from "./components/InspectionReports";
-import RelatedEquipments from "./components/RelatedEquipments";
+// import RelatedEquipments from "./components/RelatedEquipments";
 import { useParams } from "react-router-dom";
 import { useDynamicQuery } from "../../utils/apiUtils";
 
@@ -41,6 +41,8 @@ export default function ProductDetail() {
                 sub_equip_cat_name={equipment.sub_equip_cat_name}
                 equipGallery={equipGallery}
                 indequip_brand={equipDetails.indequip_brand}
+                contactno={equipment.contactno}
+                equip_cat_slug={equipment.equip_cat_slug}
               />
             </div>
             <div className="col-lg-5">

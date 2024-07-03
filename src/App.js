@@ -48,7 +48,6 @@ const dispatch=useDispatch()
         <BrowserRouter  basename={baseUrl} >
           <ScrollToTop />
           <ToastContainer />
-
           <Navbar />
           <AuthModals/>
           <Routes>
@@ -66,7 +65,6 @@ const dispatch=useDispatch()
             <Route path="/help" element={<Help/>} />
             <Route path="/career" element={<Carrer/>} />
             <Route path="/*" element={<NotFound/>} />
-        
           </Routes>
           <Footer />
           <Copyright />

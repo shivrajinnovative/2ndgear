@@ -108,7 +108,7 @@ export default function BestSellingPlant() {
                 <h4>{item.title}</h4>
                 <p className="bestSellingSubHeading">{item.subtitle}</p>
                 <div className="fw-400">{item.date}</div>
-               <a href="sadf" className="text-primary nav-link mt-2"> View Details  <i className="bi bi-arrow-right mx-1"></i> </a>
+               <a href="/" className="text-primary nav-link mt-2"> View Details  <i className="bi bi-arrow-right mx-1"></i> </a>
             </div>
         </div>
       </div>)

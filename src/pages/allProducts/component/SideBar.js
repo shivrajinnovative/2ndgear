@@ -33,7 +33,7 @@ const Accordion = ({ heading, children }) => {
   );
 };
 
-export default function SideBar({ category, subcategory ,showFilter,setShowFilter}) {
+export default function SideBar({ category, subcategory ,showFilter,setShowFilter,defaultState}) {
   const isLogin = useSelector((state) => state.login);
 
   const dispatch = useDispatch();
@@ -80,7 +80,7 @@ export default function SideBar({ category, subcategory ,showFilter,setShowFilte
 
       <div className="accordion accordion-flush" id="accordionFlushExample">
         <Accordion heading="Equipment Current State">
-          <StateFilter />
+          <StateFilter defaultState={defaultState}  />
         </Accordion>
         <Accordion heading="Equipment YOM">
           <DateFilter />
