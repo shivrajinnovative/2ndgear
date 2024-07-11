@@ -38,13 +38,13 @@ export default function IndustryPlants() {
     <div className="bg-secondary py-4 position-relative">
       <div className="buySellBtn d-flex poppins ">
         <div
-          className={`px-4 py-1 fw-400 ${check ? "bg-yellow" : ""}`}
+          className={`px-4 fs-4 py-1 fw-400 ${check ? "bg-yellow" : ""}`}
           onClick={() => setCheck(true)}
         >
           <img src={check ? tick : circle} alt="icon" className="mx-1" /> Buy
         </div>
         <div
-          className={`px-4 py-1 fw-400 ${!check ? "bg-yellow" : ""}`}
+          className={`px-2 px-sm-4 fs-4 py-1 fw-400 ${!check ? "bg-yellow" : ""}`}
           onClick={() => setCheck(false)}
         >
           <img src={!check ? tick : circle} alt="icon" className="mx-1" /> Rent
