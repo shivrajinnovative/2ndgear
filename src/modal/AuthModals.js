@@ -6,6 +6,7 @@ import ResetPasswordModal from './ResetPasswordModal';
 import './assets/Modals.css'
 import MobileVerificationModal from './MobileVerificationModal';
 import EnterMobileNumber from './EnterMobileNumber';
+import RegisterSucces from './RegisterSucces';
 
 export default function AuthModals() {
     return (
@@ -16,6 +17,7 @@ export default function AuthModals() {
           <ResetPasswordModal/>
           <RegisterModal/> {/* registraion */}
           <MobileVerificationModal/> {/* mobile verification for registration */}
+          {/* <RegisterSucces/> */}
         </>
       );
 }

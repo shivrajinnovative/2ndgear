@@ -4,7 +4,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { Bounce, toast } from "react-toastify";
 import { useCsrfToken } from "../utils/useCsrfToken";
-
+import Swal from 'sweetalert2'
 export default function MobileVerificationModal() {
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const [error, setError] = useState("");
@@ -77,11 +77,18 @@ export default function MobileVerificationModal() {
     );
     if (data.flag === "1") {
       setError("");
+      if(data.role==='seller'){
 
-      toast.success("Registration Done Successfully Now Login !", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
+        Swal.fire({
+          title: "Registration Successfull !",
+          text: "Subject To Approval By 2Gear Admin !",
+          icon: "success"
+        });
+      }else{
+        toast.success("Registration Done Successfully Now Login !", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
@@ -93,6 +100,7 @@ export default function MobileVerificationModal() {
       if (modalTrigger) {
         modalTrigger.click();
       }
+    }
     }
     if (data.flag === "2") {
       setError(data.emsg);

@@ -134,6 +134,7 @@ export default function RegisterModal() {
         }   
     }
 };
+
   return (
     <div
       className="modal fade registerform"
