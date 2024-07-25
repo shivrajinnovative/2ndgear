@@ -6,14 +6,13 @@ import { useDynamicQuery } from "../../utils/apiUtils";
 import SideBar from "./component/SideBar";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setApiData, setCategoryForFilter, setMainCategory } from "../../store/slices/equipmentSlice";
+import { setApiData, setCategoryForFilter, setMainCategory, setSubCategoryForFilter } from "../../store/slices/equipmentSlice";
 
 export default function AllProducts(props) {
   const location = useLocation();
   const { stateName } = location.state || {}; 
-
   const {category, subcategory } = useParams();
-  const [totalProducts,setTotalProducts]=useState(null)
+
   const dispatch=useDispatch()
   const [type,setType]=useState(props.type)
   const navigate = useNavigate();
@@ -22,35 +21,42 @@ export default function AllProducts(props) {
   const productData=useSelector((state)=>state.equipments.filteredData)
   const isLogin = useSelector((state) => state.login);
 
-
+  // const allFilter=useSelector((state)=>state.equipments)
   useEffect(()=>{
     if(window.innerWidth <= 768 ){
         setShowFilter(false)
     }
   },[])
-  
   useEffect(()=>{
     if(data){
       dispatch(setApiData(data.productList))
-      setTotalProducts(data.productList && data.productList.length)
-      dispatch(setMainCategory(type))
-    }
-  },[data])
-  
-  useEffect(()=>{
-    if(category){
-      dispatch(setCategoryForFilter([category]))
-    }else{
-      dispatch(setCategoryForFilter([]))
-    }
-  },[category,dispatch])
-
-     useEffect(()=>{
-      if(productData && props.type){
+      if(props.type){
         dispatch(setMainCategory(props.type))
       }
-     },[props.type])
+    }
+  },[data])
+
   
+  useEffect(()=>{
+    if(productData){
+      if(props.type){
+        dispatch(setMainCategory(props.type))
+      }
+      if(category){
+        dispatch(setCategoryForFilter(category))
+      }else{
+        dispatch(setCategoryForFilter(''))
+      }
+      if(subcategory){
+        dispatch(setSubCategoryForFilter(subcategory))
+      }else{
+        dispatch(setSubCategoryForFilter(''))
+      }
+    }
+    },[props.type,category,subcategory])
+    
+  
+ 
   if(!productData){
    return <>
    <div className="container pt-5 mt-5">
@@ -59,6 +65,7 @@ export default function AllProducts(props) {
    </>
   }
 
+  // console.log(productData)
   return (
     <section className="bg-secondary pt-md-5 mt-5">
       <div className="container pt-3 ">
@@ -66,10 +73,8 @@ export default function AllProducts(props) {
         <span>  Assets <span className="text-primary fw-700">({productData.length})</span></span>
           <i className="bi bi-funnel-fill d-md-none text-primary" onClick={()=>{setShowFilter(!showFilter)}}></i>
         </h1>
-
         <div className="row">
           <div className="col-lg-3 overflow-hidden position-relative ">
-            
             <SideBar category={category} setShowFilter={setShowFilter} showFilter={showFilter} subcategory={subcategory} defaultState={stateName} />
           </div>
           <div className="col-lg-9 ">
@@ -83,13 +88,13 @@ export default function AllProducts(props) {
             </div>
             <div className="d-none d-md-flex justify-content-between bg-white my-3 p-3 rounded-3">
               <h4 className="poppins fw-400">All Assets</h4>
-{
-  isLogin &&   <select className="poppins fw-400 px-2">
-  <option value="">Sort By: </option>
-  <option value="">hight to low </option>
-  <option value=""> low to height </option>
-</select> 
-}
+              {
+                isLogin &&   <select className="poppins fw-400 px-2">
+                <option value="">Sort By: </option>
+                <option value="">hight to low </option>
+                <option value=""> low to height </option>
+              </select> 
+              }
             </div>
             <div className="productsListing  mt-5 pt-5 p-md-0 m-md-0">
               <div className="row ">
@@ -110,7 +115,6 @@ export default function AllProducts(props) {
                         </h5>
                         <div
                           className="d-flex justify-content-between py-md-1"
-                        
                         >
                           <span>{product.indequip_model}</span>
                           <span>{product.indequip_yom}</span>

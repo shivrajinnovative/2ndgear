@@ -74,6 +74,40 @@ export default function Blog() {
   };
 
   if (isLoading || error || !data.blogsData) return <></>;
+
+  if(data.blogsData.length<3){
+    return (
+      <div className="bg-secondary blog">
+        <div className="container py-5">
+          <h1 className="text-center poppins fw-500 py-sm-5">Blog</h1>
+          <div className="container">
+            <div className="slider-container row">
+              
+                {data.blogsData &&
+                  data.blogsData?.map((item, index) => (
+                    <div className="col-md-6 col-lg-4 p-3" key={index}>
+                      <div className="blogCard bg-white border p-3">
+                        <div className="blogHeader">
+                          <LazyLoad height={200} offset={100}>
+                            <img src={item.blog_image} alt={item.blog_title} />
+                          </LazyLoad>
+                        </div>
+                        <div className="blogBody">
+                          <h5>{item.blog_title}</h5>
+                          <p className="m-0">by Admin</p>
+                          <p>{item.blog_date}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-secondary blog">
       <div className="container py-5">

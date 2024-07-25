@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DateFilter from "./DateFilter";
 import PriceRange from "./PriceRange";
 import StateFilter from "./StateFilter";
 import { useDispatch, useSelector } from "react-redux";
-import { resetFilter } from "../../../store/slices/equipmentSlice";
+import { resetFilter, setCategoryListForFilter } from "../../../store/slices/equipmentSlice";
 import { useDynamicQuery } from "../../../utils/apiUtils";
 
 const Accordion = ({ heading, children }) => {
@@ -35,12 +35,27 @@ const Accordion = ({ heading, children }) => {
 
 export default function SideBar({ category, subcategory ,showFilter,setShowFilter,defaultState}) {
   const isLogin = useSelector((state) => state.login);
-
+  const [categoryList,setCategoryList]=useState([])
   const dispatch = useDispatch();
   const { data, error, isLoading } = useDynamicQuery(
     ["navbar"],
     "get-all-main-sub-categories"
   );
+
+  const handelClick = (event) => {
+    const category = event.target.value;
+    if (event.target.checked) {
+      setCategoryList([...categoryList, category]);
+    } else {
+      setCategoryList(categoryList.filter((c) => c !== category));
+    }
+};
+
+useEffect(() => {
+  dispatch(setCategoryListForFilter(categoryList));
+}, [categoryList, dispatch]);
+
+
   return (
     <form className={`refinedBy card p-3 ${showFilter && 'showFilter'} `}>
       <i className="bi bi-x display-5 text-end d-md-none" onClick={()=>setShowFilter(false)} ></i>
@@ -55,8 +70,8 @@ export default function SideBar({ category, subcategory ,showFilter,setShowFilte
                 <Accordion key={index} heading={list.equip_cat_name}>
                   {list.subcategories?.map((equip, index) => {
                     return (
-                      <label key={index} className="mx-1 col-12 ">
-                        <input className="mx-1" type="checkbox" />
+                      <label key={index} className="mx-1 col-12 col-md-5 col-lg-12"  onClick={handelClick}>
+                        <input className="mx-1" type="checkbox" value={equip.sub_equip_cat_slug} />
                         {equip.sub_equip_cat_name}
                       </label>
                     );

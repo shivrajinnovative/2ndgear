@@ -555,7 +555,7 @@ mark {
   }
 }
 .floatingForm{
-  right: 100px;
+  right: 5%;
   position: fixed;
   bottom: 50px;
   box-shadow: 0 0 10px -5px rgb(130, 130, 130);
